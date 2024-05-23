@@ -1,1 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: 'Cormorant Garamond', sans-serif; 
+  background-color: var(--primary-bg);
+  color: #000;
+  transition: background-color 0.5s ease;
+  overflow-x: hidden;
+  min-height: 100vh;
+ }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+li {
+  list-style: none;
+}
+app-nav-bar{
+  position: sticky;
+  top: 0;
+  z-index: 1000; 
+  
+}
+h1 {
+  font-size: clamp(2rem, 0.5rem + 10vw, 3rem);
+  margin-bottom: 60px;
+  font-weight: 700;
+  letter-spacing: .5px;
+}
+h2 {
+  font-size: clamp(1rem, 0.5rem + 10vw, 2rem);
+  margin-bottom: 30px;
+}
+h3 {
+  font-size: 1rem;
+  line-height: 1.8;
+  letter-spacing: 0.03rem;
+  font-weight: 300;
+}
+
+p {
+  font-size: clamp(0.1rem, 0.5rem + 0.5vw, 0.9rem);
+}
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//COLORES
+:root {
+  --primary-color: #66101f;
+  --primary-white:#fff;
+  --primary-bg:#fffbf4;
+}
