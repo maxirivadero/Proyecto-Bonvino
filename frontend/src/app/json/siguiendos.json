@@ -1,0 +1,125 @@
+{
+    "Siguiendo1": {
+        "fechaInicio": "2023-01-01T00:00:00.000Z",
+        "fechaFin": "2023-12-31T23:59:59.000Z",
+        "vino": {
+            "contraseña": "ContraseñaVino1",
+            "imagenEtiqueta": "URL de imagen de la etiqueta del Vino 1",
+            "nombre": "Nombre del Vino 1",
+            "notaDeCataBodega": "Nota de cata de la Bodega 1",
+            "precioARS": 1000,
+            "varietal": [
+                {
+                    "nombre": "Varietal 1",
+                    "descripcion": "Descripción del Varietal 1"
+                }
+            ],
+            "maridaje": [
+                {
+                    "nombre": "Maridaje 1",
+                    "descripcion": "Descripción del Maridaje 1"
+                }
+            ],
+            "bodega": {
+                "nombre": "Nombre de la Bodega 1",
+                "descripcion": "Descripción de la Bodega 1",
+                "historia": "Historia de la Bodega 1",
+                "coordenadasUbicacion": [0.0, 0.0]
+            }
+        },
+        "enofilo": {
+            "contraseña": "ContraseñaEnofilo1",
+            "imagenEtiqueta": "URL de imagen del enófilo 1",
+            "nombre": "Nombre del Enófilo 1",
+            "siguiendo": [],
+            "vinos": [],
+            "usuario": {
+                "contraseña": "ContraseñaUsuario1",
+                "nombre": "Nombre del Usuario 1",
+                "premium": true
+            }
+        }
+    },
+    "Siguiendo2": {
+        "fechaInicio": "2023-06-01T00:00:00.000Z",
+        "fechaFin": "2024-05-31T23:59:59.000Z",
+        "vino": {
+            "contraseña": "ContraseñaVino2",
+            "imagenEtiqueta": "URL de imagen de la etiqueta del Vino 2",
+            "nombre": "Nombre del Vino 2",
+            "notaDeCataBodega": "Nota de cata de la Bodega 2",
+            "precioARS": 1500,
+            "varietal": [
+                {
+                    "nombre": "Varietal 2",
+                    "descripcion": "Descripción del Varietal 2"
+                }
+            ],
+            "maridaje": [
+                {
+                    "nombre": "Maridaje 2",
+                    "descripcion": "Descripción del Maridaje 2"
+                }
+            ],
+            "bodega": {
+                "nombre": "Nombre de la Bodega 2",
+                "descripcion": "Descripción de la Bodega 2",
+                "historia": "Historia de la Bodega 2",
+                "coordenadasUbicacion": [1.0, 1.0]
+            }
+        },
+        "enofilo": {
+            "contraseña": "ContraseñaEnofilo2",
+            "imagenEtiqueta": "URL de imagen del enófilo 2",
+            "nombre": "Nombre del Enófilo 2",
+            "siguiendo": [],
+            "vinos": [],
+            "usuario": {
+                "contraseña": "ContraseñaUsuario2",
+                "nombre": "Nombre del Usuario 2",
+                "premium": false
+            }
+        }
+    },
+    "Siguiendo3": {
+        "fechaInicio": "2023-09-01T00:00:00.000Z",
+        "fechaFin": "2024-08-31T23:59:59.000Z",
+        "vino": {
+            "contraseña": "ContraseñaVino3",
+            "imagenEtiqueta": "URL de imagen de la etiqueta del Vino 3",
+            "nombre": "Nombre del Vino 3",
+            "notaDeCataBodega": "Nota de cata de la Bodega 3",
+            "precioARS": 2000,
+            "varietal": [
+                {
+                    "nombre": "Varietal 3",
+                    "descripcion": "Descripción del Varietal 3"
+                }
+            ],
+            "maridaje": [
+                {
+                    "nombre": "Maridaje 3",
+                    "descripcion": "Descripción del Maridaje 3"
+                }
+            ],
+            "bodega": {
+                "nombre": "Nombre de la Bodega 3",
+                "descripcion": "Descripción de la Bodega 3",
+                "historia": "Historia de la Bodega 3",
+                "coordenadasUbicacion": [2.0, 2.0]
+            }
+        },
+        "enofilo": {
+            "contraseña": "ContraseñaEnofilo3",
+            "imagenEtiqueta": "URL de imagen del enófilo 3",
+            "nombre": "Nombre del Enófilo 3",
+            "siguiendo": [],
+            "vinos": [],
+            "usuario": {
+                "contraseña": "ContraseñaUsuario3",
+                "nombre": "Nombre del Usuario 3",
+                "premium": true
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "Usuario1": {
+        "contraseña": "Contraseña1",
+        "nombre": "Nombre del Usuario 1",
+        "premium": true
+    },
+    "Usuario2": {
+        "contraseña": "Contraseña2",
+        "nombre": "Nombre del Usuario 2",
+        "premium": false
+    },
+    "Usuario3": {
+        "contraseña": "Contraseña3",
+        "nombre": "Nombre del Usuario 3",
+        "premium": true
+    }
+}

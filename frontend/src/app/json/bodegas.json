@@ -1,0 +1,20 @@
+{
+    "Bodega1": {
+        "nombre": "Nombre de la Bodega 1",
+        "descripcion": "Descripción de la Bodega 1",
+        "historia": "Historia de la Bodega 1",
+        "coordenadasUbicacion": [0.0, 0.0]
+    },
+    "Bodega2": {
+        "nombre": "Nombre de la Bodega 2",
+        "descripcion": "Descripción de la Bodega 2",
+        "historia": "Historia de la Bodega 2",
+        "coordenadasUbicacion": [0.0, 0.0]
+    },
+    "Bodega3": {
+        "nombre": "Nombre de la Bodega 3",
+        "descripcion": "Descripción de la Bodega 3",
+        "historia": "Historia de la Bodega 3",
+        "coordenadasUbicacion": [0.0, 0.0]
+    }
+}
