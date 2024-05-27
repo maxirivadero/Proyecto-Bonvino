@@ -23,6 +23,17 @@ export class Vino {
         this.bodega = bodega;
     }
 
+    mostrarInfo(): string {
+        return `
+            Nombre: ${this.nombre}
+            Nota de Cata: ${this.notaDeCataBodega}
+            Precio (ARS): ${this.precioARS}
+            Bodega: ${this.bodega.nombre}
+            Varietales: ${this.varietal.map(v => v.descripcion).join(", ")}
+            Maridajes: ${this.maridaje.map(m => m.descripcion).join(", ")}
+        `;
+    }
+
     calcularRanking() {
 
     }

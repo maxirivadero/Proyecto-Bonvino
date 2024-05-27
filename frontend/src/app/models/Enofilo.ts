@@ -2,6 +2,7 @@ import { Siguiendo } from "./Siguiendo";
 import { Usuario } from "./Usuario";
 import { Vino } from "./Vino";
 
+
 export class Enofilo {
     contraseña: string;
     imagenEtiqueta: string;
@@ -19,12 +20,12 @@ export class Enofilo {
         this.usuario = usuario;
     }
 
-    estasSuscriptoABodega() {
-
+    estasSuscriptoABodega(nombreBodega: string): boolean {
+        return this.siguiendo.some(siguiendo => siguiendo.vino?.nombre && siguiendo.vino.bodega.nombre === nombreBodega);
     }
 
     obtenerNombreUsuario() {
-        
+        return this.usuario.nombre;
     }
 
 }
