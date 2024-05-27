@@ -3,26 +3,28 @@ export class Bodega {
     descripcion: string;
     historia:string;
     coordenadasUbicacion:Array<Number>;
-    //periodoActualizacion:string;
+    periodoActualizacion:number;
+    ultimaActualizacion: Date;
 
-    constructor(nombre: string, descripcion: string,historia:string, coordenadasUbicacion:Array<Number>) {
+    constructor(nombre: string, descripcion: string,historia:string, coordenadasUbicacion:Array<Number>, periodoActualizacion:number, ultimaActualizacion:Date) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.historia = historia;
         this.coordenadasUbicacion= coordenadasUbicacion;
+        this.periodoActualizacion= periodoActualizacion;
+        this.ultimaActualizacion= ultimaActualizacion;
     }  
-    
-    mostrarTodosVinos() {
 
-    }
-
-    contarReseñas() {
-
-    }
-
-    sosActualizable() {
+    sosActualizable(fechaActual: Date) {
+        const diferenciaMilisegundos = fechaActual.getTime() - this.ultimaActualizacion.getTime();
+        const mesesDesdeUltimaActualizacion = diferenciaMilisegundos / (1000 * 60 * 60 * 24 * 30);
         
-    }
+        if (mesesDesdeUltimaActualizacion >= this.periodoActualizacion) {
+            console.log("Es necesaria una actualización.");
+        } else {
+            console.log("No es necesaria una actualización en este momento.");
+        }
+    } 
 
     get getNombre(): string {
         return this.nombre;
