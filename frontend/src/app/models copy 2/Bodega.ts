@@ -1,8 +1,11 @@
+import { Vino } from "./Vino";
+
 export class Bodega {
     nombre: string;
     descripcion: string;
     historia:string;
     coordenadasUbicacion:Array<Number>;
+    private vinos: Vino[] = []; //Agrego esto para poder mostrar los vinos
     //periodoActualizacion:string;
 
     constructor(nombre: string, descripcion: string,historia:string, coordenadasUbicacion:Array<Number>) {
@@ -12,8 +15,14 @@ export class Bodega {
         this.coordenadasUbicacion= coordenadasUbicacion;
     }  
     
-    mostrarTodosVinos() {
+    agregerVino(vino: Vino): void {
+        this.vinos.push(vino);
+    }
 
+    mostrarTodosVinos(): void {
+        this.vinos.forEach(vino => {
+            console.log(vino.mostrarInfo());
+        });
     }
 
     contarReseñas() {
