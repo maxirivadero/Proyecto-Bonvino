@@ -10,7 +10,9 @@ export class GestorActualizacion {
     tipoUvas:Array<TipoUva> | undefined;
     constructor(){
     }
-
+    getFechaActual() {
+        this.fechaActual = new Date();
+    };
     importarActualizacionDeVinos() {
         
     };
@@ -21,9 +23,6 @@ export class GestorActualizacion {
         
     };
     obtenerActualizacionVino() {
-        
-    };
-    getFechaActual() {
         
     };
     crearVino() {

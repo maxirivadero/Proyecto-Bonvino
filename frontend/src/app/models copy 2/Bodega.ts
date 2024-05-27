@@ -14,20 +14,6 @@ export class Bodega {
         this.historia = historia;
         this.coordenadasUbicacion= coordenadasUbicacion;
     }  
-    
-    agregerVino(vino: Vino): void {
-        this.vinos.push(vino);
-    }
-
-    mostrarTodosVinos(): void {
-        this.vinos.forEach(vino => {
-            console.log(vino.mostrarInfo());
-        });
-    }
-
-    contarReseñas() {
-
-    }
 
     sosActualizable() {
         
