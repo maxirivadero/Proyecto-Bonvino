@@ -19,11 +19,7 @@ export class Bodega {
         const diferenciaMilisegundos = fechaActual.getTime() - this.ultimaActualizacion.getTime();
         const mesesDesdeUltimaActualizacion = diferenciaMilisegundos / (1000 * 60 * 60 * 24 * 30);
         
-        if (mesesDesdeUltimaActualizacion >= this.periodoActualizacion) {
-            console.log("Es necesaria una actualización.");
-        } else {
-            console.log("No es necesaria una actualización en este momento.");
-        }
+        return (mesesDesdeUltimaActualizacion >= this.periodoActualizacion);
     } 
 
     get getNombre(): string {
