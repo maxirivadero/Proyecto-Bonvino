@@ -1,17 +1,19 @@
-{
-    "Usuario1": {
+const usuarios = [
+    {
         "contraseña": "Contraseña1",
-        "nombre": "Nombre del Usuario 1",
+        "nombre": "Carlos",
         "premium": true
     },
-    "Usuario2": {
+    {
         "contraseña": "Contraseña2",
-        "nombre": "Nombre del Usuario 2",
+        "nombre": "Jaime",
         "premium": false
     },
-    "Usuario3": {
+    {
         "contraseña": "Contraseña3",
-        "nombre": "Nombre del Usuario 3",
+        "nombre": "Laura",
         "premium": true
     }
-}
+  ];
+
+  export default usuarios;

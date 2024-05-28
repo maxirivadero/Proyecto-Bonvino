@@ -1,12 +1,13 @@
 export class Maridaje {
-    descripcion: string;
     nombre: string;
-    constructor(descripcion: string, nombre: string){
-        this.descripcion = descripcion, 
+    descripcion: string;
+
+    constructor(nombre: string, descripcion: string){
         this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
-    sosMaridaje() {
-        
+    sosMaridaje(maridaje:Maridaje) {
+        return maridaje.nombre === this.nombre;
     }
 }
