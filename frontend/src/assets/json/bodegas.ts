@@ -1,5 +1,4 @@
-{
-    "bodegas": [
+const bodegas = [
       {
         "nombre": "Bodega La Viña",
         "descripcion": "Una bodega familiar fundada en 1975, especializada en vinos tintos de alta calidad.",
@@ -24,6 +23,6 @@
         "periodoActualizacion": 9,
         "ultimaActualizacion": "2024-03-10T15:20:00.000Z"
       }
-    ]
-}
+    ];
  
+    export default bodegas;
