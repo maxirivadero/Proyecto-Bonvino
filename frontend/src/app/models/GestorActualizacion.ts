@@ -26,7 +26,7 @@ export class GestorActualizacion {
     };
     buscarBodegasActualizables() {
         for (const bodegaJson of bodegas) {
-            // Crear una instancia de Bodega a partir de cada objeto JSON
+            
             const bodega = new Bodega(
                 bodegaJson.nombre,
                 bodegaJson.descripcion,
@@ -35,12 +35,7 @@ export class GestorActualizacion {
                 bodegaJson.periodoActualizacion,
                 new Date(bodegaJson.ultimaActualizacion)
             );
-            console.log(bodega);
 
-            // Verificar si la bodega es actualizable
-            bodega.sosActualizable(this.fechaActual);
-
-            // Si es actualizable, agregarla al arreglo bodegasActualizables
             if (bodega.sosActualizable(this.fechaActual)) {
                 this.bodegasActualizables.push(bodega);
             }

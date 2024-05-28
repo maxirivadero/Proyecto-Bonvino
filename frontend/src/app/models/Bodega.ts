@@ -17,9 +17,7 @@ export class Bodega {
 
     sosActualizable(fechaActual: Date) {
         const diferenciaMilisegundos = fechaActual.getTime() - this.ultimaActualizacion.getTime();
-        console.log(diferenciaMilisegundos);
         const mesesDesdeUltimaActualizacion = diferenciaMilisegundos / (1000 * 60 * 60 * 24 * 30);
-        console.log(mesesDesdeUltimaActualizacion);
         
         return (mesesDesdeUltimaActualizacion >= this.periodoActualizacion);
     } 

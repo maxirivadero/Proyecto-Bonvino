@@ -12,7 +12,7 @@ export class NovedadesComponent implements PantallaActualizacion{
 
   opcionImportarActualizacionDeVinos() {
     this.gestor.buscarBodegasActualizables();
-    console.log(this.gestor.bodegaSeleccionada);
+    console.log(this.gestor.bodegasActualizables);
   };
   habilitarVentana() {
     

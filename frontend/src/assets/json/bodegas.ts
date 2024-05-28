@@ -4,16 +4,16 @@ const bodegas = [
         "descripcion": "Una bodega familiar fundada en 1975, especializada en vinos tintos de alta calidad.",
         "historia": "La historia de Bodega La Viña se remonta a hace casi medio siglo, cuando el fundador, Don Alejandro, plantó las primeras vides en estas tierras. Desde entonces, la bodega ha pasado de generación en generación, manteniendo la tradición y el compromiso con la calidad.",
         "coordenadasUbicacion": [42.8782, -8.5448],
-        "periodoActualizacion": 12,
-        "ultimaActualizacion": "2024-04-15T12:30:00.000Z"
+        "periodoActualizacion": 2,
+        "ultimaActualizacion": "2024-03-15T12:30:00.000Z"
       },
       {
         "nombre": "Bodega Los Robles",
         "descripcion": "Una bodega moderna y vanguardista, líder en tecnología de vinificación.",
         "historia": "Los Robles es una bodega relativamente joven, pero que ha logrado destacar en la industria gracias a su enfoque innovador. Fundada en 2005 por un grupo de enólogos visionarios, la bodega ha sido pionera en el uso de tecnologías avanzadas en todas las etapas de producción.",
         "coordenadasUbicacion": [38.9097, -2.4358],
-        "periodoActualizacion": 6,
-        "ultimaActualizacion": "2024-05-20T09:45:00.000Z"
+        "periodoActualizacion": 1,
+        "ultimaActualizacion": "2024-04-20T09:45:00.000Z"
       },
       {
         "nombre": "Bodega El Castillo",
