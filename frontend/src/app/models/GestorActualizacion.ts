@@ -112,9 +112,11 @@ export class GestorActualizacion {
         }
         const interfazNotificacion = new InterfazNotificacionPush();
         interfazNotificacion.actualizarNovedadBodega(this.enofilosSubscriptos);
+
+        this.finCU();
     };
     
     finCU() {
-        
+        console.log("Fin caso de uso")
     };
 }
