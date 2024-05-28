@@ -40,14 +40,17 @@ export class NovedadesComponent implements PantallaActualizacion{
     if(this.gestor.bodegasActualizables && this.gestor.bodegasActualizables.length > 0){
       this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     }
-    this.mostrarTabla = this.gestor.bodegasActualizables && this.gestor.bodegasActualizables.length > 0;
   }
 
   tomarSeleccionBodega(bodega: Bodega) {
     this.bodegaSeleccionada = bodega;
+    this.gestor.tomarSeleccionBodega(bodega);
+    this.mostrarTabla = !this.mostrarTabla;
+    this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
+    this.mostrarResumenActualizacion();
   }
   mostrarResumenActualizacion() {
-    console.log(this.bodegaSeleccionada);
+    console.log(this.gestor.vinosActualizados);
     this.gestor.notificarSubscripciones(this.bodegaSeleccionada);
   };
 }

@@ -1,12 +1,24 @@
 /* Estilos generales */
 .main-wrapper {
     margin-bottom: 20px;
+    min-height: 100vh;
   }
   
   .table-wrapper {
     overflow-x: auto;
   }
   
+button {
+  min-width: 25px;
+  padding: 8px;
+  margin: 8px;
+  
+}
+
+h2 {
+  margin: 1rem;
+}
+
   table {
     width: 100%;
     border-collapse: collapse;

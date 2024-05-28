@@ -25,10 +25,47 @@
       </table>
       
       <!-- Botones para que el usuario elija una bodega -->
+
   <div *ngIf="mostrarTabla">
+    <h2>Elija una bodega</h2>
     <button *ngFor="let bodega of gestor.bodegasActualizables" (click)="tomarSeleccionBodega(bodega)">{{ bodega.nombre }}</button>
   </div>
 
+    <!-- Tabla para mostrar vinos actualizados -->
+    <table *ngIf="gestor.vinosActualizados && gestor.vinosActualizados.length > 0">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio (ARS)</th>
+                <th>Imagen Etiqueta</th>
+                <th>Varietal</th>
+                <th>Maridaje</th>
+                <th>Bodega</th>
+                <th>Fecha de Actualización</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let vino of gestor.vinosActualizados">
+                <td>{{ vino.nombre }}</td>
+                <td>{{ vino.notaDeCataBodega }}</td>
+                <td>{{ vino.precioARS }}</td>
+                <td>{{ vino.imagenEtiqueta }}</td>
+                <td>
+                    <ul>
+                        <li *ngFor="let varietal of vino.varietal">{{ varietal.descripcion }}</li>
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li *ngFor="let item of vino.maridaje">{{ item.nombre }}</li>
+                    </ul>
+                </td>
+                <td>{{ vino.bodega }}</td>
+                <td>{{ vino.fechaActualizacion | date }}</td>
+            </tr>
+        </tbody>
+    </table>
 
-    <button (click)="mostrarResumenActualizacion()">mostrarResumenActualizacion</button>
+
 </div>

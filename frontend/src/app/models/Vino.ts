@@ -1,6 +1,7 @@
 import { Bodega } from "./Bodega";
 import { Maridaje } from "./Maridaje";
 import { Varietal } from "./Varietal";
+import vinos from "../../assets/json/vinos";
 
 export class Vino {
     imagenEtiqueta: string;
@@ -11,6 +12,8 @@ export class Vino {
     maridaje:Array<Maridaje>;
     bodega:string;
     fechaActualizacion:Date;
+    vinosActualizados: Vino[] = [];
+    vinosACrear: Vino[] = [];
 
     constructor(imagenEtiqueta: string, nombre: string, notaDeCataBodega: string, precioARS:number, varietal:Array<Varietal>, maridaje:Array<Maridaje>, bodega:string, fechaActualizacion:Date) {
         this.imagenEtiqueta = imagenEtiqueta;
@@ -23,19 +26,8 @@ export class Vino {
         this.fechaActualizacion = new Date();
     }
 
-    //mostrarInfo(): string {
-    //    return `
-    //        Nombre: ${this.nombre}
-    //        Nota de Cata: ${this.notaDeCataBodega}
-    //        Precio (ARS): ${this.precioARS}
-    //        Bodega: ${this.bodega.nombre}
-    //        Varietales: ${this.varietal.map(v => v.descripcion).join(", ")}
-    //        Maridajes: ${this.maridaje.map(m => m.descripcion).join(", ")}
-    //    `;
-    //}
-
-    sosVinoActualizar() {
-
+    sosVinoActualizar(vinoActualizado:string) {
+        return (this.nombre === vinoActualizado)
     }
 
     set setPrecio(nuevoPrecio:number) {

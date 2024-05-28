@@ -8,6 +8,7 @@ import { Enofilo } from "./Enofilo";
 import { Siguiendo } from "./Siguiendo";
 import { Usuario } from "./Usuario";
 import { InterfazNotificacionPush } from "./InterfazNotificacionPush";
+import { SistemaDeBodega } from "./SistemaDeBodega";
 
 export class GestorActualizacion {
     fechaActual: Date;//chequear si se hace asi y con todos los undefined
@@ -17,14 +18,18 @@ export class GestorActualizacion {
     tipoUvas:Array<TipoUva>;
     enofilosSubscriptos:Array<string>;
     interfaz = InterfazNotificacionPush;
+    sistemaDeBodega = new SistemaDeBodega();
+    vinosActualizar: Vino[] = [];
 
-    
+    vinosActualizados: Vino[] = [];
+
     constructor() {
         this.fechaActual = new Date();
         this.bodegasActualizables = [];
         this.maridajes = [];
         this.tipoUvas = [];
         this.enofilosSubscriptos = [];
+        this.vinosActualizar = [];
     }
     getFechaActual() {
         this.fechaActual = new Date();
@@ -50,12 +55,18 @@ export class GestorActualizacion {
             }
         }
     }
-    tomarSeleccionBodega() {
-
+    tomarSeleccionBodega(bodega: Bodega) {
+        this.bodegaSeleccionada = bodega;
+        this.obtenerActualizacionVino();
     };
     obtenerActualizacionVino() {
-
-        
+        this.vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos();
+        if (this.bodegaSeleccionada?.actualizarVinos(this.vinosActualizar)) {
+            this.vinosActualizados = this.bodegaSeleccionada.actualizarVinos(this.vinosActualizar);
+            this.bodegaSeleccionada.setFechaUltimaActualizacion = this.fechaActual;
+            
+            this.notificarSubscripciones(this.bodegaSeleccionada);
+        }
     };
     crearVino() {
         
