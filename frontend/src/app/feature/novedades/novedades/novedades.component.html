@@ -1,4 +1,34 @@
 <div class="main-wrapper flex-centered">
     <!-- Botón para importar actualización de vinos -->
-    <button (click)="opcionImportarActualizacionDeVinos()">Importar Actualización de Vinos</button>
+    <button (click)="opcionImportarActualizacionDeVinos()" *ngIf="habilitarVentanaFlag">Importar Actualización de Vinos</button>
+    <table *ngIf="mostrarTabla">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Historia</th>
+            <th>Coordenadas Ubicación</th>
+            <th>Periodo Actualización</th>
+            <th>Última Actualización</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bodega of gestor.bodegasActualizables">
+            <td>{{ bodega.nombre }}</td>
+            <td>{{ bodega.descripcion }}</td>
+            <td>{{ bodega.historia }}</td>
+            <td>{{ bodega.coordenadasUbicacion }}</td>
+            <td>{{ bodega.periodoActualizacion }}</td>
+            <td>{{ bodega.ultimaActualizacion | date }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <!-- Botones para que el usuario elija una bodega -->
+  <div *ngIf="mostrarTabla">
+    <button *ngFor="let bodega of gestor.bodegasActualizables" (click)="tomarSeleccionBodega(bodega)">{{ bodega.nombre }}</button>
+  </div>
+
+
+    <button (click)="mostrarResumenActualizacion()">mostrarResumenActualizacion</button>
 </div>
