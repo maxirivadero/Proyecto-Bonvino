@@ -3,17 +3,16 @@ import { Maridaje } from "./Maridaje";
 import { Varietal } from "./Varietal";
 
 export class Vino {
-    contraseña: string;
     imagenEtiqueta: string;
     nombre: string;
     notaDeCataBodega: string;
     precioARS:number;
     varietal:Array<Varietal>;
     maridaje:Array<Maridaje>;
-    bodega:Bodega;
+    bodega:string;
+    fechaActualizacion:Date;
 
-    constructor(contraseña: string, imagenEtiqueta: string, nombre: string, notaDeCataBodega: string, precioARS:number, varietal:Array<Varietal>, maridaje:Array<Maridaje>, bodega:Bodega) {
-        this.contraseña = contraseña;
+    constructor(imagenEtiqueta: string, nombre: string, notaDeCataBodega: string, precioARS:number, varietal:Array<Varietal>, maridaje:Array<Maridaje>, bodega:string, fechaActualizacion:Date) {
         this.imagenEtiqueta = imagenEtiqueta;
         this.nombre = nombre;
         this.notaDeCataBodega = notaDeCataBodega;
@@ -21,34 +20,19 @@ export class Vino {
         this.varietal = varietal;
         this.maridaje = maridaje;
         this.bodega = bodega;
+        this.fechaActualizacion = new Date();
     }
 
-    mostrarInfo(): string {
-        return `
-            Nombre: ${this.nombre}
-            Nota de Cata: ${this.notaDeCataBodega}
-            Precio (ARS): ${this.precioARS}
-            Bodega: ${this.bodega.nombre}
-            Varietales: ${this.varietal.map(v => v.descripcion).join(", ")}
-            Maridajes: ${this.maridaje.map(m => m.descripcion).join(", ")}
-        `;
-    }
-
-    calcularRanking() {
-
-    }
-
-    compararEtiqueta() {
-
-    }
-
-    esDeBodega() {
-
-    }
-
-    esDeRegionVitivinicola() {
-
-    }
+    //mostrarInfo(): string {
+    //    return `
+    //        Nombre: ${this.nombre}
+    //        Nota de Cata: ${this.notaDeCataBodega}
+    //        Precio (ARS): ${this.precioARS}
+    //        Bodega: ${this.bodega.nombre}
+    //        Varietales: ${this.varietal.map(v => v.descripcion).join(", ")}
+    //        Maridajes: ${this.maridaje.map(m => m.descripcion).join(", ")}
+    //    `;
+    //}
 
     sosVinoActualizar() {
 
@@ -66,8 +50,8 @@ export class Vino {
         this.imagenEtiqueta = nuevaImagenEtiqueta;
     }
 
-    setFechaAcualizacion() {
-        
+    set setFechaActualizacion(fecha: Date){
+        this.fechaActualizacion = fecha;
     }
 
     crearVarietal() {

@@ -44,6 +44,7 @@ export class GestorActualizacion {
     tomarSeleccionBodega() {
     };
     obtenerActualizacionVino() {
+        
     };
     crearVino() {
         

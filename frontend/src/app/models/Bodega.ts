@@ -39,8 +39,8 @@ export class Bodega {
     }
 
     //cambiar despues el any por el tipo de valor de la var
-    setFechaActualizacion(fecha: any){
-
+    set setFechaUltimaActualizacion(fecha: Date){
+        this.ultimaActualizacion = fecha;
     }
 }
 
