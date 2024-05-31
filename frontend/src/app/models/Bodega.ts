@@ -8,6 +8,8 @@ export class Bodega {
     coordenadasUbicacion:Array<Number>;
     periodoActualizacion:number;
     ultimaActualizacion: Date;
+    
+    //verificar
     vinosActualizados: Vino[] = [];
     vinosACrear: Vino[] = [];
 
@@ -18,7 +20,9 @@ export class Bodega {
         this.coordenadasUbicacion= coordenadasUbicacion;
         this.periodoActualizacion= periodoActualizacion;
         this.ultimaActualizacion= ultimaActualizacion;
-    }  
+        //this.vinosActualizados
+        //this.vinosACrear
+    }
 
     sosActualizable(fechaActual: Date) {
         const diferenciaMilisegundos = fechaActual.getTime() - this.ultimaActualizacion.getTime();
