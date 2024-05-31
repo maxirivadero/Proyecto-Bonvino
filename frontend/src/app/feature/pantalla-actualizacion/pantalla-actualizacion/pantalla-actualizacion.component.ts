@@ -10,7 +10,7 @@ import { GestorActualizacion } from 'src/app/models/GestorActualizacion';
 export class PantallaActualizacionComponent {
   gestor = new GestorActualizacion();
   habilitarVentanaFlag = true;
-  mostrarTabla = false;
+  comboBodegasActualizables = false;
   mostrarOpcionesDeBodega = false;
   bodegaSeleccionada = new Bodega(
     "Bodega La Riña",
@@ -19,7 +19,7 @@ export class PantallaActualizacionComponent {
     [42.8782, -8.5448],
     2,
     new Date("2024-03-15T12:30:00.000Z")
-);
+    );
 
   opcionImportarActualizacionDeVinos() {
     this.gestor.importarActualizacionDeVinos();
@@ -32,7 +32,7 @@ export class PantallaActualizacionComponent {
   };
   mostrarBodegasDisponibles() {
     if(this.gestor.bodegasActualizables && this.gestor.bodegasActualizables.length > 0){
-      this.mostrarTabla = !this.mostrarTabla;
+      this.comboBodegasActualizables = !this.comboBodegasActualizables;
     }
   };
   solicitarSeleccionBodega() {
@@ -44,7 +44,7 @@ export class PantallaActualizacionComponent {
   tomarSeleccionBodega(bodega: Bodega) {
     this.bodegaSeleccionada = bodega;
     this.gestor.tomarSeleccionBodega(bodega);
-    this.mostrarTabla = !this.mostrarTabla;
+    this.comboBodegasActualizables = !this.comboBodegasActualizables;
     this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     this.mostrarResumenActualizacion();
   }

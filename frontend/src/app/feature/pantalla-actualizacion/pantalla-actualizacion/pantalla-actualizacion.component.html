@@ -1,7 +1,7 @@
 <div class="main-wrapper flex-centered">
     <!-- Botón para importar actualización de vinos -->
     <button (click)="opcionImportarActualizacionDeVinos()" *ngIf="habilitarVentanaFlag">Importar Actualización de Vinos</button>
-    <table *ngIf="mostrarTabla">
+    <table *ngIf="comboBodegasActualizables">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -26,7 +26,7 @@
       
       <!-- Botones para que el usuario elija una bodega -->
 
-  <div *ngIf="mostrarTabla">
+  <div *ngIf="comboBodegasActualizables">
     <h2>Elija una bodega</h2>
     <button *ngFor="let bodega of gestor.bodegasActualizables" (click)="tomarSeleccionBodega(bodega)">{{ bodega.nombre }}</button>
   </div>
