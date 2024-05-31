@@ -11,34 +11,47 @@ import { InterfazNotificacionPush } from "./InterfazNotificacionPush";
 import { SistemaDeBodega } from "./SistemaDeBodega";
 
 export class GestorActualizacion {
-    fechaActual: Date;//chequear si se hace asi y con todos los undefined
-    bodegasActualizables:Array<Bodega>;//chequear si se hace asi
+    fechaActual: Date;
+    bodegasActualizables:Array<any>;
     bodegaSeleccionada:Bodega | undefined;
     maridajes:Array<Maridaje>;
     tipoUvas:Array<TipoUva>;
-    enofilosSubscriptos:Array<string>;
-    interfaz = InterfazNotificacionPush;
+    enofilo:Array<string>;
+    
+    //ver si va
+    interfazNotificacionPush = new InterfazNotificacionPush();
     sistemaDeBodega = new SistemaDeBodega();
+    
+    //maybe no van
     vinosActualizar: Vino[] = [];
-
     vinosActualizados: Vino[] = [];
 
+    //constructor segun ChatGPT
     constructor() {
         this.fechaActual = new Date();
         this.bodegasActualizables = [];
+        this.bodegaSeleccionada = undefined;
         this.maridajes = [];
         this.tipoUvas = [];
-        this.enofilosSubscriptos = [];
-        this.vinosActualizar = [];
+        this.enofilo = [];
+        this.interfazNotificacionPush = new InterfazNotificacionPush(); // O la inicialización adecuada para esta propiedad
+        this.sistemaDeBodega = new SistemaDeBodega();
     }
-    getFechaActual() {
-        this.fechaActual = new Date();
-    };
+
+    //get getFechaActual()
+    getFechaActual(): Date {
+        return this.fechaActual
+    }
+
+    //verificar
     importarActualizacionDeVinos() {
         this.buscarBodegasActualizables();
-
     };
+    
     buscarBodegasActualizables() {
+        //verificar fecha
+        const fecha = this.getFechaActual()
+
         for (const bodegaJson of bodegas) {
             
             const bodega = new Bodega(
@@ -50,18 +63,22 @@ export class GestorActualizacion {
                 new Date(bodegaJson.ultimaActualizacion)
             );
 
-            if (bodega.sosActualizable(this.fechaActual)) {
-                this.bodegasActualizables.push(bodega);
+            if (bodega.sosActualizable(fecha)) {
+                const listaBodegas = [bodega.getNombre, bodega.getDescripcion, bodega.getCoordenadas]
+                this.bodegasActualizables.push(listaBodegas);
             }
         }
     }
+
     tomarSeleccionBodega(bodega: Bodega) {
         this.bodegaSeleccionada = bodega;
         this.obtenerActualizacionVino();
     };
+
+    //parametros?
     obtenerActualizacionVino() {
         this.vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos();
-        if (this.bodegaSeleccionada?.actualizarVinos(this.vinosActualizar)) {
+        if (this.bodegaSeleccionada?.actualizarVinos(this.vinosActualizar)) { //?
             this.vinosActualizados = this.bodegaSeleccionada.actualizarVinos(this.vinosActualizar);
             this.bodegaSeleccionada.setFechaUltimaActualizacion = this.fechaActual;
             
@@ -107,11 +124,11 @@ export class GestorActualizacion {
     
             // Verificar si el enófilo está suscrito a la bodega y agregarlo a la lista de bodegas actualizables
             if (enofilo.estasSuscriptoABodega(bodega.getNombre)) {
-                this.enofilosSubscriptos.push(enofilo.obtenerNombreUsuario());
+                this.enofilo.push(enofilo.obtenerNombreUsuario());
             }
         }
         const interfazNotificacion = new InterfazNotificacionPush();
-        interfazNotificacion.actualizarNovedadBodega(this.enofilosSubscriptos);
+        interfazNotificacion.actualizarNovedadBodega(this.enofilo);
 
         this.finCU();
     };
