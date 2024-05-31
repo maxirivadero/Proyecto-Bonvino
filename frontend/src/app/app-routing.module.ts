@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'novedades',
     loadChildren: () =>
-      import('./feature/novedades/novedades.module').then((m) => m.NovedadesModule),
+      import('./feature/pantalla-actualizacion/pantalla-actualizacion.module').then((m) => m.PantallaActualizacionModule),
   },
 ];
 
