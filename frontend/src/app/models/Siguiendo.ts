@@ -1,20 +1,18 @@
-import { Enofilo } from "./Enofilo";
-import { Vino } from "./Vino";
+
 
 export class Siguiendo {
     fechaInicio: Date;
     fechaFin: Date;
-    vino:Vino;
-    enofilo:Enofilo | undefined;
-    constructor(fechaInicio: Date, fechaFin: Date, vino:Vino, enofilo:Enofilo){
+    bodega:string;
+    enofilo:string | undefined;
+    constructor(fechaInicio: Date, fechaFin: Date, bodega:string, enofilo:string){
         this.fechaInicio = fechaInicio, 
         this.fechaFin = fechaFin;
-        this.vino = vino;
+        this.bodega = bodega;
         this.enofilo = enofilo;
     }
 
-    sosDeBodega(): boolean {
-        return !!this.vino.bodega;
-        
+    sosDeBodega(nombreBodega:string): boolean {
+        return nombreBodega === this.bodega;
     }
 }

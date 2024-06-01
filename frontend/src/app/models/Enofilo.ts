@@ -1,31 +1,28 @@
 import { Siguiendo } from "./Siguiendo";
 import { Usuario } from "./Usuario";
-import { Vino } from "./Vino";
 
 
 export class Enofilo {
-    contraseña: string;
-    imagenEtiqueta: string;
+    apellido: string;
+    imagenPerfil: string;
     nombre: string;
     siguiendo:Array<Siguiendo>;
-    vinos:Array<Vino>;
     usuario:Usuario;
 
-    constructor(contraseña: string, imagenEtiqueta: string, nombre: string, notaDeCataBodega: string, precioARS:number, siguiendo:Array<Siguiendo>,vinos:Array<Vino>, usuario:Usuario) {
-        this.contraseña = contraseña;
-        this.imagenEtiqueta = imagenEtiqueta;
+    constructor(apellido: string, imagenPerfil: string, nombre: string, siguiendo:Array<Siguiendo>, usuario:Usuario) {
+        this.apellido = apellido;
+        this.imagenPerfil = imagenPerfil;
         this.nombre = nombre;
         this.siguiendo = siguiendo;
-        this.vinos = vinos;
         this.usuario = usuario;
     }
 
     estasSuscriptoABodega(nombreBodega: string): boolean {
-        return this.siguiendo.some(siguiendo => siguiendo.vino?.nombre && siguiendo.vino.bodega.nombre === nombreBodega);
+        return this.siguiendo.filter(suscripcion => suscripcion.sosDeBodega(nombreBodega)).some(suscripcion => true);
     }
 
     obtenerNombreUsuario() {
-        return this.usuario.nombre;
+        return this.usuario.getNombre;
     }
 
 }
