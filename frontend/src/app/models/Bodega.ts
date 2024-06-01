@@ -1,5 +1,6 @@
 import vinos from "src/assets/json/vinos";
 import { Vino } from "./Vino";
+import { JsonToClass } from "./JsonToClass";
 
 export class Bodega {
     nombre: string;

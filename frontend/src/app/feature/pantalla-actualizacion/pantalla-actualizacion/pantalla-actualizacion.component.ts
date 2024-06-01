@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Bodega } from 'src/app/models/Bodega';
 import { GestorActualizacion } from 'src/app/models/GestorActualizacion';
-
+import { JsonToClass } from 'src/app/models/JsonToClass';
 @Component({
   selector: 'app-pantalla-actualizacion',
   templateUrl: './pantalla-actualizacion.component.html',
