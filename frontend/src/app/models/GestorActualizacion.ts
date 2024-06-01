@@ -14,7 +14,7 @@ import { Vino } from "./Vino";
 
 export class GestorActualizacion {
     fechaActual: Date;//chequear si se hace asi y con todos los undefined
-    bodegasActualizables:Array<Bodega>;//chequear si se hace asi
+    bodegasActualizables:Array<any>;//chequear si se hace asi
     bodegaSeleccionada:Bodega | undefined;
     maridajes:Array<Maridaje>;
     tipoUvas:Array<TipoUva>;
@@ -34,20 +34,23 @@ export class GestorActualizacion {
         this.enofilosSubscriptos = [];
         this.vinosActualizar = [];
     }
-    getFechaActual() {
-        this.fechaActual = new Date();
+    get getFechaActual() {
+        return this.fechaActual;
     };
     importarActualizacionDeVinos() {
-        this.buscarBodegasActualizables();
-
+        this.bodegasActualizables = this.buscarBodegasActualizables();
     };
     buscarBodegasActualizables() {
+        let fecha = this.getFechaActual;
+        let bodegasActualizables = [];
         for (const bodega of (this.jsonToClass.jsonToBodega(bodegas))) {
+            if (bodega.sosActualizable(fecha)) {
 
-            if (bodega.sosActualizable(this.fechaActual)) {
-                this.bodegasActualizables.push(bodega);
+                bodegasActualizables.push([bodega.getNombre, bodega.getDescripcion, bodega.getCoordenadas]);
+
             }
         }
+        return bodegasActualizables;
     }
     tomarSeleccionBodega(bodega: Bodega) {
         this.bodegaSeleccionada = bodega;

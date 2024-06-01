@@ -10,7 +10,7 @@ import { JsonToClass } from 'src/app/models/JsonToClass';
   styleUrls: ['./pantalla-actualizacion.component.scss']
 })
 export class PantallaActualizacionComponent {
-  gestor = new GestorActualizacion();
+  gestorActualizacion = new GestorActualizacion();
   habilitarVentanaFlag = true;
   mostrarTabla = false;
   mostrarOpcionesDeBodega = false;
@@ -25,9 +25,9 @@ export class PantallaActualizacionComponent {
 );
 
   opcionImportarActualizacionDeVinos() {
-    this.gestor.importarActualizacionDeVinos();
+    this.gestorActualizacion.importarActualizacionDeVinos();
     this.habilitarVentana();
-    //console.log(this.gestor.bodegasActualizables);
+    //console.log(this.gestorActualizacion.bodegasActualizables);
     this.mostrarBodegasDisponibles();
     //console.log(this.jsontConverter.jsonToEnofilo(enofilosData));
   };
@@ -35,25 +35,26 @@ export class PantallaActualizacionComponent {
     this.habilitarVentanaFlag = !this.habilitarVentanaFlag;
   };
   mostrarBodegasDisponibles() {
-    if(this.gestor.bodegasActualizables && this.gestor.bodegasActualizables.length > 0){
+    if(this.gestorActualizacion.bodegasActualizables && this.gestorActualizacion.bodegasActualizables.length > 0){
       this.mostrarTabla = !this.mostrarTabla;
     }
+    console.log(this.gestorActualizacion.bodegasActualizables)
   };
   solicitarSeleccionBodega() {
-    if(this.gestor.bodegasActualizables && this.gestor.bodegasActualizables.length > 0){
+    if(this.gestorActualizacion.bodegasActualizables && this.gestorActualizacion.bodegasActualizables.length > 0){
       this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     }
   }
 
   tomarSeleccionBodega(bodega: Bodega) {
     this.bodegaSeleccionada = bodega;
-    this.gestor.tomarSeleccionBodega(bodega);
+    this.gestorActualizacion.tomarSeleccionBodega(bodega);
     this.mostrarTabla = !this.mostrarTabla;
     this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     this.mostrarResumenActualizacion();
   }
   mostrarResumenActualizacion() {
-    console.log(this.gestor.vinosActualizados);
-    this.gestor.notificarSubscripciones(this.bodegaSeleccionada);
+    console.log(this.gestorActualizacion.vinosActualizados);
+    this.gestorActualizacion.notificarSubscripciones(this.bodegaSeleccionada);
   };
 }

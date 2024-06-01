@@ -27,7 +27,7 @@ export class Bodega {
         const mesesDesdeUltimaActualizacion = diferenciaMilisegundos / (1000 * 60 * 60 * 24 * 30);
         
         return (mesesDesdeUltimaActualizacion >= this.periodoActualizacion);
-    } 
+    }
 
     get getNombre(): string {
         return this.nombre;
