@@ -1,4 +1,4 @@
-import vinos from "src/assets/json/vinos";
+import vinos from "../../assets/json/vinos.json";
 import { Vino } from "./Vino";
 import { JsonToClass } from "./JsonToClass";
 
@@ -11,6 +11,7 @@ export class Bodega {
     ultimaActualizacion: Date;
     vinosActualizados: Vino[] = [];
     vinosACrear: Vino[] = [];
+    jsonToClass = new JsonToClass;
 
     constructor(nombre: string, descripcion: string,historia:string, coordenadasUbicacion:Array<Number>, periodoActualizacion:number, ultimaActualizacion:Date) {
         this.nombre = nombre;
@@ -42,7 +43,7 @@ export class Bodega {
 
     actualizarVinos(vinosAActualizar: Vino[]) {
         vinosAActualizar.forEach(vinoActualizado => {
-            const vinoEncontrado = vinos.find(vino => vino.sosVinoActualizar(vinoActualizado.nombre));
+            const vinoEncontrado = (this.jsonToClass.jsonToVino(vinos)).find(vino => vino.sosVinoActualizar(vinoActualizado.nombre));
             if (vinoEncontrado) {
                 vinoEncontrado.setPrecio = vinoActualizado.precioARS;
                 vinoEncontrado.setNotaCata = vinoActualizado.notaDeCataBodega;

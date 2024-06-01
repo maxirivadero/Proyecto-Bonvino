@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Bodega } from 'src/app/models/Bodega';
 import { GestorActualizacion } from 'src/app/models/GestorActualizacion';
+import { JsonToClass } from 'src/app/models/JsonToClass';
+//import enofilosData from "../../../../assets/json/enofilos.json";
+
 @Component({
   selector: 'app-pantalla-actualizacion',
   templateUrl: './pantalla-actualizacion.component.html',
@@ -11,6 +14,7 @@ export class PantallaActualizacionComponent {
   habilitarVentanaFlag = true;
   mostrarTabla = false;
   mostrarOpcionesDeBodega = false;
+  jsontConverter = new JsonToClass;
   bodegaSeleccionada = new Bodega(
     "Bodega La Riña",
     "Una bodega familiar fundada en 1975, especializada en vinos tintos de alta calidad.",
@@ -23,8 +27,9 @@ export class PantallaActualizacionComponent {
   opcionImportarActualizacionDeVinos() {
     this.gestor.importarActualizacionDeVinos();
     this.habilitarVentana();
-    console.log(this.gestor.bodegasActualizables);
+    //console.log(this.gestor.bodegasActualizables);
     this.mostrarBodegasDisponibles();
+    //console.log(this.jsontConverter.jsonToEnofilo(enofilosData));
   };
   habilitarVentana() {
     this.habilitarVentanaFlag = !this.habilitarVentanaFlag;
