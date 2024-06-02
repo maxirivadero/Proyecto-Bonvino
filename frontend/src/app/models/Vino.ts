@@ -27,7 +27,7 @@ export class Vino {
     }
 
     sosVinoActualizar(vinoActualizado:string) {
-        return (this.nombre === vinoActualizado)
+        return (this.nombre === vinoActualizado);
     }
 
     set setPrecio(nuevoPrecio:number) {

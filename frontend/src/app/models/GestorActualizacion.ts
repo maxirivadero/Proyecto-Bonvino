@@ -21,10 +21,11 @@ export class GestorActualizacion {
     enofilosSubscriptos:Array<string>;
     interfaz = InterfazNotificacionPush;
     sistemaDeBodega = new SistemaDeBodega();
-    vinosActualizar: Vino[] = [];
     jsonToClass = new JsonToClass;
 
+    vinosActualizar: Vino[] = [];
     vinosActualizados: Vino[] = [];
+    vinosACrear: Vino[] = [];
 
     constructor() {
         this.fechaActual = new Date();
@@ -32,7 +33,6 @@ export class GestorActualizacion {
         this.maridajes = [];
         this.tipoUvas = [];
         this.enofilosSubscriptos = [];
-        this.vinosActualizar = [];
     }
     get getFechaActual() {
         return this.fechaActual;
@@ -58,12 +58,16 @@ export class GestorActualizacion {
     }
     obtenerActualizacionVino() {
         this.vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos();
-        console.log("VINOS OBTACTVIN",this.vinosActualizar);
-        console.log("AAA BODEGA SEC",this.bodegaSeleccionada);
-        if (this.bodegaSeleccionada?.actualizarVinos(this.vinosActualizar)) {
-            this.vinosActualizados = this.bodegaSeleccionada.actualizarVinos(this.vinosActualizar);
+        this.sistemaDeBodega.obtenerNovedadesDeVinos();
+        if (this.bodegaSeleccionada !== undefined) {
+            this.bodegaSeleccionada.actualizarVinos(this.vinosActualizar, this.vinosActualizados, this.vinosACrear);
+
+            if (this.vinosACrear) {
+                
+            }
+
+            //Set fecha ultima actualizacion
             this.bodegaSeleccionada.setFechaUltimaActualizacion = this.fechaActual;
-            
             this.notificarSubscripciones(this.bodegaSeleccionada);
         }
     };

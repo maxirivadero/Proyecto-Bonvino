@@ -60,6 +60,24 @@
                 <td>{{ vino.bodega }}</td>
                 <td>{{ vino.fechaActualizacion | date }}</td>
             </tr>
+            <tr *ngFor="let vino of gestorActualizacion.vinosACrear" >
+              <td>{{ vino.nombre }}</td>
+              <td>{{ vino.notaDeCataBodega }}</td>
+              <td>{{ vino.precioARS }}</td>
+              <td>{{ vino.imagenEtiqueta }}</td>
+              <td>
+                  <ul>
+                      <li *ngFor="let varietal of vino.varietal">{{ varietal.descripcion }}</li>
+                  </ul>
+              </td>
+              <td>
+                  <ul>
+                      <li *ngFor="let item of vino.maridaje">{{ item.nombre }}</li>
+                  </ul>
+              </td>
+              <td>{{ vino.bodega }}</td>
+              <td>{{ vino.fechaActualizacion | date }}</td>
+          </tr>
         </tbody>
     </table>
 
