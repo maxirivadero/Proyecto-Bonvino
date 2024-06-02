@@ -18,7 +18,6 @@ export class GestorActualizacion {
     bodegaSeleccionada:Bodega | undefined;
     maridajes:Array<Maridaje>;
     tipoUvas:Array<TipoUva>;
-    enofilosSubscriptos:Array<string>;
     interfaz = InterfazNotificacionPush;
     sistemaDeBodega = new SistemaDeBodega();
     jsonToClass = new JsonToClass;
@@ -32,7 +31,6 @@ export class GestorActualizacion {
         this.bodegasActualizables = [];
         this.maridajes = [];
         this.tipoUvas = [];
-        this.enofilosSubscriptos = [];
     }
     get getFechaActual() {
         return this.fechaActual;
@@ -81,16 +79,16 @@ export class GestorActualizacion {
         
     };
     notificarSubscripciones(bodega: Bodega) {
-        
+        let enofilosSubscriptos = []
         for (const enofiloJson of (this.jsonToClass.jsonToEnofilo(enofilos))) {
     
             // Verificar si el enófilo está suscrito a la bodega y agregarlo a la lista de bodegas actualizables
             if (enofiloJson.estasSuscriptoABodega(bodega.getNombre)) {
-                this.enofilosSubscriptos.push(enofiloJson.obtenerNombreUsuario());
+                enofilosSubscriptos.push(enofiloJson.obtenerNombreUsuario());
             }
         }
         const interfazNotificacion = new InterfazNotificacionPush();
-        interfazNotificacion.actualizarNovedadBodega(this.enofilosSubscriptos);
+        interfazNotificacion.actualizarNovedadBodega(enofilosSubscriptos);
 
         this.finCU();
     };
