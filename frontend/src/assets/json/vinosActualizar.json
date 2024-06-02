@@ -1,74 +1,74 @@
 {
     "vino1": {
-        "imagenEtiqueta": "URL de imagen de la etiqueta 1",
+        "imagenEtiqueta": "URL de imagen de la etiqueta 1 Nuevo",
         "nombre": "Vino 1",
-        "notaDeCataBodega": "Nota de cata de la Bodega 1",
-        "precioARS": 1000,
+        "notaDeCataBodega": "Nota de cata de la Bodega 1 Nuevo",
+        "precioARS": 3200,
         "varietal": [
             {
-                "descripcion": "Descripcion 1",
-                "porcentajeComposicion": 25,
+                "descripcion": "Descripcion 1 Nueva",
+                "porcentajeComposicion": 455,
                 "tipoUva": "Jugosa"
             },
             {
-                "descripcion": "Descripcion 2",
+                "descripcion": "Descripcion 2 Nueva",
                 "porcentajeComposicion": 25,
                 "tipoUva": "Seca"
             }
         ],
         "maridaje": [
             {
-                "nombre": "Maridaje 1",
-                "descripcion": "Descripción del Maridaje 1"
+                "nombre": "Maridaje 1 Nuevo",
+                "descripcion": "Descripción del Maridaje 1 Nuevo"
             },
             {
-                "nombre": "Maridaje 2",
-                "descripcion": "Descripción del Maridaje 2"
+                "nombre": "Maridaje 2 Nuevo",
+                "descripcion": "Descripción del Maridaje 2 Nuevo"
             }
         ],
         "bodega": "Bodega La Viña",
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
     },
     "vino2": {
-        "imagenEtiqueta": "URL de imagen de la etiqueta 2",
+        "imagenEtiqueta": "URL de imagen de la etiqueta 2 Nuevo",
         "nombre": "Vino 2",
-        "notaDeCataBodega": "Nota de cata de la Bodega 2",
-        "precioARS": 2000,
+        "notaDeCataBodega": "Nota de cata de la Bodega 2 Nuevo",
+        "precioARS": 22002,
         "varietal": [
             {
-                "descripcion": "Descripcion 3",
-                "porcentajeComposicion": 25,
+                "descripcion": "Descripcion 3 Nuevo",
+                "porcentajeComposicion": 15,
                 "tipoUva": "Agria"
             }
         ],
         "maridaje": [
             {
-                "nombre": "Maridaje 3",
-                "descripcion": "Descripción del Maridaje 3"
+                "nombre": "Maridaje 3 Nuevo",
+                "descripcion": "Descripción del Maridaje 3 Nuevo"
             }
         ],
         "bodega": "Bodega La Viña",
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
     },
     "vino3": {
-        "imagenEtiqueta": "URL de imagen de la etiqueta 2",
+        "imagenEtiqueta": "URL de imagen de la etiqueta 3 Nuevo",
         "nombre": "Vino 3",
-        "notaDeCataBodega": "Nota de cata de la Bodega 2",
-        "precioARS": 2000,
+        "notaDeCataBodega": "Nota de cata de la Bodega 3 Nuevo",
+        "precioARS": 33030,
         "varietal": [
             {
-                "descripcion": "Descripcion 3",
-                "porcentajeComposicion": 25,
+                "descripcion": "Descripcion 3 Nuevo",
+                "porcentajeComposicion": 76,
                 "tipoUva": "Agria"
             }
         ],
         "maridaje": [
             {
-                "nombre": "Maridaje 3",
-                "descripcion": "Descripción del Maridaje 3"
+                "nombre": "Maridaje 3 Nuevo",
+                "descripcion": "Descripción del Maridaje 3 Nuevo"
             }
         ],
-        "bodega": "Bodega La Viña",
+        "bodega": "Bodega Los Robles",
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
     }
   }
