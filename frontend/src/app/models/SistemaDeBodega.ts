@@ -8,6 +8,7 @@ import vinosActualizar from "../../assets/json/vinosActualizar.json"; // Importa
 export class SistemaDeBodega {
     jsonToClass = new JsonToClass;
 
+    // recibe como parametro la bodega seleccionada
     obtenerNovedadesDeVinos(): Vino[] {
         const vinos: Vino[] = [];
 
