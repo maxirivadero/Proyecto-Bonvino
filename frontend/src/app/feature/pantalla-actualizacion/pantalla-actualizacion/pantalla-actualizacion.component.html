@@ -24,7 +24,7 @@
 
   <div *ngIf="mostrarTabla">
     <h2>Elija una bodega</h2>
-    <button *ngFor="let bodega of gestorActualizacion.bodegasActualizables" (click)="tomarSeleccionBodega(bodega)">{{ bodega[0] }}</button>
+    <button *ngFor="let bodega of gestorActualizacion.bodegasActualizables" (click)="tomarSeleccionBodega(bodega[0])">{{ bodega[0] }}</button>
   </div>
 
     <!-- Tabla para mostrar vinos actualizados -->

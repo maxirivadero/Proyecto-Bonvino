@@ -52,12 +52,14 @@ export class GestorActualizacion {
         }
         return bodegasActualizables;
     }
-    tomarSeleccionBodega(bodega: Bodega) {
-        this.bodegaSeleccionada = bodega;
+    tomarSeleccionBodega(bodegaNombre: string) {
+        this.bodegaSeleccionada = this.jsonToClass.jsonToBodega(bodegas).find(b => b.getNombre === bodegaNombre);
         this.obtenerActualizacionVino();
-    };
+    }
     obtenerActualizacionVino() {
         this.vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos();
+        console.log("VINOS OBTACTVIN",this.vinosActualizar);
+        console.log("AAA BODEGA SEC",this.bodegaSeleccionada);
         if (this.bodegaSeleccionada?.actualizarVinos(this.vinosActualizar)) {
             this.vinosActualizados = this.bodegaSeleccionada.actualizarVinos(this.vinosActualizar);
             this.bodegaSeleccionada.setFechaUltimaActualizacion = this.fechaActual;

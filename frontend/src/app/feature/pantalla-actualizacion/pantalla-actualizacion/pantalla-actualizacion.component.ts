@@ -15,14 +15,7 @@ export class PantallaActualizacionComponent {
   mostrarTabla = false;
   mostrarOpcionesDeBodega = false;
   jsontConverter = new JsonToClass;
-  bodegaSeleccionada = new Bodega(
-    "Bodega La Riña",
-    "Una bodega familiar fundada en 1975, especializada en vinos tintos de alta calidad.",
-    "La historia de Bodega La Viña se remonta a hace casi medio siglo, cuando el fundador, Don Alejandro, plantó las primeras vides en estas tierras. Desde entonces, la bodega ha pasado de generación en generación, manteniendo la tradición y el compromiso con la calidad.",
-    [42.8782, -8.5448],
-    2,
-    new Date("2024-03-15T12:30:00.000Z")
-);
+  //bodegaSeleccionada: Bodega | undefined;
 
   opcionImportarActualizacionDeVinos() {
     this.gestorActualizacion.importarActualizacionDeVinos();
@@ -46,15 +39,21 @@ export class PantallaActualizacionComponent {
     }
   }
 
-  tomarSeleccionBodega(bodega: Bodega) {
-    this.bodegaSeleccionada = bodega;
-    this.gestorActualizacion.tomarSeleccionBodega(bodega);
+  tomarSeleccionBodega(nombresBodega: string) {
+    this.gestorActualizacion.tomarSeleccionBodega(nombresBodega);
     this.mostrarTabla = !this.mostrarTabla;
     this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     this.mostrarResumenActualizacion();
   }
   mostrarResumenActualizacion() {
-    console.log(this.gestorActualizacion.vinosActualizados);
-    this.gestorActualizacion.notificarSubscripciones(this.bodegaSeleccionada);
+    console.log("RESUMEN",this.gestorActualizacion.vinosActualizados);
   };
 }
+/*  bodegaSeleccionada = new Bodega(
+  "Bodega La Riña",
+  "Una bodega familiar fundada en 1975, especializada en vinos tintos de alta calidad.",
+  "La historia de Bodega La Viña se remonta a hace casi medio siglo, cuando el fundador, Don Alejandro, plantó las primeras vides en estas tierras. Desde entonces, la bodega ha pasado de generación en generación, manteniendo la tradición y el compromiso con la calidad.",
+  [42.8782, -8.5448],
+  2,
+  new Date("2024-03-15T12:30:00.000Z")
+  */
