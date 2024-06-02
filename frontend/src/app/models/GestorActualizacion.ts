@@ -58,7 +58,6 @@ export class GestorActualizacion {
     }
     obtenerActualizacionVino() {
         this.vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos();
-        this.sistemaDeBodega.obtenerNovedadesDeVinos();
         if (this.bodegaSeleccionada !== undefined) {
             this.bodegaSeleccionada.actualizarVinos(this.vinosActualizar, this.vinosActualizados, this.vinosACrear);
 
