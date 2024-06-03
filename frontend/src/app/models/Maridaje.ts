@@ -8,6 +8,7 @@ export class Maridaje {
     }
 
     sosMaridaje(maridaje:Maridaje) {
+        //console.log(maridaje.nombre, this.nombre)
         return maridaje.nombre === this.nombre;
     }
 }

@@ -1,7 +1,7 @@
 import { Bodega } from "./Bodega";
 import { Maridaje } from "./Maridaje";
 import { Varietal } from "./Varietal";
-import vinos from "../../assets/json/vinos";
+import vinos from "../../assets/json/vinos.json";
 
 export class Vino {
     imagenEtiqueta: string;
@@ -27,7 +27,7 @@ export class Vino {
     }
 
     sosVinoActualizar(vinoActualizado:string) {
-        return (this.nombre === vinoActualizado)
+        return (this.nombre === vinoActualizado);
     }
 
     set setPrecio(nuevoPrecio:number) {

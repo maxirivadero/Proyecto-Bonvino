@@ -10,7 +10,7 @@ const maridajes = [
         "Descripción del Maridaje 2"
     ),
     new Maridaje(
-        "Maridaje 3",
+        "Maridaje 3 Nuevo",
         "Descripción del Maridaje 3"
     )
 ]

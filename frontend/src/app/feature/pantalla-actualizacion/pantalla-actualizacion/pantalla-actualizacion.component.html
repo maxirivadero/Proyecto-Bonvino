@@ -1,3 +1,5 @@
+<!-- Cambiar nombre gestor -->
+
 <div class="main-wrapper flex-centered">
     <!-- Botón para importar actualización de vinos -->
     <button (click)="opcionImportarActualizacionDeVinos()" *ngIf="habilitarVentanaFlag">Importar Actualización de Vinos</button>
@@ -6,20 +8,14 @@
           <tr>
             <th>Nombre</th>
             <th>Descripción</th>
-            <th>Historia</th>
             <th>Coordenadas Ubicación</th>
-            <th>Periodo Actualización</th>
-            <th>Última Actualización</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let bodega of gestor.bodegasActualizables">
-            <td>{{ bodega.nombre }}</td>
-            <td>{{ bodega.descripcion }}</td>
-            <td>{{ bodega.historia }}</td>
-            <td>{{ bodega.coordenadasUbicacion }}</td>
-            <td>{{ bodega.periodoActualizacion }}</td>
-            <td>{{ bodega.ultimaActualizacion | date }}</td>
+          <tr *ngFor="let bodega of gestorActualizacion.bodegasActualizables">
+            <td>{{ bodega[0]}}</td>
+            <td>{{ bodega[1]}}</td>
+            <td>{{ bodega[2]}}</td>
           </tr>
         </tbody>
       </table>
@@ -28,11 +24,11 @@
 
   <div *ngIf="comboBodegasActualizables">
     <h2>Elija una bodega</h2>
-    <button *ngFor="let bodega of gestor.bodegasActualizables" (click)="tomarSeleccionBodega(bodega)">{{ bodega.nombre }}</button>
+    <button *ngFor="let bodega of gestorActualizacion.bodegasActualizables" (click)="tomarSeleccionBodega(bodega[0])">{{ bodega[0] }}</button>
   </div>
 
     <!-- Tabla para mostrar vinos actualizados -->
-    <table *ngIf="gestor.vinosActualizados && gestor.vinosActualizados.length > 0">
+    <table *ngIf="gestorActualizacion.vinosActualizados && gestorActualizacion.vinosActualizados.length > 0">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -46,7 +42,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let vino of gestor.vinosActualizados">
+            <tr *ngFor="let vino of gestorActualizacion.vinosActualizados">
                 <td>{{ vino.nombre }}</td>
                 <td>{{ vino.notaDeCataBodega }}</td>
                 <td>{{ vino.precioARS }}</td>
@@ -64,6 +60,24 @@
                 <td>{{ vino.bodega }}</td>
                 <td>{{ vino.fechaActualizacion | date }}</td>
             </tr>
+            <tr *ngFor="let vino of gestorActualizacion.vinosACrear" >
+              <td>{{ vino.nombre }}</td>
+              <td>{{ vino.notaDeCataBodega }}</td>
+              <td>{{ vino.precioARS }}</td>
+              <td>{{ vino.imagenEtiqueta }}</td>
+              <td>
+                  <ul>
+                      <li *ngFor="let varietal of vino.varietal">{{ varietal.descripcion }}</li>
+                  </ul>
+              </td>
+              <td>
+                  <ul>
+                      <li *ngFor="let item of vino.maridaje">{{ item.nombre }}</li>
+                  </ul>
+              </td>
+              <td>{{ vino.bodega }}</td>
+              <td>{{ vino.fechaActualizacion | date }}</td>
+          </tr>
         </tbody>
     </table>
 
