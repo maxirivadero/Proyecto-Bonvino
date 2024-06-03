@@ -11,6 +11,8 @@ import { SistemaDeBodega } from "./SistemaDeBodega";
 import { TipoUva } from "./TipoUva";
 import { Usuario } from "./Usuario";
 import { Vino } from "./Vino";
+import maridajes from "../../assets/json/maridajes"
+import { compileNgModule } from "@angular/compiler";
 
 export class GestorActualizacion {
     fechaActual: Date;//chequear si se hace asi y con todos los undefined
@@ -60,7 +62,8 @@ export class GestorActualizacion {
             this.bodegaSeleccionada.actualizarVinos(this.vinosActualizar, this.vinosActualizados, this.vinosACrear);
 
             if (this.vinosACrear) {
-                
+                //console.log("se esta creando")
+                this.crearVino(this.vinosACrear)
             }
 
             //Set fecha ultima actualizacion
@@ -68,14 +71,39 @@ export class GestorActualizacion {
             this.notificarSubscripciones(this.bodegaSeleccionada);
         }
     };
-    crearVino() {
-        
+    crearVino(vinosACrear: Vino[]) {
+        let maridajesVino = this.buscarMaridaje(vinosACrear)
+        let tiposUvaVino = this.buscarTipoUva(vinosACrear)
+        vinosACrear.forEach((vino) => {
+            //console.log("aaaaaaaaaaaaa")
+            const vinoNuevo = new Vino(
+                vino.imagenEtiqueta,
+                vino.nombre,
+                vino.notaDeCataBodega,
+                vino.precioARS,
+                vino.varietal,
+                maridajesVino,
+                vino.bodega,
+                vino.fechaActualizacion
+            )
+        })
     };
-    buscarMaridaje() {
-        
-    };
+    buscarMaridaje(vinosACrear: Vino[]) {
+        let maridajesVino: Maridaje[] = []
+        vinosACrear.forEach(vino => {
+            vino.maridaje.forEach(vinoMaridaje => {
+                //verificar el parametro q se pasa
+                if (vinoMaridaje.sosMaridaje(maridajes[2])) {
+                    maridajesVino.push(vinoMaridaje)
+                    //console.log(`Maridaje encontrado para el vino: ${vino.nombre} con el maridaje: ${vinoMaridaje.nombre}`);
+                }
+            });
+        });
+        console.log(maridajesVino)
+        return maridajesVino
+    }
     
-    buscarTipoUva() {
+    buscarTipoUva(vinosACrear: Vino[]) {
         
     };
     notificarSubscripciones(bodega: Bodega) {
