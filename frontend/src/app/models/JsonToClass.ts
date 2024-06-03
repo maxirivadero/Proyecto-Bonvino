@@ -79,7 +79,7 @@ export class JsonToClass {
                     return new Varietal(
                         varietalItem.descripcion,
                         varietalItem.porcentajeComposicion,
-                        new TipoUva(varietalItem.tipoUva.nombre,varietalItem.tipoUva.descripcion)
+                        new TipoUva("Agria","Descripción del TU 3")
                     );
                 });
 

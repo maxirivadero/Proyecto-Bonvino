@@ -47,8 +47,17 @@ export class Vino {
         this.fechaActualizacion = fecha;
     }
 
-    crearVarietal(nuevoTipoUva:TipoUva) {
-        
+    crearVarietal(nuevoTipoUva:TipoUva[]) {
+        //verificar atributos Varietal
+        let varietales: Array<Varietal> = []
+        nuevoTipoUva.forEach((tipoUva) => {
+            const varietal = new Varietal("",0,tipoUva)
+            varietales.push(varietal)
+        })
+        return varietales
+        //let varietalNuevo = []
+        //varietalNuevo = new Varietal("desc", 30, nuevoTipoUva)
+        //this.varietal.push(varietalNuevo)
     }
 
 }

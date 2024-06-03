@@ -74,7 +74,31 @@
                 "descripcion": "Descripción del Maridaje 3 Nuevo"
             }
         ],
-        "bodega": "Bodega Los Robles",
+        "bodega": "Bodega La Viña",
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
+    },
+    "vino4": {
+        "imagenEtiqueta": "URL de imagen de la etiqueta 4",
+        "nombre": "Vino 4",
+        "notaDeCataBodega": "Nota de cata de la Bodega 4",
+        "precioARS": 3000,
+        "varietal": [
+            {
+                "descripcion": "Descripcion 6",
+                "porcentajeComposicion": 100,
+                "tipoUva": {
+                    "nombre": "Jugosa",
+                    "descripcion": "Descripción del TU 5"
+                }
+            }
+        ],
+        "maridaje": [
+            {
+                "nombre": "Maridaje 6",
+                "descripcion": "Descripción del Maridaje 6"
+            }
+        ],
+        "bodega": "Bodega La Viña",
+        "fechaActualizacion": "2024-05-10T09:45:00.000Z"
     }
   }

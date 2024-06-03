@@ -13,6 +13,8 @@ import { TipoUva } from "./TipoUva";
 import { Usuario } from "./Usuario";
 import { Vino } from "./Vino";
 import vinos from "../../assets/json/vinos.json";
+import { VariableBinding } from "@angular/compiler";
+import { Varietal } from "./Varietal";
 
 export class GestorActualizacion {
     fechaActual: Date;//chequear si se hace asi y con todos los undefined
@@ -65,9 +67,9 @@ export class GestorActualizacion {
         this.vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos();
         if (this.bodegaSeleccionada !== undefined) {
             this.bodegaSeleccionada.actualizarVinos(this.vinosActualizar, this.vinosActualizados, this.vinosACrear);
-
+            //console.log("vinosDeLaBodega antes del if",this.vinosDeLaBodega);
             if (this.vinosACrear) {
-                console.log("HAY UN VINO PARA CREAR, BASE DE DATOS ANTES>",this.vinosDeLaBodega);
+                console.log("HAY UN VINO PARA CREAR, BASE DE DATOS ANTES",this.vinosDeLaBodega);
                 this.crearVino(this.vinosACrear);
                 console.log("ASI QUEDA DESPUES DE AGREGAR EL VINO",this.vinosDeLaBodega);
             }
@@ -78,24 +80,25 @@ export class GestorActualizacion {
         }
     };
     crearVino(vinosACrear: Vino[]) {
+        //console.log("vinosACrear: ", vinosACrear)
         let maridajesVino = this.buscarMaridaje(vinosACrear);
         let tiposUvaVino = this.buscarTipoUva(vinosACrear);
-
         let contador = 0;
 
         vinosACrear.forEach((vino) => {
-            
+            //se crea un solo varietal pq el array tiposUvaVino siempre va a tener un elemento
+            let varietalNuevo: Array <Varietal> = vino.crearVarietal(tiposUvaVino[contador])
             let vinoNuevo = new Vino(
                 vino.imagenEtiqueta,
                 vino.nombre,
                 vino.notaDeCataBodega,
                 vino.precioARS,
-                vino.varietal,
+                varietalNuevo,
                 maridajesVino[contador],
                 vino.bodega,
                 vino.fechaActualizacion
             )
-            contador += 1;
+            contador ++;
             console.log("POR AGREGAR EL VINO", vinoNuevo)
             this.vinosDeLaBodega.push(vinoNuevo);
             console.log("SE CREO Y AGREGO EL VINO")
@@ -122,15 +125,17 @@ export class GestorActualizacion {
         let listaTiposUvas: Array<TipoUva[]> = [];
         vinosACrear.forEach(vino => {
             let tiposUvas: TipoUva[] = [];
-            vino.varietal.forEach(varietal => {
-                if (varietal.tipoUva.sosTipoUva()) {
-                    tiposUvas.push(varietal.tipoUva)
+            vino.varietal.forEach(unVarietal => {
+                //console.log("unVarietal: ", unVarietal)
+                //console.log("unVarietal.tipoUva: ",unVarietal.tipoUva)
+                if (unVarietal.tipoUva.sosTipoUva()) {
+                    tiposUvas.push(unVarietal.tipoUva)
                 }
             });
             listaTiposUvas.push(tiposUvas);
             tiposUvas = [];
         });
-        console.log(listaTiposUvas)
+        //console.log("lista uvas: ",listaTiposUvas)
         return listaTiposUvas
     };
     notificarSubscripciones(bodega: Bodega) {
