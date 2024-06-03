@@ -14,19 +14,8 @@ export class PantallaActualizacionComponent {
   habilitarVentanaFlag = true;
   comboBodegasActualizables = false;
   mostrarOpcionesDeBodega = false;
-<<<<<<< HEAD
-  bodegaSeleccionada = new Bodega(
-    "Bodega La Riña",
-    "Una bodega familiar fundada en 1975, especializada en vinos tintos de alta calidad.",
-    "La historia de Bodega La Viña se remonta a hace casi medio siglo, cuando el fundador, Don Alejandro, plantó las primeras vides en estas tierras. Desde entonces, la bodega ha pasado de generación en generación, manteniendo la tradición y el compromiso con la calidad.",
-    [42.8782, -8.5448],
-    2,
-    new Date("2024-03-15T12:30:00.000Z")
-    );
-=======
   jsontConverter = new JsonToClass;
   //bodegaSeleccionada: Bodega | undefined;
->>>>>>> 5252dc8648a1716042e38c8e01a9d8ae7be533bc
 
   opcionImportarActualizacionDeVinos() {
     this.gestorActualizacion.importarActualizacionDeVinos();
@@ -39,13 +28,8 @@ export class PantallaActualizacionComponent {
     this.habilitarVentanaFlag = !this.habilitarVentanaFlag;
   };
   mostrarBodegasDisponibles() {
-<<<<<<< HEAD
-    if(this.gestor.bodegasActualizables && this.gestor.bodegasActualizables.length > 0){
-      this.comboBodegasActualizables = !this.comboBodegasActualizables;
-=======
     if(this.gestorActualizacion.bodegasActualizables && this.gestorActualizacion.bodegasActualizables.length > 0){
-      this.mostrarTabla = !this.mostrarTabla;
->>>>>>> 5252dc8648a1716042e38c8e01a9d8ae7be533bc
+      this.comboBodegasActualizables = !this.comboBodegasActualizables;
     }
     console.log(this.gestorActualizacion.bodegasActualizables)
   };
@@ -55,16 +39,9 @@ export class PantallaActualizacionComponent {
     }
   }
 
-<<<<<<< HEAD
-  tomarSeleccionBodega(bodega: Bodega) {
-    this.bodegaSeleccionada = bodega;
-    this.gestor.tomarSeleccionBodega(bodega);
-    this.comboBodegasActualizables = !this.comboBodegasActualizables;
-=======
   tomarSeleccionBodega(nombresBodega: string) {
     this.gestorActualizacion.tomarSeleccionBodega(nombresBodega);
-    this.mostrarTabla = !this.mostrarTabla;
->>>>>>> 5252dc8648a1716042e38c8e01a9d8ae7be533bc
+    this.comboBodegasActualizables = !this.comboBodegasActualizables;
     this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     this.mostrarResumenActualizacion();
   }
