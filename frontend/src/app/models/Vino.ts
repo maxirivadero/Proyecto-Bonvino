@@ -2,6 +2,7 @@ import { Bodega } from "./Bodega";
 import { Maridaje } from "./Maridaje";
 import { Varietal } from "./Varietal";
 import vinos from "../../assets/json/vinos.json";
+import { TipoUva } from "./TipoUva";
 
 export class Vino {
     imagenEtiqueta: string;
@@ -46,7 +47,7 @@ export class Vino {
         this.fechaActualizacion = fecha;
     }
 
-    crearVarietal() {
+    crearVarietal(nuevoTipoUva:TipoUva) {
         
     }
 

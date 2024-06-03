@@ -1,6 +1,7 @@
 
 import enofilos from "src/assets/json/enofilos.json";
 import bodegas from "../../assets/json/bodegas.json";
+import maridajes from "../../assets/json/maridajes.json";
 import { Bodega } from "./Bodega";
 import { Enofilo } from "./Enofilo";
 import { InterfazNotificacionPush } from "./InterfazNotificacionPush";
@@ -11,8 +12,7 @@ import { SistemaDeBodega } from "./SistemaDeBodega";
 import { TipoUva } from "./TipoUva";
 import { Usuario } from "./Usuario";
 import { Vino } from "./Vino";
-import maridajes from "../../assets/json/maridajes"
-import { compileNgModule } from "@angular/compiler";
+import vinos from "../../assets/json/vinos.json";
 
 export class GestorActualizacion {
     fechaActual: Date;//chequear si se hace asi y con todos los undefined
@@ -28,7 +28,9 @@ export class GestorActualizacion {
     vinosActualizados: Vino[] = [];
     vinosACrear: Vino[] = [];
 
-    //constructor segun ChatGPT
+    //representa la base de datos de los vinos que hay
+    vinosDeLaBodega = this.jsonToClass.jsonToVino(vinos);
+
     constructor() {
         this.fechaActual = new Date();
         this.bodegasActualizables = [];
@@ -65,8 +67,9 @@ export class GestorActualizacion {
             this.bodegaSeleccionada.actualizarVinos(this.vinosActualizar, this.vinosActualizados, this.vinosACrear);
 
             if (this.vinosACrear) {
-                //console.log("se esta creando")
-                this.crearVino(this.vinosACrear)
+                console.log("HAY UN VINO PARA CREAR, BASE DE DATOS ANTES>",this.vinosDeLaBodega);
+                this.crearVino(this.vinosACrear);
+                console.log("ASI QUEDA DESPUES DE AGREGAR EL VINO",this.vinosDeLaBodega);
             }
 
             //Set fecha ultima actualizacion
@@ -75,39 +78,60 @@ export class GestorActualizacion {
         }
     };
     crearVino(vinosACrear: Vino[]) {
-        let maridajesVino = this.buscarMaridaje(vinosACrear)
-        let tiposUvaVino = this.buscarTipoUva(vinosACrear)
+        let maridajesVino = this.buscarMaridaje(vinosACrear);
+        let tiposUvaVino = this.buscarTipoUva(vinosACrear);
+
+        let contador = 0;
+
         vinosACrear.forEach((vino) => {
-            //console.log("aaaaaaaaaaaaa")
-            const vinoNuevo = new Vino(
+            
+            let vinoNuevo = new Vino(
                 vino.imagenEtiqueta,
                 vino.nombre,
                 vino.notaDeCataBodega,
                 vino.precioARS,
                 vino.varietal,
-                maridajesVino,
+                maridajesVino[contador],
                 vino.bodega,
                 vino.fechaActualizacion
             )
+            contador += 1;
+            console.log("POR AGREGAR EL VINO", vinoNuevo)
+            this.vinosDeLaBodega.push(vinoNuevo);
+            console.log("SE CREO Y AGREGO EL VINO")
+
         })
     };
     buscarMaridaje(vinosACrear: Vino[]) {
-        let maridajesVino: Maridaje[] = []
+        let listaMaridajes: Array<Maridaje[]> = [];
         vinosACrear.forEach(vino => {
+            let maridajesVino: Maridaje[] = [];
             vino.maridaje.forEach(vinoMaridaje => {
-                //verificar el parametro q se pasa
-                if (vinoMaridaje.sosMaridaje(maridajes[2])) {
+                if (vinoMaridaje.sosMaridaje()) {
                     maridajesVino.push(vinoMaridaje)
-                    //console.log(`Maridaje encontrado para el vino: ${vino.nombre} con el maridaje: ${vinoMaridaje.nombre}`);
                 }
             });
+            listaMaridajes.push(maridajesVino);
+            maridajesVino = [];
         });
-        console.log(maridajesVino)
-        return maridajesVino
+        console.log(listaMaridajes)
+        return listaMaridajes
     }
     
     buscarTipoUva(vinosACrear: Vino[]) {
-        
+        let listaTiposUvas: Array<TipoUva[]> = [];
+        vinosACrear.forEach(vino => {
+            let tiposUvas: TipoUva[] = [];
+            vino.varietal.forEach(varietal => {
+                if (varietal.tipoUva.sosTipoUva()) {
+                    tiposUvas.push(varietal.tipoUva)
+                }
+            });
+            listaTiposUvas.push(tiposUvas);
+            tiposUvas = [];
+        });
+        console.log(listaTiposUvas)
+        return listaTiposUvas
     };
     notificarSubscripciones(bodega: Bodega) {
         let enofilosSubscriptos = []

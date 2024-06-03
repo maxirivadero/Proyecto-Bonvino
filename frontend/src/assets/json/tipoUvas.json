@@ -1,0 +1,14 @@
+{
+    "tipoUva1": {
+        "nombre": "Jugosa",
+        "descripcion": "Descripción del TU 1"
+    },
+    "tipoUva2": {
+        "nombre": "Seca",
+        "descripcion": "Descripción del TU 2"
+    },
+    "tipoUva3": {
+        "nombre": "Agria",
+        "descripcion": "Descripción del TU 3"
+    }
+  }

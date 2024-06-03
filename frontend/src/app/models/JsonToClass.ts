@@ -2,6 +2,7 @@ import { Bodega } from "./Bodega";
 import { Enofilo } from "./Enofilo";
 import { Maridaje } from "./Maridaje";
 import { Siguiendo } from "./Siguiendo";
+import { TipoUva } from "./TipoUva";
 import { Usuario } from "./Usuario";
 import { Varietal } from "./Varietal";
 import { Vino } from "./Vino";
@@ -78,7 +79,7 @@ export class JsonToClass {
                     return new Varietal(
                         varietalItem.descripcion,
                         varietalItem.porcentajeComposicion,
-                        varietalItem.tipoUva
+                        new TipoUva(varietalItem.tipoUva.nombre,varietalItem.tipoUva.descripcion)
                     );
                 });
 
@@ -122,6 +123,36 @@ export class JsonToClass {
             }
         }
         return usuarios;
+    }
+
+    jsonToMaridaje(jsonMaridajes: any): Array<Maridaje> {
+        let maridajes: Array<Maridaje> = [];
+        for (let key in jsonMaridajes) {
+            if (jsonMaridajes.hasOwnProperty(key)) {
+                let maridajesJson = jsonMaridajes[key];
+                let maridaje = new Maridaje(
+                    maridajesJson.nombre,
+                    maridajesJson.descripcion
+                );
+                maridajes.push(maridaje);
+            }
+        }
+        return maridajes;
+    }
+
+    jsonToTipoUva(jsonTipoUva: any): Array<TipoUva> {
+        let tiposUvas: Array<TipoUva> = [];
+        for (let key in jsonTipoUva) {
+            if (jsonTipoUva.hasOwnProperty(key)) {
+                let tiposUvasJson = jsonTipoUva[key];
+                let tipoUva = new TipoUva(
+                    tiposUvasJson.nombre,
+                    tiposUvasJson.descripcion
+                );
+                tiposUvas.push(tipoUva);
+            }
+        }
+        return tiposUvas;
     }
 
 

@@ -8,12 +8,18 @@
             {
                 "descripcion": "Descripcion 1",
                 "porcentajeComposicion": 25,
-                "tipoUva": "Jugosa"
+                "tipoUva": {
+                    "nombre": "Jugosa",
+                    "descripcion": "Descripción del TU 1"
+                }
             },
             {
                 "descripcion": "Descripcion 2",
                 "porcentajeComposicion": 25,
-                "tipoUva": "Seca"
+                "tipoUva": {
+                    "nombre": "Seca",
+                    "descripcion": "Descripción del TU 2"
+                }
             }
         ],
         "maridaje": [
@@ -38,7 +44,10 @@
             {
                 "descripcion": "Descripcion 3",
                 "porcentajeComposicion": 25,
-                "tipoUva": "Agria"
+                "tipoUva": {
+                    "nombre": "Agria",
+                    "descripcion": "Descripción del TU 2"
+                }
             }
         ],
         "maridaje": [

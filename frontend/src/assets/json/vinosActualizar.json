@@ -8,12 +8,18 @@
             {
                 "descripcion": "Descripcion 1 Nueva",
                 "porcentajeComposicion": 455,
-                "tipoUva": "Jugosa"
+                "tipoUva": {
+                    "nombre": "Jugosa",
+                    "descripcion": "Descripción del TU 1"
+                }
             },
             {
                 "descripcion": "Descripcion 2 Nueva",
                 "porcentajeComposicion": 25,
-                "tipoUva": "Seca"
+                "tipoUva": {
+                    "nombre": "Seca",
+                    "descripcion": "Descripción del TU 2"
+                }
             }
         ],
         "maridaje": [
@@ -64,7 +70,7 @@
         ],
         "maridaje": [
             {
-                "nombre": "Maridaje 3 Nuevo",
+                "nombre": "Maridaje 3",
                 "descripcion": "Descripción del Maridaje 3 Nuevo"
             }
         ],
