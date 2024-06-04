@@ -48,14 +48,19 @@
                 <td>{{ vino.precioARS }}</td>
                 <td>{{ vino.imagenEtiqueta }}</td>
                 <td>
-                    <ul>
-                        <li *ngFor="let varietal of vino.varietal">{{ varietal.descripcion }}</li>
+                    <ul *ngFor="let varietal of vino.varietal">
+                        <li >
+                            <p>{{ varietal.descripcion }}</p>
+                            <p>{{varietal.porcentajeComposicion}}</p>
+                            <p>{{varietal.tipoUva.nombre}}</p>
+                            <p>{{varietal.tipoUva.descripcion}}</p></li>
                     </ul>
                 </td>
                 <td>
-                    <ul>
-                        <li *ngFor="let item of vino.maridaje">{{ item.nombre }}</li>
-                    </ul>
+                    <ul *ngFor="let item of vino.maridaje">
+                        <li> {{ item.nombre }} </li>
+                        <li> {{item.descripcion}} </li>
+                      </ul>
                 </td>
                 <td>{{ vino.bodega }}</td>
                 <td>{{ vino.fechaActualizacion | date }}</td>
@@ -66,13 +71,18 @@
               <td>{{ vino.precioARS }}</td>
               <td>{{ vino.imagenEtiqueta }}</td>
               <td>
-                  <ul>
-                      <li *ngFor="let varietal of vino.varietal">{{ varietal.descripcion }}</li>
-                  </ul>
+                <ul *ngFor="let varietal of vino.varietal">
+                    <li >
+                        <p>{{ varietal.descripcion }}</p>
+                        <p>{{varietal.porcentajeComposicion}}</p>
+                        <p>{{varietal.tipoUva.nombre}}</p>
+                        <p>{{varietal.tipoUva.descripcion}}</p></li>
+                </ul>
               </td>
               <td>
-                  <ul>
-                      <li *ngFor="let item of vino.maridaje">{{ item.nombre }}</li>
+                  <ul *ngFor="let item of vino.maridaje">
+                    <li> {{ item.nombre }} </li>
+                    <li> {{item.descripcion}} </li>
                   </ul>
               </td>
               <td>{{ vino.bodega }}</td>
