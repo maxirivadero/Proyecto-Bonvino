@@ -1,8 +1,8 @@
 <!-- Cambiar nombre gestor -->
 
-<div class="main-wrapper flex-centered">
+<div class="main-wrapper">
     <!-- Botón para importar actualización de vinos -->
-    <button (click)="opcionImportarActualizacionDeVinos()" *ngIf="habilitarVentanaFlag">Importar Actualización de Vinos</button>
+    <button (click)="opcionImportarActualizacionDeVinos()" *ngIf="habilitarVentanaFlag" class="importarButton">Importar Actualización de Vinos</button>
     <table *ngIf="comboBodegasActualizables">
         <thead>
           <tr>

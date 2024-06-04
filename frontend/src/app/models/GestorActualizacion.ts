@@ -30,9 +30,6 @@ export class GestorActualizacion {
     vinosActualizados: Vino[] = [];
     vinosACrear: Vino[] = [];
 
-    //representa la base de datos de los vinos que hay
-    vinosDeLaBodega = this.jsonToClass.jsonToVino(vinos);
-
     constructor() {
         this.fechaActual = new Date();
         this.bodegasActualizables = [];
@@ -66,7 +63,7 @@ export class GestorActualizacion {
     obtenerActualizacionVino() {
         this.vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos();
         if (this.bodegaSeleccionada !== undefined) {
-            
+
             this.bodegaSeleccionada.vinos.forEach(element => {
                 console.log("VINOS ANTES",element)
             });
