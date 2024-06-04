@@ -20,12 +20,15 @@
         </tbody>
       </table>
 
+      <h2 *ngIf="noHayBodegasActualizar" class="noClasesTitle">No hay bodegas para actualizar, vuelva otro día</h2>
+
   <div *ngIf="comboBodegasActualizables">
     <h2>Elija una bodega</h2>
     <button *ngFor="let bodega of gestorActualizacion.bodegasActualizables" (click)="tomarSeleccionBodega(bodega[0])">{{ bodega[0] }}</button>
   </div>
 
-  <div *ngIf="gestorActualizacion.vinosActualizados && gestorActualizacion.vinosActualizados.length > 0" class="vinos-wrapper">
+  <div *ngIf="resumenActualizacion" class="vinos-wrapper">
+    <h1>{{gestorActualizacion.bodegaSeleccionada?.nombre}}</h1>
     <section *ngFor="let vino of gestorActualizacion.vinosActualizados" class="vino-section">
       
       <div class="elementos-container-top">
@@ -184,5 +187,7 @@
     </section>
   </div>
 
+
+  
 
 </div>

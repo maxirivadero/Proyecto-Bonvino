@@ -14,12 +14,21 @@ export class PantallaActualizacionComponent {
   habilitarVentanaFlag = true;
   comboBodegasActualizables = false;
   mostrarOpcionesDeBodega = false;
+  resumenActualizacion = false;
+  noHayBodegasActualizar = false;
   jsontConverter = new JsonToClass;
 
   opcionImportarActualizacionDeVinos() {
     this.habilitarVentana();
     this.gestorActualizacion.importarActualizacionDeVinos();
-    this.mostrarBodegasDisponibles();
+    console.log(this.gestorActualizacion.bodegasActualizables);
+    if(this.gestorActualizacion.bodegasActualizables.length !== 0){
+      this.mostrarBodegasDisponibles();
+    } else {
+      console.log(this.noHayBodegasActualizar);
+      this.noHayBodegasActualizar = true;
+      console.log(this.noHayBodegasActualizar);
+    }
   };
   habilitarVentana() {
     this.habilitarVentanaFlag = !this.habilitarVentanaFlag;
@@ -44,6 +53,9 @@ export class PantallaActualizacionComponent {
   }
   mostrarResumenActualizacion() {
     console.log("RESUMEN",this.gestorActualizacion.vinosActualizados);
+    if(this.gestorActualizacion.vinosActualizados && this.gestorActualizacion.vinosActualizados.length > 0){
+      this.resumenActualizacion = true;
+    }
   };
 }
 /*  bodegaSeleccionada = new Bodega(
