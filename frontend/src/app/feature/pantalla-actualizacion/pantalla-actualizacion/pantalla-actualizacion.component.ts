@@ -18,8 +18,8 @@ export class PantallaActualizacionComponent {
   //bodegaSeleccionada: Bodega | undefined;
 
   opcionImportarActualizacionDeVinos() {
-    this.gestorActualizacion.importarActualizacionDeVinos();
     this.habilitarVentana();
+    this.gestorActualizacion.importarActualizacionDeVinos();
     this.mostrarBodegasDisponibles();
   };
   habilitarVentana() {

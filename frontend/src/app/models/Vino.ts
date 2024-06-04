@@ -2,7 +2,7 @@ import { Bodega } from "./Bodega";
 import { Maridaje } from "./Maridaje";
 import { Varietal } from "./Varietal";
 import { TipoUva } from "./TipoUva";
-
+// AGREGAR AÑADA
 export class Vino {
     imagenEtiqueta: string;
     nombre: string;
