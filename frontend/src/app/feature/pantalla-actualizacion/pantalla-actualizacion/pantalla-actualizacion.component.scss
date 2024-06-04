@@ -87,7 +87,6 @@ h2 {
     text-align: left;
   }
   
-  /* Estilos específicos para dispositivos móviles */
   @media screen and (max-width: 768px) {
     table {
       border: 0;
@@ -104,7 +103,7 @@ h2 {
   
     table td {
       border: none;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid black;
       position: relative;
       padding-left: 50%;
       text-align: left;
@@ -120,9 +119,12 @@ h2 {
     }
     table tr {
       margin: 2rem 0;
+      
+        border: 1px solid;
+        border-bottom: none;
     }
   
-    /* Ajuste de estilos específicos para cada columna */
+    
     table td:nth-of-type(1):before { content: "Nombre:"; }
     table td:nth-of-type(2):before { content: "Descripción:"; }
     table td:nth-of-type(3):before { content: "Coordenadas:"; }
@@ -301,6 +303,17 @@ h2 {
   .elementos-container-bottom {
     width: 100%;  
   }
+  .elementos-container-top {
+    flex-direction: column;
+  }
+  .precio-colum, 
+  .bodega-colum {
+  text-align: center;
+  p {
+    font-size: 1rem;
+  }
+
+}
   ol {
     display: flex;
     justify-content: center;
@@ -309,6 +322,11 @@ h2 {
 
     li {
       margin: 0.6rem 0;
+
+      p {
+        
+      font-size: 1rem;
+      }
     }
   }
   .separador {
