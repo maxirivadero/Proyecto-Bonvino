@@ -1,7 +1,12 @@
 /* Estilos generales */
 .main-wrapper {
     margin-bottom: 20px;
-    min-height: 100vh;
+    min-height: 80vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   .table-wrapper {
@@ -10,19 +15,50 @@
   
 button {
   min-width: 25px;
+  min-height: 80px;
   padding: 8px;
   margin: 8px;
-  
+  justify-content: center;
+  align-items: center;
+}
+
+.importarButton {
+  --background: var(--primary-bg);
+  //--border-color: linear-gradient(to bottom right, red, blue);
+  //--border-width: 1rem;
+  --edge-size: .5rem;
+  font-size: 1.5rem;
+
+  display: inline-grid;
+  padding: 0.5em 1.5em;
+  border: 0;
+  background-color: #8d1d30;
+  border-color:var(--primary-color);
+  color: white;
+  border-width: 2px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 0 2rem 0 2rem;
+  //clip-path: polygon( 7.41% 0.00%, 92.59% 0.00%, 100% 21.43%, 100% 78.57%, 92.59% 100%, 7.41% 100%, 0.00% 78.57%, 0.00% 21.43% );
+    //polygon(20% 0%, 100% 0, 100% 80%, 80% 100%, 0 100%,0% 20%);
+    //polygon(5% 0%, 100% 0, 100% 75%, 95% 100%, 0 100%, 0% 25%)
+    transition: background-color 1s ease;
+}
+
+
+.importarButton:hover {
+  background-color: var(--primary-color);
 }
 
 h2 {
   margin: 1rem;
 }
 
+
   table {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
+    max-width: 1140px;
   }
   
   th, td {
@@ -32,7 +68,7 @@ h2 {
   }
   
   /* Estilos específicos para dispositivos móviles */
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     table {
       border: 0;
     }
@@ -62,13 +98,200 @@ h2 {
       padding-right: 10px;
       white-space: nowrap;
     }
+    table tr {
+      margin: 2rem 0;
+    }
   
     /* Ajuste de estilos específicos para cada columna */
     table td:nth-of-type(1):before { content: "Nombre:"; }
     table td:nth-of-type(2):before { content: "Descripción:"; }
-    table td:nth-of-type(3):before { content: "Historia:"; }
-    table td:nth-of-type(4):before { content: "Coordenadas Ubicación:"; }
-    table td:nth-of-type(5):before { content: "Periodo Actualización:"; }
-    table td:nth-of-type(6):before { content: "Última Actualización:"; }
+    table td:nth-of-type(3):before { content: "Coordenadas:"; }
   }
   
+
+
+  .noClasesTitle {
+    width: 90%;
+    text-align: center;
+  }
+  //-------------------------------------------------------------------------------------
+
+.vinos-wrapper {
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.vino-section {
+  width: 90%;
+  padding: 1rem 0;
+  max-width: 1140px;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 1px solid black;
+}
+
+.vinos-wrapper {
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.elementos-container-top {
+  width: 50%;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  align-self: flex-start;
+
+}
+
+.img-vino-container {
+  width: 18%;
+  padding: 10px;
+
+
+  img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    display: inline-block;
+  }
+}
+
+.info-vino-derecha {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.anada-vino-container {
+
+  p {
+    margin: 0.6rem 0 0.6rem;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+}
+
+.nombre-vino-container {
+  h3 {
+    font-size: 29px;
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 700 !important;
+    font-variant: small-caps;
+  }
+}
+
+.descripcion-vino-container {
+  em {
+    font-style: italic;
+  }
+}
+
+.vino-mas-info {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.precio-colum ,
+.bodega-colum {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  padding: 10px;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+}
+
+.precio-img, 
+.bodega-img {
+  margin-bottom: 20px;
+  img {
+    width: 40px;
+  }
+}
+
+.precio-titulo, 
+.bodega-titulo {
+  margin-bottom: 20px;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+
+.elementos-container-bottom {
+  width: 50%;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.varietal-fila,
+.maridaje-fila {
+  width: 90%;
+  li{
+    span {
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+  }
+  
+}
+.separador {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  margin: 20px 0;
+}
+//.varietal-descripcion {
+//  
+//}
+
+@media screen and (max-width: 768px) { 
+  .vino-section {
+    flex-direction: column;
+  }
+  .elementos-container-top,
+  .elementos-container-bottom {
+    width: 100%;  
+  }
+  ol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    li {
+      margin: 0.6rem 0;
+    }
+  }
+  .separador {
+    display: none;
+  }
+}

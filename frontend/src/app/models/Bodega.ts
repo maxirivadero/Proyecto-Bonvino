@@ -1,5 +1,5 @@
-import vinos from "src/assets/json/vinos";
 import { Vino } from "./Vino";
+import { JsonToClass } from "./JsonToClass";
 
 export class Bodega {
     nombre: string;
@@ -8,20 +8,17 @@ export class Bodega {
     coordenadasUbicacion:Array<Number>;
     periodoActualizacion:number;
     ultimaActualizacion: Date;
-    
-    //verificar
-    vinosActualizados: Vino[] = [];
-    vinosACrear: Vino[] = [];
+    vinos: Array<Vino>;
+    jsonToClass = new JsonToClass;
 
-    constructor(nombre: string, descripcion: string,historia:string, coordenadasUbicacion:Array<Number>, periodoActualizacion:number, ultimaActualizacion:Date) {
+    constructor(nombre: string, descripcion: string,historia:string, coordenadasUbicacion:Array<Number>, periodoActualizacion:number, ultimaActualizacion:Date, vinos: Array<Vino>) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.historia = historia;
         this.coordenadasUbicacion= coordenadasUbicacion;
         this.periodoActualizacion= periodoActualizacion;
         this.ultimaActualizacion= ultimaActualizacion;
-        //this.vinosActualizados
-        //this.vinosACrear
+        this.vinos = vinos;
     }
 
     sosActualizable(fechaActual: Date) {
@@ -29,7 +26,7 @@ export class Bodega {
         const mesesDesdeUltimaActualizacion = diferenciaMilisegundos / (1000 * 60 * 60 * 24 * 30);
         
         return (mesesDesdeUltimaActualizacion >= this.periodoActualizacion);
-    } 
+    }
 
     get getNombre(): string {
         return this.nombre;
@@ -43,20 +40,19 @@ export class Bodega {
         return this.coordenadasUbicacion;
     }
 
-    actualizarVinos(vinosAActualizar: Vino[]) {
+    actualizarVinos(vinosAActualizar: Vino[], vinosActualizados: Vino[], vinosACrear: Vino[]) {
         vinosAActualizar.forEach(vinoActualizado => {
-            const vinoEncontrado = vinos.find(vino => vino.sosVinoActualizar(vinoActualizado.nombre));
+            let vinoEncontrado = this.vinos.find(vino => vino.sosVinoActualizar(vinoActualizado.nombre));
             if (vinoEncontrado) {
                 vinoEncontrado.setPrecio = vinoActualizado.precioARS;
                 vinoEncontrado.setNotaCata = vinoActualizado.notaDeCataBodega;
                 vinoEncontrado.setImagenEtiqueta = vinoActualizado.imagenEtiqueta;
                 vinoEncontrado.setFechaActualizacion = new Date();
-                this.vinosActualizados.push(vinoEncontrado); // Agregar el vino actualizado al arreglo
+                vinosActualizados.push(vinoEncontrado); // Agregar el vino actualizado al arreglo
             } else {
-                this.vinosACrear.push(vinoActualizado); // Agregar el vino a crear al arreglo
+                vinosACrear.push(vinoActualizado); // Agregar el vino a crear al arreglo
             }
         });
-        return this.vinosActualizados;
     }
 
     //cambiar despues el any por el tipo de valor de la var

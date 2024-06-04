@@ -1,9 +1,10 @@
 import { Bodega } from "./Bodega";
 import { Maridaje } from "./Maridaje";
+import { TipoUva } from "./TipoUva";
 import { Varietal } from "./Varietal";
-import vinos from "../../assets/json/vinos";
 
 export class Vino {
+    anada:number;
     imagenEtiqueta: string;
     nombre: string;
     notaDeCataBodega: string;
@@ -12,10 +13,9 @@ export class Vino {
     maridaje:Array<Maridaje>;
     bodega:string;
     fechaActualizacion:Date;
-    vinosActualizados: Vino[] = [];
-    vinosACrear: Vino[] = [];
 
-    constructor(imagenEtiqueta: string, nombre: string, notaDeCataBodega: string, precioARS:number, varietal:Array<Varietal>, maridaje:Array<Maridaje>, bodega:string, fechaActualizacion:Date) {
+    constructor(anada:number,imagenEtiqueta: string, nombre: string, notaDeCataBodega: string, precioARS:number, varietal:Array<Varietal>, maridaje:Array<Maridaje>, bodega:string, fechaActualizacion:Date) {
+        this.anada = anada;
         this.imagenEtiqueta = imagenEtiqueta;
         this.nombre = nombre;
         this.notaDeCataBodega = notaDeCataBodega;
@@ -27,7 +27,7 @@ export class Vino {
     }
 
     sosVinoActualizar(vinoActualizado:string) {
-        return (this.nombre === vinoActualizado)
+        return (this.nombre === vinoActualizado);
     }
 
     set setPrecio(nuevoPrecio:number) {
@@ -46,10 +46,15 @@ export class Vino {
         this.fechaActualizacion = fecha;
     }
 
-    crearVarietal() {
-        
+    crearVarietal(nuevoTipoUva:TipoUva[]) {
+        //verificar atributos Varietal
+        let varietales: Array<Varietal> = [];
+        let cont = 0;
+        nuevoTipoUva.forEach((tipoUva) => {
+            let varietal = new Varietal(this.varietal[cont].descripcion,this.varietal[cont].porcentajeComposicion,tipoUva);
+            varietales.push(varietal);
+        })
+        return varietales;
     }
 
 }
-
-//VER COMO HACER PARA RELACIONAR VINO CON BODEGA

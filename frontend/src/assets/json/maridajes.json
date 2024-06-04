@@ -1,0 +1,14 @@
+{
+    "maridaje1": {
+        "nombre": "Maridaje 1",
+        "descripcion": "Descripción del Maridaje 1"
+    },
+    "maridaje2": {
+        "nombre": "Maridaje 2",
+        "descripcion": "Descripción del Maridaje 2"
+    },
+    "maridaje3": {
+        "nombre": "Maridaje 3",
+        "descripcion": "Descripción del Maridaje 3"
+    }
+  }
