@@ -38,7 +38,7 @@
     },
     "vino2": {
         "anada":10,
-        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-1.png",
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-2.png",
         "nombre": "Vino 2",
         "notaDeCataBodega": "Nota de cata de la Bodega 2 Nuevo",
         "precioARS": 22002,
@@ -63,7 +63,7 @@
     },
     "vino3": {
         "anada":10,
-        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-1.png",
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-3.png",
         "nombre": "Vino 3",
         "notaDeCataBodega": "Nota de cata de la Bodega 3 Nuevo",
         "precioARS": 33030,
@@ -96,7 +96,7 @@
     },
     "vino4": {
         "anada":10,
-        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-1.png",
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-4.png",
         "nombre": "Vino 4",
         "notaDeCataBodega": "Nota de cata de la Bodega 4",
         "precioARS": 3000,
