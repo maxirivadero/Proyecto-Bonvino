@@ -20,9 +20,7 @@ export class PantallaActualizacionComponent {
   opcionImportarActualizacionDeVinos() {
     this.gestorActualizacion.importarActualizacionDeVinos();
     this.habilitarVentana();
-    //console.log(this.gestorActualizacion.bodegasActualizables);
     this.mostrarBodegasDisponibles();
-    //console.log(this.jsontConverter.jsonToEnofilo(enofilosData));
   };
   habilitarVentana() {
     this.habilitarVentanaFlag = !this.habilitarVentanaFlag;
@@ -31,7 +29,6 @@ export class PantallaActualizacionComponent {
     if(this.gestorActualizacion.bodegasActualizables && this.gestorActualizacion.bodegasActualizables.length > 0){
       this.comboBodegasActualizables = !this.comboBodegasActualizables;
     }
-    console.log(this.gestorActualizacion.bodegasActualizables)
   };
   solicitarSeleccionBodega() {
     if(this.gestorActualizacion.bodegasActualizables && this.gestorActualizacion.bodegasActualizables.length > 0){

@@ -10,5 +10,3 @@ export class Varietal {
         this.tipoUva = tipoUva;
     }
 }
-
-//REVISAR LA FOTO DE LAS CLASE QUE NOS DIERON PARA VER SI AGREGAR MÁS METODOS

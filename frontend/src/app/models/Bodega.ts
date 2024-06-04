@@ -1,4 +1,3 @@
-import vinos from "../../assets/json/vinos.json";
 import { Vino } from "./Vino";
 import { JsonToClass } from "./JsonToClass";
 
@@ -9,17 +8,17 @@ export class Bodega {
     coordenadasUbicacion:Array<Number>;
     periodoActualizacion:number;
     ultimaActualizacion: Date;
+    vinos: Array<Vino>;
     jsonToClass = new JsonToClass;
 
-    constructor(nombre: string, descripcion: string,historia:string, coordenadasUbicacion:Array<Number>, periodoActualizacion:number, ultimaActualizacion:Date) {
+    constructor(nombre: string, descripcion: string,historia:string, coordenadasUbicacion:Array<Number>, periodoActualizacion:number, ultimaActualizacion:Date, vinos: Array<Vino>) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.historia = historia;
         this.coordenadasUbicacion= coordenadasUbicacion;
         this.periodoActualizacion= periodoActualizacion;
         this.ultimaActualizacion= ultimaActualizacion;
-        //this.vinosActualizados
-        //this.vinosACrear
+        this.vinos = vinos;
     }
 
     sosActualizable(fechaActual: Date) {
@@ -43,9 +42,8 @@ export class Bodega {
 
     actualizarVinos(vinosAActualizar: Vino[], vinosActualizados: Vino[], vinosACrear: Vino[]) {
         vinosAActualizar.forEach(vinoActualizado => {
-            let vinoEncontrado = (this.jsonToClass.jsonToVino(vinos)).find(vino => vino.sosVinoActualizar(vinoActualizado.nombre));
+            let vinoEncontrado = this.vinos.find(vino => vino.sosVinoActualizar(vinoActualizado.nombre));
             if (vinoEncontrado) {
-                console.log("vino encontrado", vinoEncontrado);
                 vinoEncontrado.setPrecio = vinoActualizado.precioARS;
                 vinoEncontrado.setNotaCata = vinoActualizado.notaDeCataBodega;
                 vinoEncontrado.setImagenEtiqueta = vinoActualizado.imagenEtiqueta;

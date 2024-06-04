@@ -44,7 +44,10 @@
             {
                 "descripcion": "Descripcion 3 Nuevo",
                 "porcentajeComposicion": 15,
-                "tipoUva": "Agria"
+                "tipoUva": {
+                    "nombre": "Seca",
+                    "descripcion": "Descripción del TU 3"
+                }
             }
         ],
         "maridaje": [
@@ -65,7 +68,18 @@
             {
                 "descripcion": "Descripcion 3 Nuevo",
                 "porcentajeComposicion": 76,
-                "tipoUva": "Agria"
+                "tipoUva": {
+                    "nombre": "Jugosa",
+                    "descripcion": "Descripción del TU 4"
+                }
+            },
+            {
+                "descripcion": "Descripcion 7",
+                "porcentajeComposicion": 100,
+                "tipoUva": {
+                    "nombre": "Agria",
+                    "descripcion": "Descripción del TU 5"
+                }
             }
         ],
         "maridaje": [
@@ -87,8 +101,8 @@
                 "descripcion": "Descripcion 6",
                 "porcentajeComposicion": 100,
                 "tipoUva": {
-                    "nombre": "Jugosa",
-                    "descripcion": "Descripción del TU 5"
+                    "nombre": "Seca",
+                    "descripcion": "Descripción del TU 6"
                 }
             }
         ],

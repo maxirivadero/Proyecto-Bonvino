@@ -14,7 +14,7 @@ export class Maridaje {
     sosMaridaje(): Boolean {
         let bandera = false; 
         (this.jsonToClass.jsonToMaridaje(maridajes)).forEach(vinoMaridaje => {
-            if (this.nombre === vinoMaridaje.nombre){
+            if (vinoMaridaje.nombre === this.nombre){
                 bandera = true;
             }
         });

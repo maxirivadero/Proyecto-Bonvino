@@ -20,13 +20,12 @@ export class JsonToClass {
                     bodegaJson.historia,
                     bodegaJson.coordenadasUbicacion,
                     bodegaJson.periodoActualizacion,
-                    new Date(bodegaJson.ultimaActualizacion)
+                    new Date(bodegaJson.ultimaActualizacion),
+                    this.jsonToVino(bodegaJson.vinos)
                 );
-                //console.log(new Date(bodegaJson.ultimaActualizacion));
                 bodegas.push(bodega);
             }
         }
-        //console.log(bodegas);
         return bodegas;
     }
 
@@ -54,14 +53,13 @@ export class JsonToClass {
                 );
 
                 // Crear una instancia de Enofilo con los datos obtenidos
-                const enofilo = new Enofilo(
+                let enofilo = new Enofilo(
                     enofiloJson.apellido,
                     enofiloJson.imagenPerfil,
                     enofiloJson.nombre,
                     siguiendoArray,
                     usuario
                 );
-
                 enofilos.push(enofilo);
             }
         }
@@ -79,7 +77,7 @@ export class JsonToClass {
                     return new Varietal(
                         varietalItem.descripcion,
                         varietalItem.porcentajeComposicion,
-                        new TipoUva("Agria","Descripción del TU 3")
+                        new TipoUva(varietalItem.tipoUva.nombre, varietalItem.tipoUva.descripcion)
                     );
                 });
 
