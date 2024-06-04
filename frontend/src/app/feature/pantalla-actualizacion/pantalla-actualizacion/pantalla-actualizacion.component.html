@@ -28,6 +28,7 @@
   </div>
 
     <!-- Tabla para mostrar vinos actualizados -->
+    <!--
     <table *ngIf="gestorActualizacion.vinosActualizados && gestorActualizacion.vinosActualizados.length > 0">
         <thead>
             <tr>
@@ -90,6 +91,164 @@
           </tr>
         </tbody>
     </table>
+  -->
+  <div *ngIf="gestorActualizacion.vinosActualizados && gestorActualizacion.vinosActualizados.length > 0" class="vinos-wrapper">
+    <section *ngFor="let vino of gestorActualizacion.vinosActualizados" class="vino-section">
+      
+      <div class="elementos-container-top">
+        <div class="img-vino-container">
+          <img loading="lazy" decoding="async" width="427" height="1024"  src="{{ vino.imagenEtiqueta }}" alt="">
+        </div>
+        <div class="info-vino-derecha">
+          <div class="anada-vino-container">
+            <p>Añada: {{ vino.anada }}</p>
+          </div>
+          <div class="nombre-vino-container">
+            <h3>{{ vino.nombre }}</h3>
+          </div>
+          <div class="descripcion-vino-container">
+            <em>{{ vino.notaDeCataBodega }}</em>
+          </div>
+          <section class="vino-mas-info">
+            <div class="precio-colum">
+              <div class="precio-img">
+                <img src="https://www.bodegaseptima.com/wp-content/uploads/2019/01/suelo-1.png" alt="">
+              </div>
+              <div class="precio-titulo">
+                <p>Precio (ARS)</p>
+              </div>
+              <div class="precio-info">
+                <p>{{ vino.precioARS }} $</p>
+              </div>
+            </div>
+            <div class="bodega-colum">
+              <div class="bodega-img">
+                <img src="https://www.bodegaseptima.com/wp-content/uploads/2019/01/lugar-1.png" alt="">
+              </div>
+              <div class="bodega-titulo">
+                <p>Bodega: </p>
+              </div>
+              <div class="bodega-info">
+                <p>{{ vino.bodega }}</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="separador"></div>
+
+      <div class="elementos-container-bottom">
+        <div class="varietal-fila">
+          <h4 class="varietal-titulo">Varietal: </h4>
+          <ol>
+            <li *ngFor="let varietal of vino.varietal">
+              <div class="varietal-descripcion">
+                <p>{{ varietal.descripcion }}</p>
+              </div>
+              <div class="varietal-tipoUva">
+                <p><span>Tipo de Uva({{varietal.tipoUva.nombre}}): </span>{{varietal.tipoUva.descripcion}}</p>
+              </div>
+              <div class="varietal-porcentaje">
+                <p><span>Composicion: </span>{{varietal.porcentajeComposicion}} %</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="maridaje-fila">
+          <h4 class="maridaje-titulo">Maridaje: </h4>
+          <ol>
+            <li *ngFor="let item of vino.maridaje">
+              <div class="maridaje-nombre">
+                <p><span>Nombre: </span>{{ item.nombre }}</p>
+              </div>
+              <div class="maridaje-descripcion">
+                <p><span>Descripción: </span>{{item.descripcion}}</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+    <section *ngFor="let vino of gestorActualizacion.vinosACrear" class="vino-section">
+      
+      <div class="elementos-container-top">
+        <div class="img-vino-container">
+          <img loading="lazy" decoding="async" width="427" height="1024"  src="{{ vino.imagenEtiqueta }}" alt="">
+        </div>
+        <div class="info-vino-derecha">
+          <div class="anada-vino-container">
+            <p>Añada: {{ vino.anada }}</p>
+          </div>
+          <div class="nombre-vino-container">
+            <h3>{{ vino.nombre }}</h3>
+          </div>
+          <div class="descripcion-vino-container">
+            <em>{{ vino.notaDeCataBodega }}</em>
+          </div>
+          <section class="vino-mas-info">
+            <div class="precio-colum">
+              <div class="precio-img">
+                <img src="https://www.bodegaseptima.com/wp-content/uploads/2019/01/suelo-1.png" alt="">
+              </div>
+              <div class="precio-titulo">
+                <p>Precio (ARS)</p>
+              </div>
+              <div class="precio-info">
+                <p>{{ vino.precioARS }} $</p>
+              </div>
+            </div>
+            <div class="bodega-colum">
+              <div class="bodega-img">
+                <img src="https://www.bodegaseptima.com/wp-content/uploads/2019/01/lugar-1.png" alt="">
+              </div>
+              <div class="bodega-titulo">
+                <p>Bodega: </p>
+              </div>
+              <div class="bodega-info">
+                <p>{{ vino.bodega }}</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div class="separador"></div>
+
+      <div class="elementos-container-bottom">
+        <div class="varietal-fila">
+          <h4 class="varietal-titulo">Varietal: </h4>
+          <ol>
+            <li *ngFor="let varietal of vino.varietal">
+              <div class="varietal-descripcion">
+                <p>{{ varietal.descripcion }}</p>
+              </div>
+              <div class="varietal-tipoUva">
+                <p><span>Tipo de Uva({{varietal.tipoUva.nombre}}): </span>{{varietal.tipoUva.descripcion}}</p>
+              </div>
+              <div class="varietal-porcentaje">
+                <p><span>Composicion: </span>{{varietal.porcentajeComposicion}} %</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <div class="maridaje-fila">
+          <h4 class="maridaje-titulo">Maridaje: </h4>
+          <ol>
+            <li *ngFor="let item of vino.maridaje">
+              <div class="maridaje-nombre">
+                <p><span>Nombre: </span>{{ item.nombre }}</p>
+              </div>
+              <div class="maridaje-descripcion">
+                <p><span>Descripción: </span>{{item.descripcion}}</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+      
+    </section>
+  </div>
 
 
 </div>

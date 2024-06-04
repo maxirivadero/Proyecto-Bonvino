@@ -1,7 +1,9 @@
 
+import { VariableBinding } from "@angular/compiler";
 import enofilos from "src/assets/json/enofilos.json";
 import bodegas from "../../assets/json/bodegas.json";
 import maridajes from "../../assets/json/maridajes.json";
+import vinos from "../../assets/json/vinos.json";
 import { Bodega } from "./Bodega";
 import { Enofilo } from "./Enofilo";
 import { InterfazNotificacionPush } from "./InterfazNotificacionPush";
@@ -11,10 +13,8 @@ import { Siguiendo } from "./Siguiendo";
 import { SistemaDeBodega } from "./SistemaDeBodega";
 import { TipoUva } from "./TipoUva";
 import { Usuario } from "./Usuario";
-import { Vino } from "./Vino";
-import vinos from "../../assets/json/vinos.json";
-import { VariableBinding } from "@angular/compiler";
 import { Varietal } from "./Varietal";
+import { Vino } from "./Vino";
 
 export class GestorActualizacion {
     fechaActual: Date;
@@ -91,7 +91,7 @@ export class GestorActualizacion {
             
             //let varietalNuevo: Array <Varietal> = vino.crearVarietal(tiposUvaVino[contador]);
             let vinoNuevo = new Vino(
-                vino.añada,
+                vino.anada,
                 vino.imagenEtiqueta,
                 vino.nombre,
                 vino.notaDeCataBodega,

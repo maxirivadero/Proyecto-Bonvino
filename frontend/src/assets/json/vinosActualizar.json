@@ -1,7 +1,7 @@
 {
     "vino1": {
-        "añada":10,
-        "imagenEtiqueta": "URL de imagen de la etiqueta 1 Nuevo",
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-1.png",
         "nombre": "Vino 1",
         "notaDeCataBodega": "Nota de cata de la Bodega 1 Nuevo",
         "precioARS": 3200,
@@ -37,8 +37,8 @@
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
     },
     "vino2": {
-        "añada":10,
-        "imagenEtiqueta": "URL de imagen de la etiqueta 2 Nuevo",
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-1.png",
         "nombre": "Vino 2",
         "notaDeCataBodega": "Nota de cata de la Bodega 2 Nuevo",
         "precioARS": 22002,
@@ -62,8 +62,8 @@
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
     },
     "vino3": {
-        "añada":10,
-        "imagenEtiqueta": "URL de imagen de la etiqueta 3 Nuevo",
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-1.png",
         "nombre": "Vino 3",
         "notaDeCataBodega": "Nota de cata de la Bodega 3 Nuevo",
         "precioARS": 33030,
@@ -95,8 +95,8 @@
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
     },
     "vino4": {
-        "añada":10,
-        "imagenEtiqueta": "URL de imagen de la etiqueta 4",
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-1.png",
         "nombre": "Vino 4",
         "notaDeCataBodega": "Nota de cata de la Bodega 4",
         "precioARS": 3000,

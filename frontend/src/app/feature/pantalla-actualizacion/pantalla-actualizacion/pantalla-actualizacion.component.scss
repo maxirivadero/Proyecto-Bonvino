@@ -53,6 +53,7 @@ h2 {
   margin: 1rem;
 }
 
+
   table {
     width: 100%;
     border-collapse: collapse;
@@ -106,3 +107,129 @@ h2 {
     table td:nth-of-type(6):before { content: "Última Actualización:"; }
   }
   
+
+  //-------------------------------------------------------------------------------------
+
+.vinos-wrapper {
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.vino-section {
+  width: 90%;
+  padding: 1rem 0;
+  max-width: 1140px;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.vinos-wrapper {
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.elementos-container-top {
+  width: 50%;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+
+}
+
+.img-vino-container {
+  width: 18%;
+  padding: 10px;
+
+
+  img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    display: inline-block;
+  }
+}
+
+.info-vino-derecha {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.anada-vino-container {
+
+  p {
+    margin: 0.6rem 0 0.6rem;
+    text-align: center;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+}
+
+.nombre-vino-container {
+  h3 {
+    font-size: 29px;
+    font-family: 'Playfair Display', serif !important;
+    font-weight: 700 !important;
+    font-variant: small-caps;
+  }
+}
+
+.descripcion-vino-container {
+  em {
+    font-style: italic;
+  }
+}
+
+.vino-mas-info {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.precio-colum ,
+.bodega-colum {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.precio-img, 
+.bodega-img {
+  img {
+    width: 40px;
+  }
+}
+
+
+.elementos-container-bottom {
+  width: 50%;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.varietal-fila,
+.maridaje-fila {
+  width: 90%;
+}

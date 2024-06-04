@@ -91,7 +91,7 @@ export class JsonToClass {
 
                 // Crear una instancia de Enofilo con los datos obtenidos
                 const vino = new Vino(
-                    vinoJson.añada,
+                    vinoJson.anada,
                     vinoJson.imagenEtiqueta,
                     vinoJson.nombre,
                     vinoJson.notaDeCataBodega,
