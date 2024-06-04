@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Bodega } from 'src/app/models/Bodega';
 import { GestorActualizacion } from 'src/app/models/GestorActualizacion';
 import { JsonToClass } from 'src/app/models/JsonToClass';
-//import enofilosData from "../../../../assets/json/enofilos.json";
 
 @Component({
   selector: 'app-pantalla-actualizacion',

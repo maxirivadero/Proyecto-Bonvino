@@ -48,18 +48,14 @@ export class Bodega {
                 vinoEncontrado.setNotaCata = vinoActualizado.notaDeCataBodega;
                 vinoEncontrado.setImagenEtiqueta = vinoActualizado.imagenEtiqueta;
                 vinoEncontrado.setFechaActualizacion = new Date();
-                vinosActualizados.push(vinoEncontrado); // Agregar el vino actualizado al arreglo
+                vinosActualizados.push(vinoEncontrado);
             } else {
-                vinosACrear.push(vinoActualizado); // Agregar el vino a crear al arreglo
+                vinosACrear.push(vinoActualizado); 
             }
         });
     }
 
-    //cambiar despues el any por el tipo de valor de la var
     set setFechaUltimaActualizacion(fecha: Date){
         this.ultimaActualizacion = fecha;
     }
 }
-
-// FALTA METODO sosActualizable()
-//FALTA METODO setFechaActualizacion()

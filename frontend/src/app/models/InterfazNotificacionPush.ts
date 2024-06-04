@@ -6,7 +6,7 @@ export class InterfazNotificacionPush {
     
     actualizarNovedadBodega(arregloEnofilos: Array<string>) {
         for (const nombreEnofilo of arregloEnofilos) {
-            // Buscar el nombre del enófilo en el array de usuarios
+            
             const usuario = (this.jsonToClass.jsonToUsuario(usuarios)).find(usuario => usuario.nombre === nombreEnofilo);
             
             // Si se encuentra el usuario, imprimir un mensaje en la consola

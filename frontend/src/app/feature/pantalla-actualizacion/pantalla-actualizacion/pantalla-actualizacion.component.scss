@@ -22,7 +22,7 @@ button {
   align-items: center;
 }
 
-.importarButton {
+.importarButton,button {
   --background: var(--primary-bg);
   //--border-color: linear-gradient(to bottom right, red, blue);
   //--border-width: 1rem;
@@ -45,9 +45,29 @@ button {
 }
 
 
-.importarButton:hover {
+
+button:hover {
   background-color: var(--primary-color);
 }
+
+.selec-bodegas-vontainer {
+  .selec-bodegas-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .selec-bodegas-wrapper button {
+    flex: 1 1 auto;
+    margin: 8px;
+    max-width: 90%; 
+    height: 80px; 
+    min-width: 100px;
+    text-align: center;
+}
+}
+
 
 h2 {
   margin: 1rem;
@@ -55,7 +75,7 @@ h2 {
 
 
   table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
     border-spacing: 0;
     max-width: 1140px;

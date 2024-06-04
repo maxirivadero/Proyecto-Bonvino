@@ -89,7 +89,7 @@ export class GestorActualizacion {
 
         vinosACrear.forEach((vino) => {
             
-            //let varietalNuevo: Array <Varietal> = vino.crearVarietal(tiposUvaVino[contador]);
+            
             let vinoNuevo = new Vino(
                 vino.anada,
                 vino.imagenEtiqueta,
@@ -102,7 +102,7 @@ export class GestorActualizacion {
                 vino.fechaActualizacion
             )
 
-            //vinoNuevo.varietal = vino.crearVarietal(tiposUvaVino[contador]);
+            
             contador ++;
             this.bodegaSeleccionada?.vinos.push(vinoNuevo);
 

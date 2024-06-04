@@ -22,9 +22,11 @@
 
       <h2 *ngIf="noHayBodegasActualizar" class="noClasesTitle">No hay bodegas para actualizar, vuelva otro día</h2>
 
-  <div *ngIf="comboBodegasActualizables">
-    <h2>Elija una bodega</h2>
-    <button *ngFor="let bodega of gestorActualizacion.bodegasActualizables" (click)="tomarSeleccionBodega(bodega[0])">{{ bodega[0] }}</button>
+  <div *ngIf="comboBodegasActualizables" class="selec-bodegas-vontainer">
+    <h2 style="text-align: center;">Elija una bodega</h2>
+    <div class="selec-bodegas-wrapper">
+      <button *ngFor="let bodega of gestorActualizacion.bodegasActualizables" (click)="tomarSeleccionBodega(bodega[0])">{{ bodega[0] }}</button>
+    </div>
   </div>
 
   <div *ngIf="resumenActualizacion" class="vinos-wrapper">
