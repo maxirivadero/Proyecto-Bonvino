@@ -15,7 +15,6 @@ export class PantallaActualizacionComponent {
   comboBodegasActualizables = false;
   mostrarOpcionesDeBodega = false;
   jsontConverter = new JsonToClass;
-  //bodegaSeleccionada: Bodega | undefined;
 
   opcionImportarActualizacionDeVinos() {
     this.habilitarVentana();
@@ -41,6 +40,7 @@ export class PantallaActualizacionComponent {
     this.comboBodegasActualizables = !this.comboBodegasActualizables;
     this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     this.mostrarResumenActualizacion();
+    this.gestorActualizacion.notificarSubscripciones();
   }
   mostrarResumenActualizacion() {
     console.log("RESUMEN",this.gestorActualizacion.vinosActualizados);

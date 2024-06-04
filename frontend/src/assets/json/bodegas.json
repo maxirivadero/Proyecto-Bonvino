@@ -9,6 +9,7 @@
       "ultimaActualizacion": "2024-04-15T12:30:00.000Z",
       "vinos":[
         {
+          "añada":10,
           "imagenEtiqueta": "URL de imagen de la etiqueta 1",
           "nombre": "Vino 1",
           "notaDeCataBodega": "Nota de cata de la Bodega 1",
@@ -24,7 +25,7 @@
               },
               {
                   "descripcion": "Descripcion 2",
-                  "porcentajeComposicion": 25,
+                  "porcentajeComposicion": 35,
                   "tipoUva": {
                       "nombre": "Seca",
                       "descripcion": "Descripción del TU 2"
@@ -45,6 +46,7 @@
           "fechaActualizacion": "2024-03-15T12:30:00.000Z"
         },
         {
+          "añada":10,
           "imagenEtiqueta": "URL de imagen de la etiqueta 2",
           "nombre": "Vino 2",
           "notaDeCataBodega": "Nota de cata de la Bodega 2",
@@ -78,7 +80,8 @@
     "ultimaActualizacion": "2024-02-20T09:45:00.000Z",
     "vinos":[
       {
-        "imagenEtiqueta": "URL de imagen de la etiqueta 1",
+        "añada":10,
+        "    magenEtiqueta": "URL de imagen de la etiqueta 1",
         "nombre": "Vino 1",
         "notaDeCataBodega": "Nota de cata de la Bodega 1",
         "precioARS": 1000,
@@ -114,7 +117,8 @@
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
       },
       {
-        "imagenEtiqueta": "URL de imagen de la etiqueta 2",
+        "añada":10,
+        "    magenEtiqueta": "URL de imagen de la etiqueta 2",
         "nombre": "Vino 2",
         "notaDeCataBodega": "Nota de cata de la Bodega 2",
         "precioARS": 2000,
@@ -147,7 +151,8 @@
         "ultimaActualizacion": "2024-03-10T15:20:00.000Z",
         "vinos":[
           {
-            "imagenEtiqueta": "URL de imagen de la etiqueta 1",
+            "añada":10,
+            "    magenEtiqueta": "URL de imagen de la etiqueta 1",
             "nombre": "Vino 1",
             "notaDeCataBodega": "Nota de cata de la Bodega 1",
             "precioARS": 1000,
@@ -183,7 +188,8 @@
             "fechaActualizacion": "2024-03-15T12:30:00.000Z"
           },
           {
-            "imagenEtiqueta": "URL de imagen de la etiqueta 2",
+            "añada":10,
+            "    magenEtiqueta": "URL de imagen de la etiqueta 2",
             "nombre": "Vino 2",
             "notaDeCataBodega": "Nota de cata de la Bodega 2",
             "precioARS": 2000,

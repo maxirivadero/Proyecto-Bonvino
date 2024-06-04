@@ -2,8 +2,9 @@ import { Bodega } from "./Bodega";
 import { Maridaje } from "./Maridaje";
 import { Varietal } from "./Varietal";
 import { TipoUva } from "./TipoUva";
-// AGREGAR AÑADA
+
 export class Vino {
+    añada:number;
     imagenEtiqueta: string;
     nombre: string;
     notaDeCataBodega: string;
@@ -13,7 +14,8 @@ export class Vino {
     bodega:string;
     fechaActualizacion:Date;
 
-    constructor(imagenEtiqueta: string, nombre: string, notaDeCataBodega: string, precioARS:number, varietal:Array<Varietal>, maridaje:Array<Maridaje>, bodega:string, fechaActualizacion:Date) {
+    constructor(añada:number,imagenEtiqueta: string, nombre: string, notaDeCataBodega: string, precioARS:number, varietal:Array<Varietal>, maridaje:Array<Maridaje>, bodega:string, fechaActualizacion:Date) {
+        this.añada = añada;
         this.imagenEtiqueta = imagenEtiqueta;
         this.nombre = nombre;
         this.notaDeCataBodega = notaDeCataBodega;

@@ -17,8 +17,8 @@ import { VariableBinding } from "@angular/compiler";
 import { Varietal } from "./Varietal";
 
 export class GestorActualizacion {
-    fechaActual: Date;//chequear si se hace asi y con todos los undefined
-    bodegasActualizables:Array<any>;//chequear si se hace asi
+    fechaActual: Date;
+    bodegasActualizables:Array<any>;
     bodegaSeleccionada:Bodega | undefined;
     maridajes:Array<Maridaje>;
     tipoUvas:Array<TipoUva>;
@@ -79,9 +79,7 @@ export class GestorActualizacion {
                 console.log("VINOS DESPUES",element)
             });
 
-            //Set fecha ultima actualizacion
             this.bodegaSeleccionada.setFechaUltimaActualizacion = this.fechaActual;
-            this.notificarSubscripciones(this.bodegaSeleccionada);
         }
     };
     crearVino(vinosACrear: Vino[]) {
@@ -90,19 +88,21 @@ export class GestorActualizacion {
         let contador = 0;
 
         vinosACrear.forEach((vino) => {
-            //se crea un solo varietal pq el array tiposUvaVino siempre va a tener un elemento
-            // CAMBIAR EL ORDEN DE CUANDO SE AGREGA EL VARIETAL
-            let varietalNuevo: Array <Varietal> = vino.crearVarietal(tiposUvaVino[contador]);
+            
+            //let varietalNuevo: Array <Varietal> = vino.crearVarietal(tiposUvaVino[contador]);
             let vinoNuevo = new Vino(
+                vino.añada,
                 vino.imagenEtiqueta,
                 vino.nombre,
                 vino.notaDeCataBodega,
                 vino.precioARS,
-                varietalNuevo,
+                vino.crearVarietal(tiposUvaVino[contador]),
                 maridajesVino[contador],
                 vino.bodega,
                 vino.fechaActualizacion
             )
+
+            //vinoNuevo.varietal = vino.crearVarietal(tiposUvaVino[contador]);
             contador ++;
             this.bodegaSeleccionada?.vinos.push(vinoNuevo);
 
@@ -139,18 +139,17 @@ export class GestorActualizacion {
         });
         return listaTiposUvas;
     };
-    // CAMBIAR PARA QUE SE EJECUTE DESPUES DE MOSTRAR TODO
-    notificarSubscripciones(bodega: Bodega) {
+    notificarSubscripciones() {
         let enofilosSubscriptos = []
         for (const enofiloJson of (this.jsonToClass.jsonToEnofilo(enofilos))) {
     
-            // Verificar si el enófilo está suscrito a la bodega y agregarlo a la lista de bodegas actualizables
-            if (enofiloJson.estasSuscriptoABodega(bodega.getNombre)) {
+            if (this.bodegaSeleccionada && enofiloJson.estasSuscriptoABodega(this.bodegaSeleccionada.getNombre)) {
                 enofilosSubscriptos.push(enofiloJson.obtenerNombreUsuario());
             }
         }
         const interfazNotificacion = new InterfazNotificacionPush();
         interfazNotificacion.actualizarNovedadBodega(enofilosSubscriptos);
+        window.alert("Se mando una notificacion a los Enofilos Subscriptos");
 
         this.finCU();
     };

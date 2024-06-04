@@ -1,5 +1,6 @@
 {
     "vino1": {
+        "añada":10,
         "imagenEtiqueta": "URL de imagen de la etiqueta 1 Nuevo",
         "nombre": "Vino 1",
         "notaDeCataBodega": "Nota de cata de la Bodega 1 Nuevo",
@@ -36,6 +37,7 @@
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
     },
     "vino2": {
+        "añada":10,
         "imagenEtiqueta": "URL de imagen de la etiqueta 2 Nuevo",
         "nombre": "Vino 2",
         "notaDeCataBodega": "Nota de cata de la Bodega 2 Nuevo",
@@ -60,6 +62,7 @@
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
     },
     "vino3": {
+        "añada":10,
         "imagenEtiqueta": "URL de imagen de la etiqueta 3 Nuevo",
         "nombre": "Vino 3",
         "notaDeCataBodega": "Nota de cata de la Bodega 3 Nuevo",
@@ -92,6 +95,7 @@
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
     },
     "vino4": {
+        "añada":10,
         "imagenEtiqueta": "URL de imagen de la etiqueta 4",
         "nombre": "Vino 4",
         "notaDeCataBodega": "Nota de cata de la Bodega 4",
