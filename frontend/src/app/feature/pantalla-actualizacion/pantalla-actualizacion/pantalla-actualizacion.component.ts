@@ -25,9 +25,8 @@ export class PantallaActualizacionComponent {
     if(this.gestorActualizacion.bodegasActualizables.length !== 0){
       this.mostrarBodegasDisponibles();
     } else {
-      console.log(this.noHayBodegasActualizar);
       this.noHayBodegasActualizar = true;
-      console.log(this.noHayBodegasActualizar);
+      this.gestorActualizacion.finCU()
     }
   };
   habilitarVentana() {
