@@ -58,6 +58,7 @@ h2 {
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
+    max-width: 1140px;
   }
   
   th, td {
@@ -67,7 +68,7 @@ h2 {
   }
   
   /* Estilos específicos para dispositivos móviles */
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 768px) {
     table {
       border: 0;
     }
@@ -97,14 +98,14 @@ h2 {
       padding-right: 10px;
       white-space: nowrap;
     }
+    table tr {
+      margin: 2rem 0;
+    }
   
     /* Ajuste de estilos específicos para cada columna */
     table td:nth-of-type(1):before { content: "Nombre:"; }
     table td:nth-of-type(2):before { content: "Descripción:"; }
-    table td:nth-of-type(3):before { content: "Historia:"; }
-    table td:nth-of-type(4):before { content: "Coordenadas Ubicación:"; }
-    table td:nth-of-type(5):before { content: "Periodo Actualización:"; }
-    table td:nth-of-type(6):before { content: "Última Actualización:"; }
+    table td:nth-of-type(3):before { content: "Coordenadas:"; }
   }
   
 
@@ -128,6 +129,7 @@ h2 {
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  border-bottom: 1px solid black;
 }
 
 .vinos-wrapper {
@@ -145,6 +147,7 @@ h2 {
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  align-self: flex-start;
 
 }
 
@@ -210,15 +213,27 @@ h2 {
   align-items: center;
   flex-direction: column;
 
+  padding: 10px;
+  position: relative;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
 }
 
 .precio-img, 
 .bodega-img {
+  margin-bottom: 20px;
   img {
     width: 40px;
   }
 }
 
+.precio-titulo, 
+.bodega-titulo {
+  margin-bottom: 20px;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
 
 .elementos-container-bottom {
   width: 50%;
@@ -232,4 +247,46 @@ h2 {
 .varietal-fila,
 .maridaje-fila {
   width: 90%;
+  li{
+    span {
+      font-weight: 700;
+    }
+
+    p {
+      margin: 0.5rem 0;
+    }
+  }
+  
+}
+.separador {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  margin: 20px 0;
+}
+//.varietal-descripcion {
+//  
+//}
+
+@media screen and (max-width: 768px) { 
+  .vino-section {
+    flex-direction: column;
+  }
+  .elementos-container-top,
+  .elementos-container-bottom {
+    width: 100%;  
+  }
+  ol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    li {
+      margin: 0.6rem 0;
+    }
+  }
+  .separador {
+    display: none;
+  }
 }

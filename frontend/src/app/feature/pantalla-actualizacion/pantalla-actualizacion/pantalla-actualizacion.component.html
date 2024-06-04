@@ -19,79 +19,12 @@
           </tr>
         </tbody>
       </table>
-      
-      <!-- Botones para que el usuario elija una bodega -->
 
   <div *ngIf="comboBodegasActualizables">
     <h2>Elija una bodega</h2>
     <button *ngFor="let bodega of gestorActualizacion.bodegasActualizables" (click)="tomarSeleccionBodega(bodega[0])">{{ bodega[0] }}</button>
   </div>
 
-    <!-- Tabla para mostrar vinos actualizados -->
-    <!--
-    <table *ngIf="gestorActualizacion.vinosActualizados && gestorActualizacion.vinosActualizados.length > 0">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Descripción</th>
-                <th>Precio (ARS)</th>
-                <th>Imagen Etiqueta</th>
-                <th>Varietal</th>
-                <th>Maridaje</th>
-                <th>Bodega</th>
-                <th>Fecha de Actualización</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let vino of gestorActualizacion.vinosActualizados">
-                <td>{{ vino.nombre }}</td>
-                <td>{{ vino.notaDeCataBodega }}</td>
-                <td>{{ vino.precioARS }}</td>
-                <td>{{ vino.imagenEtiqueta }}</td>
-                <td>
-                    <ul *ngFor="let varietal of vino.varietal">
-                        <li >
-                            <p>{{ varietal.descripcion }}</p>
-                            <p>{{varietal.porcentajeComposicion}}</p>
-                            <p>{{varietal.tipoUva.nombre}}</p>
-                            <p>{{varietal.tipoUva.descripcion}}</p></li>
-                    </ul>
-                </td>
-                <td>
-                    <ul *ngFor="let item of vino.maridaje">
-                        <li> {{ item.nombre }} </li>
-                        <li> {{item.descripcion}} </li>
-                      </ul>
-                </td>
-                <td>{{ vino.bodega }}</td>
-                <td>{{ vino.fechaActualizacion | date }}</td>
-            </tr>
-            <tr *ngFor="let vino of gestorActualizacion.vinosACrear" >
-              <td>{{ vino.nombre }}</td>
-              <td>{{ vino.notaDeCataBodega }}</td>
-              <td>{{ vino.precioARS }}</td>
-              <td>{{ vino.imagenEtiqueta }}</td>
-              <td>
-                <ul *ngFor="let varietal of vino.varietal">
-                    <li >
-                        <p>{{ varietal.descripcion }}</p>
-                        <p>{{varietal.porcentajeComposicion}}</p>
-                        <p>{{varietal.tipoUva.nombre}}</p>
-                        <p>{{varietal.tipoUva.descripcion}}</p></li>
-                </ul>
-              </td>
-              <td>
-                  <ul *ngFor="let item of vino.maridaje">
-                    <li> {{ item.nombre }} </li>
-                    <li> {{item.descripcion}} </li>
-                  </ul>
-              </td>
-              <td>{{ vino.bodega }}</td>
-              <td>{{ vino.fechaActualizacion | date }}</td>
-          </tr>
-        </tbody>
-    </table>
-  -->
   <div *ngIf="gestorActualizacion.vinosActualizados && gestorActualizacion.vinosActualizados.length > 0" class="vinos-wrapper">
     <section *ngFor="let vino of gestorActualizacion.vinosActualizados" class="vino-section">
       
@@ -136,7 +69,7 @@
         </div>
       </div>
 
-      <div class="separador"></div>
+      <div class="separador-principal"></div>
 
       <div class="elementos-container-bottom">
         <div class="varietal-fila">
@@ -144,7 +77,7 @@
           <ol>
             <li *ngFor="let varietal of vino.varietal">
               <div class="varietal-descripcion">
-                <p>{{ varietal.descripcion }}</p>
+                <p><span>Descripcion: </span>{{ varietal.descripcion }}</p>
               </div>
               <div class="varietal-tipoUva">
                 <p><span>Tipo de Uva({{varietal.tipoUva.nombre}}): </span>{{varietal.tipoUva.descripcion}}</p>
@@ -155,6 +88,7 @@
             </li>
           </ol>
         </div>
+        <div class="separador"></div>
         <div class="maridaje-fila">
           <h4 class="maridaje-titulo">Maridaje: </h4>
           <ol>
@@ -213,7 +147,7 @@
         </div>
       </div>
 
-      <div class="separador"></div>
+      <div class="separador-principal"></div>
 
       <div class="elementos-container-bottom">
         <div class="varietal-fila">
@@ -221,7 +155,7 @@
           <ol>
             <li *ngFor="let varietal of vino.varietal">
               <div class="varietal-descripcion">
-                <p>{{ varietal.descripcion }}</p>
+                <p><span>Descripcion: </span>{{ varietal.descripcion }}</p>
               </div>
               <div class="varietal-tipoUva">
                 <p><span>Tipo de Uva({{varietal.tipoUva.nombre}}): </span>{{varietal.tipoUva.descripcion}}</p>
@@ -232,6 +166,7 @@
             </li>
           </ol>
         </div>
+        <div class="separador"></div>
         <div class="maridaje-fila">
           <h4 class="maridaje-titulo">Maridaje: </h4>
           <ol>
@@ -246,7 +181,6 @@
           </ol>
         </div>
       </div>
-      
     </section>
   </div>
 
