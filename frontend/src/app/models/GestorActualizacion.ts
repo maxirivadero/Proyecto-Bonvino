@@ -91,6 +91,7 @@ export class GestorActualizacion {
 
         vinosACrear.forEach((vino) => {
             //se crea un solo varietal pq el array tiposUvaVino siempre va a tener un elemento
+            // CAMBIAR EL ORDEN DE CUANDO SE AGREGA EL VARIETAL
             let varietalNuevo: Array <Varietal> = vino.crearVarietal(tiposUvaVino[contador]);
             let vinoNuevo = new Vino(
                 vino.imagenEtiqueta,
@@ -138,6 +139,7 @@ export class GestorActualizacion {
         });
         return listaTiposUvas;
     };
+    // CAMBIAR PARA QUE SE EJECUTE DESPUES DE MOSTRAR TODO
     notificarSubscripciones(bodega: Bodega) {
         let enofilosSubscriptos = []
         for (const enofiloJson of (this.jsonToClass.jsonToEnofilo(enofilos))) {

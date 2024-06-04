@@ -1,6 +1,6 @@
 import tipoUvas from "../../assets/json/tipoUvas.json";
 import { JsonToClass } from "./JsonToClass";
-
+ // FIJARSE TIPOS DE UVA DE PDF
 export class TipoUva {
     nombre: string;
     descripcion: string;
