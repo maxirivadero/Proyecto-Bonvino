@@ -16,6 +16,13 @@ export class SistemaDeBodega {
             vinos.push(vino);
         });
 
-        return vinos;
+        return vinos;
+    };
+    simularErrorServidor(): Promise<any> {
+        return new Promise((resolve, reject) => {
+            // Asignar el objeto JSON de error a resultado
+            let resultado = { error: true, message: 'El sistema de bodegas falló' };
+            resolve(resultado);
+        });
     }
 }

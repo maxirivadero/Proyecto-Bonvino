@@ -56,32 +56,42 @@ export class GestorActualizacion {
         }
         return bodegasActualizables;
     }
-    tomarSeleccionBodega(bodegaNombre: string) {
+    tomarSeleccionBodega(bodegaNombre: string): Promise<void> {
         this.bodegaSeleccionada = this.jsonToClass.jsonToBodega(bodegas).find(b => b.getNombre === bodegaNombre);
-        this.obtenerActualizacionVino();
+        return this.obtenerActualizacionVino();
     }
-    obtenerActualizacionVino() {
-        this.vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos();
-        if (this.bodegaSeleccionada !== undefined) {
-
-            this.bodegaSeleccionada.vinos.forEach(element => {
-                console.log("VINOS ANTES",element)
-            });
-
-            this.bodegaSeleccionada.actualizarVinos(this.vinosActualizar, this.vinosActualizados, this.vinosACrear);
-            
-            
-            if (this.vinosACrear) {
-                this.crearVino(this.vinosACrear);
-            }
-
-            this.bodegaSeleccionada.vinos.forEach(element => {
-                console.log("VINOS DESPUES",element)
-            });
-
-            this.bodegaSeleccionada.setFechaUltimaActualizacion = this.fechaActual;
-        }
-    };
+    
+    obtenerActualizacionVino(): Promise<void> {
+        return new Promise((resolve, reject) => {
+            this.sistemaDeBodega.simularErrorServidor()
+                .then(vinosActualizar => {
+                    this.vinosActualizar = vinosActualizar;
+                    if (this.bodegaSeleccionada !== undefined) {
+                        this.bodegaSeleccionada.vinos.forEach(element => {
+                            console.log("VINOS ANTES",element)
+                        });
+    
+                        this.bodegaSeleccionada.actualizarVinos(this.vinosActualizar, this.vinosActualizados, this.vinosACrear);
+    
+                        if (this.vinosACrear) {
+                            this.crearVino(this.vinosACrear);
+                        }
+    
+                        this.bodegaSeleccionada.vinos.forEach(element => {
+                            console.log("VINOS DESPUES",element)
+                        });
+    
+                        this.bodegaSeleccionada.setFechaUltimaActualizacion = this.fechaActual;
+                    };
+                    resolve();
+                })
+                .catch(error => {
+                    console.error('El sistema de bodegas falló', error);
+                    window.alert('El sistema de bodegas fallo');
+                    reject(error);
+                });
+        });
+    }
     crearVino(vinosACrear: Vino[]) {
         let maridajesVino = this.buscarMaridaje(vinosACrear);
         let tiposUvaVino = this.buscarTipoUva(vinosACrear);
@@ -152,7 +162,8 @@ export class GestorActualizacion {
         window.alert("Se mando una notificacion a los Enofilos Subscriptos");
 
         this.finCU();
-    };
+    };
+    
     
     finCU() {
         console.log("Fin caso de uso")

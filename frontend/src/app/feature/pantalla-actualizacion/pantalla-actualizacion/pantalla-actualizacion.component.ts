@@ -43,12 +43,19 @@ export class PantallaActualizacionComponent {
   }
 
   tomarSeleccionBodega(nombresBodega: string) {
-    this.gestorActualizacion.tomarSeleccionBodega(nombresBodega);
-    this.comboBodegasActualizables = !this.comboBodegasActualizables;
-    this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
-    this.mostrarResumenActualizacion();
-    this.gestorActualizacion.notificarSubscripciones();
-  }
+    this.gestorActualizacion.tomarSeleccionBodega(nombresBodega)
+    .then(() => {
+        this.comboBodegasActualizables = !this.comboBodegasActualizables;
+        this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
+        this.mostrarResumenActualizacion();
+        this.gestorActualizacion.notificarSubscripciones();
+    })
+    .catch(error => {
+        console.error('Error al obtener las novedades de los vinos:', error);
+        // Si se produce un error, detenemos la ejecución de la función aquí.
+        return;
+    });
+}
   mostrarResumenActualizacion() {
     console.log("RESUMEN",this.gestorActualizacion.vinosActualizados);
     if(this.gestorActualizacion.vinosActualizados && this.gestorActualizacion.vinosActualizados.length > 0){
