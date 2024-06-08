@@ -47,20 +47,12 @@ export class PantallaActualizacionComponent {
     this.comboBodegasActualizables = !this.comboBodegasActualizables;
     this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     this.mostrarResumenActualizacion();
-    this.gestorActualizacion.notificarSubscripciones();
   }
   mostrarResumenActualizacion() {
     console.log("RESUMEN",this.gestorActualizacion.vinosActualizados);
     if(this.gestorActualizacion.vinosActualizados && this.gestorActualizacion.vinosActualizados.length > 0){
       this.resumenActualizacion = true;
+      this.gestorActualizacion.notificarSubscripciones();
     }
   };
 }
-/*  bodegaSeleccionada = new Bodega(
-  "Bodega La Riña",
-  "Una bodega familiar fundada en 1975, especializada en vinos tintos de alta calidad.",
-  "La historia de Bodega La Viña se remonta a hace casi medio siglo, cuando el fundador, Don Alejandro, plantó las primeras vides en estas tierras. Desde entonces, la bodega ha pasado de generación en generación, manteniendo la tradición y el compromiso con la calidad.",
-  [42.8782, -8.5448],
-  2,
-  new Date("2024-03-15T12:30:00.000Z")
-  */

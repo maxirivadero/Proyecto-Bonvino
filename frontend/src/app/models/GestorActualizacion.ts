@@ -1,19 +1,12 @@
-
-import { VariableBinding } from "@angular/compiler";
 import enofilos from "src/assets/json/enofilos.json";
 import bodegas from "../../assets/json/bodegas.json";
-import maridajes from "../../assets/json/maridajes.json";
-import vinos from "../../assets/json/vinos.json";
 import { Bodega } from "./Bodega";
-import { Enofilo } from "./Enofilo";
 import { InterfazNotificacionPush } from "./InterfazNotificacionPush";
 import { JsonToClass } from "./JsonToClass";
 import { Maridaje } from "./Maridaje";
-import { Siguiendo } from "./Siguiendo";
 import { SistemaDeBodega } from "./SistemaDeBodega";
 import { TipoUva } from "./TipoUva";
-import { Usuario } from "./Usuario";
-import { Varietal } from "./Varietal";
+
 import { Vino } from "./Vino";
 
 export class GestorActualizacion {
@@ -26,7 +19,7 @@ export class GestorActualizacion {
     sistemaDeBodega = new SistemaDeBodega();
     jsonToClass = new JsonToClass;
 
-    vinosActualizar: Vino[] = [];
+    arraySimDBAVinos: Vino[] = [];
     vinosActualizados: Vino[] = [];
     vinosACrear: Vino[] = [];
 
@@ -58,26 +51,26 @@ export class GestorActualizacion {
     }
     tomarSeleccionBodega(bodegaNombre: string) {
         this.bodegaSeleccionada = this.jsonToClass.jsonToBodega(bodegas).find(b => b.getNombre === bodegaNombre);
-        this.obtenerActualizacionVino();
+        if (this.bodegaSeleccionada) {
+            this.arraySimDBAVinos = this.sistemaDeBodega.obtenerVinosBodega(this.bodegaSeleccionada?.nombre);
+            this.obtenerActualizacionVino();
+        }
     }
     obtenerActualizacionVino() {
-        this.vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos();
+
         if (this.bodegaSeleccionada !== undefined) {
+            let vinosActualizar:Vino[] = [];
+            vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos(this.bodegaSeleccionada.nombre);
 
-            this.bodegaSeleccionada.vinos.forEach(element => {
-                console.log("VINOS ANTES",element)
-            });
+            //vinosActualizar.forEach(element => {
+            //    console.log("AAAAAAA",element)
+            //});
 
-            this.bodegaSeleccionada.actualizarVinos(this.vinosActualizar, this.vinosActualizados, this.vinosACrear);
-            
+            this.bodegaSeleccionada.actualizarVinos(vinosActualizar, this.vinosActualizados, this.vinosACrear);
             
             if (this.vinosACrear) {
                 this.crearVino(this.vinosACrear);
             }
-
-            this.bodegaSeleccionada.vinos.forEach(element => {
-                console.log("VINOS DESPUES",element)
-            });
 
             this.bodegaSeleccionada.setFechaUltimaActualizacion = this.fechaActual;
         }
@@ -86,10 +79,8 @@ export class GestorActualizacion {
         let maridajesVino = this.buscarMaridaje(vinosACrear);
         let tiposUvaVino = this.buscarTipoUva(vinosACrear);
         let contador = 0;
-
+        
         vinosACrear.forEach((vino) => {
-            
-            
             let vinoNuevo = new Vino(
                 vino.anada,
                 vino.imagenEtiqueta,
@@ -102,9 +93,11 @@ export class GestorActualizacion {
                 vino.fechaActualizacion
             )
 
+            vino.varietal = vino.crearVarietal(tiposUvaVino[contador]);
+            vino.maridaje = maridajesVino[contador];
             
             contador ++;
-            this.bodegaSeleccionada?.vinos.push(vinoNuevo);
+            this.arraySimDBAVinos.push(vinoNuevo);
 
         });
     };
@@ -120,6 +113,7 @@ export class GestorActualizacion {
             listaMaridajes.push(maridajesVino);
             maridajesVino = [];
         });
+
         return listaMaridajes;
     }
     

@@ -1,6 +1,7 @@
 {
     "vino1": {
-        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-1.png",
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-4.png",
         "nombre": "Vino 1",
         "notaDeCataBodega": "Nota de cata de la Bodega 1",
         "precioARS": 1000,
@@ -32,11 +33,12 @@
                 "descripcion": "Descripción del Maridaje 2"
             }
         ],
-        "bodega": "Bodega La Viña",
+        "bodega": "Bodega Los Robles",
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
-    },
-    "vino2": {
-        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-1.png",
+      },
+      "vino2": {
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-4.png",
         "nombre": "Vino 2",
         "notaDeCataBodega": "Nota de cata de la Bodega 2",
         "precioARS": 2000,
@@ -56,7 +58,7 @@
                 "descripcion": "Descripción del Maridaje 3"
             }
         ],
-        "bodega": "Bodega La Viña",
+        "bodega": "Bodega Los Robles",
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
-    }
-  }
+      }
+}
