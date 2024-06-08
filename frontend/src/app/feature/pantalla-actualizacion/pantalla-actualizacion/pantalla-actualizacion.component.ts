@@ -42,8 +42,24 @@ export class PantallaActualizacionComponent {
     }
   }
 
-  tomarSeleccionBodega(nombresBodega: string) {
-    this.gestorActualizacion.tomarSeleccionBodega(nombresBodega);
+  seleccionados: string[] = [];
+
+  seleccionarBodega(event: any, nombre: string) {
+      if (event.target.checked) {
+          this.seleccionados.push(nombre);
+      } else {
+          const index = this.seleccionados.indexOf(nombre);
+          if (index !== -1) {
+              this.seleccionados.splice(index, 1);
+          }
+      }
+  }
+  
+  tomarSeleccionBodega() {
+      // Llamar a la función tomarSeleccionBodega() con el array de nombres seleccionados
+      this.gestorActualizacion.tomarSeleccionBodega(this.seleccionados);
+    console.log("sssssi",this.gestorActualizacion.vinosActualizados);
+    console.log("nooooooo",this.gestorActualizacion.vinosACrear);
     this.comboBodegasActualizables = !this.comboBodegasActualizables;
     this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     this.mostrarResumenActualizacion();

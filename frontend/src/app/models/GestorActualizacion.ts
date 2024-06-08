@@ -12,21 +12,24 @@ import { Vino } from "./Vino";
 export class GestorActualizacion {
     fechaActual: Date;
     bodegasActualizables:Array<any>;
-    bodegaSeleccionada:Bodega | undefined;
+    bodegasSeleccionada:Array<Bodega> = [];
     maridajes:Array<Maridaje>;
     tipoUvas:Array<TipoUva>;
-    interfaz = InterfazNotificacionPush;
     sistemaDeBodega = new SistemaDeBodega();
     jsonToClass = new JsonToClass;
 
-    arraySimDBAVinos: Vino[] = [];
-    vinosActualizados: Vino[] = [];
-    vinosACrear: Vino[] = [];
+    vinosActualizados: Array<Vino[]> = [];
+    vinosACrear: Array<Vino[]> = [];
+
+    //Para simular la base de datos antes y despues
+    arrayDBAVinosAntes: Array<Vino[]> = [];
+    arraySimDBAVinos: Array<Vino[]> = [];
+
 
     constructor() {
         this.fechaActual = new Date();
         this.bodegasActualizables = [];
-        this.bodegaSeleccionada = undefined;
+        this.bodegasSeleccionada = [];
         this.maridajes = [];
         this.tipoUvas = [];
     }
@@ -49,32 +52,62 @@ export class GestorActualizacion {
         }
         return bodegasActualizables;
     }
-    tomarSeleccionBodega(bodegaNombre: string) {
-        this.bodegaSeleccionada = this.jsonToClass.jsonToBodega(bodegas).find(b => b.getNombre === bodegaNombre);
-        if (this.bodegaSeleccionada) {
-            this.arraySimDBAVinos = this.sistemaDeBodega.obtenerVinosBodega(this.bodegaSeleccionada?.nombre);
-            this.obtenerActualizacionVino();
+    tomarSeleccionBodega(nombresBodega: Array<string>) {
+        let bodegasDisponibles = this.jsonToClass.jsonToBodega(bodegas);
+        for (let nombreBodega of nombresBodega) {
+            let bodegaEncontrada = bodegasDisponibles.find(b => b.getNombre === nombreBodega);
+            //this.bodegasSeleccionada.push(bodegaEncontrada);
+            if (bodegaEncontrada) {
+                this.bodegasSeleccionada.push(bodegaEncontrada);
+            }
         }
+        this.obtenerActualizacionVino();
+        
     }
     obtenerActualizacionVino() {
-
-        if (this.bodegaSeleccionada !== undefined) {
-            let vinosActualizar:Vino[] = [];
-            vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos(this.bodegaSeleccionada.nombre);
-
-            //vinosActualizar.forEach(element => {
+        for (const bodega of this.bodegasSeleccionada) {
+            let vinosActualizar: Vino[] = [];
+            let vinosBodegaActualizados: Vino[] = [];
+            let vinosBodegaCreados: Vino[] = [];
+//
+            //console.log( [this.sistemaDeBodega.obtenerVinosBodega(bodega.nombre)]);
+            //this.sistemaDeBodega.obtenerVinosBodega(bodega.nombre).forEach(element => {
             //    console.log("AAAAAAA",element)
             //});
+            this.arrayDBAVinosAntes.push(this.sistemaDeBodega.obtenerVinosBodega(bodega.nombre));
 
-            this.bodegaSeleccionada.actualizarVinos(vinosActualizar, this.vinosActualizados, this.vinosACrear);
-            
-            if (this.vinosACrear) {
-                this.crearVino(this.vinosACrear);
+            vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos(bodega.nombre);
+
+            bodega.actualizarVinos(vinosActualizar, vinosBodegaActualizados, vinosBodegaCreados);
+
+            if (vinosBodegaCreados.length > 0) {
+                this.crearVino(vinosBodegaCreados);
             }
+            this.vinosActualizados.push(vinosBodegaActualizados);
+            this.vinosACrear.push(vinosBodegaCreados);
 
-            this.bodegaSeleccionada.setFechaUltimaActualizacion = this.fechaActual;
+            this.vinosActualizados.forEach(element => {
+                console.log("AAAAAAA",element)
+            });
+            //Simulamos como quedaria la base de datos nueva luego de actualizar y crear
+            let simBDAVinosNueva = vinosBodegaActualizados;
+            vinosBodegaCreados.forEach(element => {
+                simBDAVinosNueva.push(element)
+            });
+            this.arraySimDBAVinos.push(simBDAVinosNueva);
+
+            //seteamos la fecha de actualizacion de la bodega
+            bodega.setFechaUltimaActualizacion = this.fechaActual;
         }
-    };
+
+
+        this.arrayDBAVinosAntes.forEach(element => {
+            console.log("eeeeee",element)
+        });
+        this.arraySimDBAVinos.forEach(element => {
+            console.log("ddddd",element)
+        });        
+    }
     crearVino(vinosACrear: Vino[]) {
         let maridajesVino = this.buscarMaridaje(vinosACrear);
         let tiposUvaVino = this.buscarTipoUva(vinosACrear);
@@ -97,7 +130,7 @@ export class GestorActualizacion {
             vino.maridaje = maridajesVino[contador];
             
             contador ++;
-            this.arraySimDBAVinos.push(vinoNuevo);
+            //this.arraySimDBAVinos.push(vinoNuevo);
 
         });
     };
@@ -134,19 +167,23 @@ export class GestorActualizacion {
         return listaTiposUvas;
     };
     notificarSubscripciones() {
-        let enofilosSubscriptos = []
-        for (const enofiloJson of (this.jsonToClass.jsonToEnofilo(enofilos))) {
-    
-            if (this.bodegaSeleccionada && enofiloJson.estasSuscriptoABodega(this.bodegaSeleccionada.getNombre)) {
-                enofilosSubscriptos.push(enofiloJson.obtenerNombreUsuario());
+        // Recorre cada bodega seleccionada
+        this.bodegasSeleccionada.forEach(bodega => {
+            // Obtiene los enófilos suscritos a esta bodega
+            let enofilosSubscriptos = [];
+            for (const enofiloJson of this.jsonToClass.jsonToEnofilo(enofilos)) {
+                if (enofiloJson.estasSuscriptoABodega(bodega.getNombre)) {
+                    enofilosSubscriptos.push(enofiloJson.obtenerNombreUsuario());
+                }
             }
-        }
-        const interfazNotificacion = new InterfazNotificacionPush();
-        interfazNotificacion.actualizarNovedadBodega(enofilosSubscriptos);
-        window.alert("Se mando una notificacion a los Enofilos Subscriptos");
-
-        this.finCU();
-    };
+            // Si hay enófilos suscritos, envía la notificación
+            if (enofilosSubscriptos.length > 0) {
+                let interfazNotificacion = new InterfazNotificacionPush();
+                interfazNotificacion.actualizarNovedadBodega(enofilosSubscriptos, bodega.getNombre);
+                window.alert(`Se mandó una notificación a los Enófilos Suscritos de la bodega ${bodega.getNombre}`);
+            }
+        });
+    }
     
     finCU() {
         console.log("Fin caso de uso")
