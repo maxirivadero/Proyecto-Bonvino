@@ -178,9 +178,32 @@ export class GestorActualizacion {
             }
             // Si hay enófilos suscritos, envía la notificación
             if (enofilosSubscriptos.length > 0) {
+                let notificationTitle = `Nueva novedad en la bodega ${bodega.getNombre}`;
+                let notificationOptions = {
+                    body: `Se ha publicado una nueva novedad en la bodega ${bodega.getNombre}`,
+                    icon: 'ruta/a/imagen/icono.png' // Ruta a una imagen para el ícono de la notificación
+                };
+    
+                // Verificar si el navegador soporta notificaciones
+                if ('Notification' in window) {
+                    // Verificar si las notificaciones están permitidas
+                    if (Notification.permission === 'granted') {
+                        // Mostrar la notificación
+                        new Notification(notificationTitle, notificationOptions);
+                    } else if (Notification.permission !== 'denied') {
+                        // Solicitar permiso al usuario para mostrar notificaciones
+                        Notification.requestPermission().then(permission => {
+                            if (permission === 'granted') {
+                                // Mostrar la notificación
+                                new Notification(notificationTitle, notificationOptions);
+                            }
+                        });
+                    }
+                }
+    
+                // Actualizar la interfaz con la notificación
                 let interfazNotificacion = new InterfazNotificacionPush();
                 interfazNotificacion.actualizarNovedadBodega(enofilosSubscriptos, bodega.getNombre);
-                window.alert(`Se mandó una notificación a los Enófilos Suscritos de la bodega ${bodega.getNombre}`);
             }
         });
     }

@@ -56,6 +56,11 @@ export class PantallaActualizacionComponent {
   }
   
   tomarSeleccionBodega() {
+    if (this.seleccionados.length === 0) {
+      // Mostrar el popup con el mensaje de error
+      alert("Por favor, seleccione al menos una opción.");
+      return; // Detener la ejecución de la función
+    }
       // Llamar a la función tomarSeleccionBodega() con el array de nombres seleccionados
       this.gestorActualizacion.tomarSeleccionBodega(this.seleccionados);
     console.log("sssssi",this.gestorActualizacion.vinosActualizados);
@@ -64,6 +69,9 @@ export class PantallaActualizacionComponent {
     this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     this.mostrarResumenActualizacion();
   }
+
+
+
   mostrarResumenActualizacion() {
     console.log("RESUMEN",this.gestorActualizacion.vinosActualizados);
     if(this.gestorActualizacion.vinosActualizados && this.gestorActualizacion.vinosActualizados.length > 0){
@@ -72,3 +80,4 @@ export class PantallaActualizacionComponent {
     }
   };
 }
+
