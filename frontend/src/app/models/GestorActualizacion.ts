@@ -181,7 +181,7 @@ export class GestorActualizacion {
                 let notificationTitle = `Nueva novedad en la bodega ${bodega.getNombre}`;
                 let notificationOptions = {
                     body: `Se ha publicado una nueva novedad en la bodega ${bodega.getNombre}`,
-                    icon: 'ruta/a/imagen/icono.png' // Ruta a una imagen para el ícono de la notificación
+                    icon: '../../assets/svg/hojas.svg' // Ruta a una imagen para el ícono de la notificación
                 };
     
                 // Verificar si el navegador soporta notificaciones
@@ -206,6 +206,7 @@ export class GestorActualizacion {
                 interfazNotificacion.actualizarNovedadBodega(enofilosSubscriptos, bodega.getNombre);
             }
         });
+        this.finCU();
     }
     
     finCU() {
