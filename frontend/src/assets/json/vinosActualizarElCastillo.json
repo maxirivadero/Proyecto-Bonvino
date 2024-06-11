@@ -1,0 +1,126 @@
+{
+    "vino1": {
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-1.png",
+        "nombre": "Vino 1",
+        "notaDeCataBodega": "Nota de cata de la Bodega 1 Nuevo Nuevo",
+        "precioARS": 3200,
+        "varietal": [
+            {
+                "descripcion": "Descripcion 1 Nueva",
+                "porcentajeComposicion": 455,
+                "tipoUva": {
+                    "nombre": "Jugosa",
+                    "descripcion": "Descripción del TU 1"
+                }
+            },
+            {
+                "descripcion": "Descripcion 2 Nueva",
+                "porcentajeComposicion": 25,
+                "tipoUva": {
+                    "nombre": "Seca",
+                    "descripcion": "Descripción del TU 2"
+                }
+            }
+        ],
+        "maridaje": [
+            {
+                "nombre": "Maridaje 1 Nuevo",
+                "descripcion": "Descripción del Maridaje 1 Nuevo"
+            },
+            {
+                "nombre": "Maridaje 2 Nuevo",
+                "descripcion": "Descripción del Maridaje 2 Nuevo"
+            }
+        ],
+        "bodega": "Bodega El Castillo",
+        "fechaActualizacion": "2024-03-15T12:30:00.000Z"
+    },
+    "vino2": {
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-2.png",
+        "nombre": "Vino 2",
+        "notaDeCataBodega": "Nota de cata de la Bodega 2 Nuevo",
+        "precioARS": 22002,
+        "varietal": [
+            {
+                "descripcion": "Descripcion 3 Nuevo",
+                "porcentajeComposicion": 15,
+                "tipoUva": {
+                    "nombre": "Seca",
+                    "descripcion": "Descripción del TU 3"
+                }
+            }
+        ],
+        "maridaje": [
+            {
+                "nombre": "Maridaje 3 Nuevo",
+                "descripcion": "Descripción del Maridaje 3 Nuevo"
+            }
+        ],
+        "bodega": "Bodega El Castillo",
+        "fechaActualizacion": "2024-03-15T12:30:00.000Z"
+    },
+    "vino3": {
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-3.png",
+        "nombre": "Vino 3",
+        "notaDeCataBodega": "Nota de cata de la Bodega 3 Nuevo",
+        "precioARS": 33030,
+        "varietal": [
+            {
+                "descripcion": "Descripcion 3 Nuevo",
+                "porcentajeComposicion": 76,
+                "tipoUva": {
+                    "nombre": "Jugosa",
+                    "descripcion": "Descripción del TU 4"
+                }
+            },
+            {
+                "descripcion": "Descripcion 7",
+                "porcentajeComposicion": 100,
+                "tipoUva": {
+                    "nombre": "Agria",
+                    "descripcion": "Descripción del TU 5"
+                }
+            }
+        ],
+        "maridaje": [
+            {
+                "nombre": "Maridaje 3",
+                "descripcion": "Descripción del Maridaje 3 Nuevo"
+            }
+        ],
+        "bodega": "Bodega El Castillo",
+        "fechaActualizacion": "2024-03-15T12:30:00.000Z"
+    },
+    "vino4": {
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-4.png",
+        "nombre": "Vino 4",
+        "notaDeCataBodega": "Nota de cata de la Bodega 4",
+        "precioARS": 3000,
+        "varietal": [
+            {
+                "descripcion": "Descripcion 6",
+                "porcentajeComposicion": 100,
+                "tipoUva": {
+                    "nombre": "Seca",
+                    "descripcion": "Descripción del TU 6"
+                }
+            }
+        ],
+        "maridaje": [
+            {
+                "nombre": "Maridaje 2",
+                "descripcion": "Descripción del Maridaje 2"
+            },
+            {
+                "nombre": "Maridaje 6",
+                "descripcion": "Descripción del Maridaje 6"
+            }
+        ],
+        "bodega": "Bodega El Castillo",
+        "fechaActualizacion": "2024-05-10T09:45:00.000Z"
+    }
+  }

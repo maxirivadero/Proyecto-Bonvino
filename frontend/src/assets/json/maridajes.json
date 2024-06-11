@@ -10,5 +10,9 @@
     "maridaje3": {
         "nombre": "Maridaje 3",
         "descripcion": "Descripción del Maridaje 3"
+    },
+    "maridaje4": {
+        "nombre": "Maridaje 4",
+        "descripcion": "Descripción del Maridaje 3"
     }
   }

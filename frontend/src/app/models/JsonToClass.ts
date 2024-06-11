@@ -21,7 +21,6 @@ export class JsonToClass {
                     bodegaJson.coordenadasUbicacion,
                     bodegaJson.periodoActualizacion,
                     new Date(bodegaJson.ultimaActualizacion),
-                    this.jsonToVino(bodegaJson.vinos)
                 );
                 bodegas.push(bodega);
             }

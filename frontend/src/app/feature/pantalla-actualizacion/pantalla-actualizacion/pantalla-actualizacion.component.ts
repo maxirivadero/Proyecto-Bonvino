@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Bodega } from 'src/app/models/Bodega';
 import { GestorActualizacion } from 'src/app/models/GestorActualizacion';
 import { JsonToClass } from 'src/app/models/JsonToClass';
-//import enofilosData from "../../../../assets/json/enofilos.json";
 
 @Component({
   selector: 'app-pantalla-actualizacion',
@@ -25,9 +24,8 @@ export class PantallaActualizacionComponent {
     if(this.gestorActualizacion.bodegasActualizables.length !== 0){
       this.mostrarBodegasDisponibles();
     } else {
-      console.log(this.noHayBodegasActualizar);
       this.noHayBodegasActualizar = true;
-      console.log(this.noHayBodegasActualizar);
+      this.gestorActualizacion.finCU()
     }
   };
   habilitarVentana() {
@@ -44,25 +42,42 @@ export class PantallaActualizacionComponent {
     }
   }
 
-  tomarSeleccionBodega(nombresBodega: string) {
-    this.gestorActualizacion.tomarSeleccionBodega(nombresBodega);
+  seleccionados: string[] = [];
+
+  seleccionarBodega(event: any, nombre: string) {
+      if (event.target.checked) {
+          this.seleccionados.push(nombre);
+      } else {
+          const index = this.seleccionados.indexOf(nombre);
+          if (index !== -1) {
+              this.seleccionados.splice(index, 1);
+          }
+      }
+  }
+  
+  tomarSeleccionBodega() {
+    if (this.seleccionados.length === 0) {
+      // Mostrar el popup con el mensaje de error
+      alert("Por favor, seleccione al menos una opción.");
+      return; // Detener la ejecución de la función
+    }
+      // Llamar a la función tomarSeleccionBodega() con el array de nombres seleccionados
+      this.gestorActualizacion.tomarSeleccionBodega(this.seleccionados);
+    console.log("sssssi",this.gestorActualizacion.vinosActualizados);
+    console.log("nooooooo",this.gestorActualizacion.vinosACrear);
     this.comboBodegasActualizables = !this.comboBodegasActualizables;
     this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     this.mostrarResumenActualizacion();
-    this.gestorActualizacion.notificarSubscripciones();
   }
+
+
+
   mostrarResumenActualizacion() {
     console.log("RESUMEN",this.gestorActualizacion.vinosActualizados);
     if(this.gestorActualizacion.vinosActualizados && this.gestorActualizacion.vinosActualizados.length > 0){
       this.resumenActualizacion = true;
+      this.gestorActualizacion.notificarSubscripciones();
     }
   };
 }
-/*  bodegaSeleccionada = new Bodega(
-  "Bodega La Riña",
-  "Una bodega familiar fundada en 1975, especializada en vinos tintos de alta calidad.",
-  "La historia de Bodega La Viña se remonta a hace casi medio siglo, cuando el fundador, Don Alejandro, plantó las primeras vides en estas tierras. Desde entonces, la bodega ha pasado de generación en generación, manteniendo la tradición y el compromiso con la calidad.",
-  [42.8782, -8.5448],
-  2,
-  new Date("2024-03-15T12:30:00.000Z")
-  */
+

@@ -1,0 +1,64 @@
+{
+    "vino1": {
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-4.png",
+        "nombre": "Vino 1",
+        "notaDeCataBodega": "Nota de cata de la Bodega 1",
+        "precioARS": 1000,
+        "varietal": [
+            {
+                "descripcion": "Descripcion 1",
+                "porcentajeComposicion": 25,
+                "tipoUva": {
+                    "nombre": "Jugosa",
+                    "descripcion": "Descripción del TU 1"
+                }
+            },
+            {
+                "descripcion": "Descripcion 2",
+                "porcentajeComposicion": 25,
+                "tipoUva": {
+                    "nombre": "Seca",
+                    "descripcion": "Descripción del TU 2"
+                }
+            }
+        ],
+        "maridaje": [
+            {
+                "nombre": "Maridaje 1",
+                "descripcion": "Descripción del Maridaje 1"
+            },
+            {
+                "nombre": "Maridaje 2",
+                "descripcion": "Descripción del Maridaje 2"
+            }
+        ],
+        "bodega": "Bodega El Castillo",
+        "fechaActualizacion": "2024-03-15T12:30:00.000Z"
+      },
+      "vino2": {
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-6.png",
+        "nombre": "Vino 2",
+        "notaDeCataBodega": "Nota de cata de la Bodega 2",
+        "precioARS": 2000,
+        "varietal": [
+            {
+                "descripcion": "Descripcion 3",
+                "porcentajeComposicion": 25,
+                "tipoUva": {
+                    "nombre": "Agria",
+                    "descripcion": "Descripción del TU 2"
+                }
+            }
+        ],
+        "maridaje": [
+            {
+                "nombre": "Maridaje 3",
+                "descripcion": "Descripción del Maridaje 3"
+            }
+        ],
+        "bodega": "Bodega El Castillo",
+        "fechaActualizacion": "2024-03-15T12:30:00.000Z"
+      }
+}

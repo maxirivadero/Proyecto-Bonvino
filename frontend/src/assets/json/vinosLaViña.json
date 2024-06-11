@@ -1,6 +1,7 @@
-const vinos = [
-    {
-        "imagenEtiqueta": "URL de imagen de la etiqueta 1",
+{
+    "vino1": {
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-4.png",
         "nombre": "Vino 1",
         "notaDeCataBodega": "Nota de cata de la Bodega 1",
         "precioARS": 1000,
@@ -8,12 +9,18 @@ const vinos = [
             {
                 "descripcion": "Descripcion 1",
                 "porcentajeComposicion": 25,
-                "tipoUva": "Jugosa"
+                "tipoUva": {
+                    "nombre": "Jugosa",
+                    "descripcion": "Descripción del TU 1"
+                }
             },
             {
                 "descripcion": "Descripcion 2",
-                "porcentajeComposicion": 25,
-                "tipoUva": "Seca"
+                "porcentajeComposicion": 35,
+                "tipoUva": {
+                    "nombre": "Seca",
+                    "descripcion": "Descripción del TU 2"
+                }
             }
         ],
         "maridaje": [
@@ -27,39 +34,22 @@ const vinos = [
             }
         ],
         "bodega": "Bodega La Viña",
-        "fechaActualizacion": "2024-03-15T12:30:00.000Z",
-    },
-    {
-        "imagenEtiqueta": "URL de imagen de la etiqueta 2",
-        "nombre": "Vino 4",
+        "fechaActualizacion": "2024-03-15T12:30:00.000Z"
+      },
+      "vino2": {
+        "anada":10,
+        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-4.png",
+        "nombre": "Vino 2",
         "notaDeCataBodega": "Nota de cata de la Bodega 2",
         "precioARS": 2000,
         "varietal": [
             {
                 "descripcion": "Descripcion 3",
                 "porcentajeComposicion": 25,
-                "tipoUva": "Agria"
-            }
-        ],
-        "maridaje": [
-            {
-                "nombre": "Maridaje 3",
-                "descripcion": "Descripción del Maridaje 3"
-            }
-        ],
-        "bodega": "Bodega Los Robles",
-        "fechaActualizacion": "2024-03-15T12:30:00.000Z",
-    },
-    {
-        "imagenEtiqueta": "URL de imagen de la etiqueta 2",
-        "nombre": "Vino 3",
-        "notaDeCataBodega": "Nota de cata de la Bodega 2",
-        "precioARS": 2000,
-        "varietal": [
-            {
-                "descripcion": "Descripcion 3",
-                "porcentajeComposicion": 25,
-                "tipoUva": "Agria"
+                "tipoUva": {
+                    "nombre": "Agria",
+                    "descripcion": "Descripción del TU 2"
+                }
             }
         ],
         "maridaje": [
@@ -69,8 +59,6 @@ const vinos = [
             }
         ],
         "bodega": "Bodega La Viña",
-        "fechaActualizacion": "2024-03-15T12:30:00.000Z",
+        "fechaActualizacion": "2024-03-15T12:30:00.000Z"
     }
-  ];
-
-  export default vinos;
+}
