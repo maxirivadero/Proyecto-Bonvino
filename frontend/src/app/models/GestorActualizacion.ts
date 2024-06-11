@@ -57,7 +57,7 @@ export class GestorActualizacion {
             }
         }
         this.obtenerActualizacionVino();
-        
+        this.notificarSubscripciones()
     }
     obtenerActualizacionVino() {
         for (const bodega of this.bodegasSeleccionada) {
