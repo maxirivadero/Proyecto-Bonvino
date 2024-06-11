@@ -18,11 +18,7 @@ export class GestorActualizacion {
     sistemaDeBodega = new SistemaDeBodega();
     jsonToClass = new JsonToClass;
 
-    vinosActualizados: Array<Vino[]> = [];
-    vinosACrear: Array<Vino[]> = [];
-
     //Para simular la base de datos antes y despues
-    arrayDBAVinosAntes: Array<Vino[]> = [];
     arraySimDBAVinos: Array<Vino[]> = [];
 
 
@@ -56,7 +52,6 @@ export class GestorActualizacion {
         let bodegasDisponibles = this.jsonToClass.jsonToBodega(bodegas);
         for (let nombreBodega of nombresBodega) {
             let bodegaEncontrada = bodegasDisponibles.find(b => b.getNombre === nombreBodega);
-            //this.bodegasSeleccionada.push(bodegaEncontrada);
             if (bodegaEncontrada) {
                 this.bodegasSeleccionada.push(bodegaEncontrada);
             }
@@ -68,33 +63,25 @@ export class GestorActualizacion {
         for (const bodega of this.bodegasSeleccionada) {
             let vinosActualizar: Vino[] = [];
             let vinosBodegaActualizados: Vino[] = [];
-            let vinosBodegaCreados: Vino[] = [];
-
-            this.arrayDBAVinosAntes.push(this.sistemaDeBodega.obtenerVinosBodega(bodega.nombre));
+            let vinosBodegaACrear: Vino[] = [];
 
             vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos(bodega.nombre);
 
-            bodega.actualizarVinos(vinosActualizar, vinosBodegaActualizados, vinosBodegaCreados);
-
-            if (vinosBodegaCreados.length > 0) {
-                this.crearVino(vinosBodegaCreados);
-            }
-            this.vinosActualizados.push(vinosBodegaActualizados);
-            this.vinosACrear.push(vinosBodegaCreados);
-
-            //Simulamos como quedaria la base de datos nueva luego de actualizar y crear
+            bodega.actualizarVinos(vinosActualizar, vinosBodegaActualizados, vinosBodegaACrear);
             let simBDAVinosNueva = vinosBodegaActualizados;
-            vinosBodegaCreados.forEach(element => {
-                simBDAVinosNueva.push(element)
-            });
+
+            if (vinosBodegaACrear.length > 0) {
+                this.crearVino(vinosBodegaACrear, simBDAVinosNueva);
+            }
+
             this.arraySimDBAVinos.push(simBDAVinosNueva);
 
             //seteamos la fecha de actualizacion de la bodega
             bodega.setFechaUltimaActualizacion = this.fechaActual;
         }
-     
+        
     }
-    crearVino(vinosACrear: Vino[]) {
+    crearVino(vinosACrear: Vino[], simBDA:Vino[]) {
         let maridajesVino = this.buscarMaridaje(vinosACrear);
         let tiposUvaVino = this.buscarTipoUva(vinosACrear);
         let contador = 0;
@@ -111,12 +98,9 @@ export class GestorActualizacion {
                 vino.bodega,
                 vino.fechaActualizacion
             )
-
-            vino.varietal = vino.crearVarietal(tiposUvaVino[contador]);
-            vino.maridaje = maridajesVino[contador];
             
             contador ++;
-            //this.arraySimDBAVinos.push(vinoNuevo);
+            simBDA.push(vinoNuevo);
 
         });
     };
@@ -164,18 +148,23 @@ export class GestorActualizacion {
             }
             // Si hay enófilos suscritos, envía la notificación
             if (enofilosSubscriptos.length > 0) {
+                // Notificacion subscriptor
+                let interfazNotificacion = new InterfazNotificacionPush();
+                interfazNotificacion.actualizarNovedadBodega(enofilosSubscriptos, bodega.getNombre);
+
                 let notificationTitle = `Nueva novedad en la bodega ${bodega.getNombre}`;
                 let notificationOptions = {
                     body: `Se ha publicado una nueva novedad en la bodega ${bodega.getNombre}`,
-                    icon: '../../assets/svg/hojas.svg' // Ruta a una imagen para el ícono de la notificación
+                    icon: '../../assets/svg/hojas.svg'
                 };
     
-                // Verificar si el navegador soporta notificaciones
+                // Notificacion usuario del CU
                 if ('Notification' in window) {
                     // Verificar si las notificaciones están permitidas
                     if (Notification.permission === 'granted') {
                         // Mostrar la notificación
                         new Notification(notificationTitle, notificationOptions);
+                        console.log("Notificacion: ",new Notification(notificationTitle, notificationOptions));
                     } else if (Notification.permission !== 'denied') {
                         // Solicitar permiso al usuario para mostrar notificaciones
                         Notification.requestPermission().then(permission => {
@@ -187,9 +176,6 @@ export class GestorActualizacion {
                     }
                 }
     
-                // Actualizar la interfaz con la notificación
-                let interfazNotificacion = new InterfazNotificacionPush();
-                interfazNotificacion.actualizarNovedadBodega(enofilosSubscriptos, bodega.getNombre);
             }
         });
         this.finCU();

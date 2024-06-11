@@ -9,7 +9,6 @@ export class InterfazNotificacionPush {
             
             const usuario = (this.jsonToClass.jsonToUsuario(usuarios)).find(usuario => usuario.nombre === nombreEnofilo);
             
-            // Si se encuentra el usuario, imprimir un mensaje en la consola
             if (usuario) {
                 console.log(`Se mandó una notificación a ${nombreEnofilo} para la bodega ${nombreBodega}`);
             } else {
