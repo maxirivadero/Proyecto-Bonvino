@@ -57,14 +57,10 @@ export class PantallaActualizacionComponent {
   
   tomarSeleccionBodega() {
     if (this.seleccionados.length === 0) {
-      // Mostrar el popup con el mensaje de error
       alert("Por favor, seleccione al menos una opción.");
-      return; // Detener la ejecución de la función
+      return;
     }
-      // Llamar a la función tomarSeleccionBodega() con el array de nombres seleccionados
       this.gestorActualizacion.tomarSeleccionBodega(this.seleccionados);
-    console.log("sssssi",this.gestorActualizacion.vinosActualizados);
-    console.log("nooooooo",this.gestorActualizacion.vinosACrear);
     this.comboBodegasActualizables = !this.comboBodegasActualizables;
     this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     this.mostrarResumenActualizacion();

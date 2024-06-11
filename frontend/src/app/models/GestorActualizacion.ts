@@ -69,11 +69,7 @@ export class GestorActualizacion {
             let vinosActualizar: Vino[] = [];
             let vinosBodegaActualizados: Vino[] = [];
             let vinosBodegaCreados: Vino[] = [];
-//
-            //console.log( [this.sistemaDeBodega.obtenerVinosBodega(bodega.nombre)]);
-            //this.sistemaDeBodega.obtenerVinosBodega(bodega.nombre).forEach(element => {
-            //    console.log("AAAAAAA",element)
-            //});
+
             this.arrayDBAVinosAntes.push(this.sistemaDeBodega.obtenerVinosBodega(bodega.nombre));
 
             vinosActualizar = this.sistemaDeBodega.obtenerNovedadesDeVinos(bodega.nombre);
@@ -86,9 +82,6 @@ export class GestorActualizacion {
             this.vinosActualizados.push(vinosBodegaActualizados);
             this.vinosACrear.push(vinosBodegaCreados);
 
-            this.vinosActualizados.forEach(element => {
-                console.log("AAAAAAA",element)
-            });
             //Simulamos como quedaria la base de datos nueva luego de actualizar y crear
             let simBDAVinosNueva = vinosBodegaActualizados;
             vinosBodegaCreados.forEach(element => {
@@ -99,14 +92,7 @@ export class GestorActualizacion {
             //seteamos la fecha de actualizacion de la bodega
             bodega.setFechaUltimaActualizacion = this.fechaActual;
         }
-
-
-        this.arrayDBAVinosAntes.forEach(element => {
-            console.log("eeeeee",element)
-        });
-        this.arraySimDBAVinos.forEach(element => {
-            console.log("ddddd",element)
-        });        
+     
     }
     crearVino(vinosACrear: Vino[]) {
         let maridajesVino = this.buscarMaridaje(vinosACrear);
