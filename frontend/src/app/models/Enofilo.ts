@@ -10,8 +10,6 @@ export class Enofilo implements IObservador {
     nombre: string;
     siguiendo:Array<Siguiendo>;
     usuario:Usuario;
-    // No estoy seguro si crear la interfaz aca o en el metodo actualizar :$
-    interfazNotificacion = new InterfazNotificacionPush;
 
     constructor(apellido: string, imagenPerfil: string, nombre: string, siguiendo:Array<Siguiendo>, usuario:Usuario) {
         this.apellido = apellido;
@@ -25,12 +23,13 @@ export class Enofilo implements IObservador {
         return this.siguiendo.filter(suscripcion => suscripcion.sosDeBodega(nombreBodega)).some(suscripcion => true);
     }
 
-    obtenerNombreUsuario() {
+    obtenerNombreUsuario(): string {
         return this.usuario.getNombre;
     }
 
     actualizar(nombreBodega: string): void {
-        this.interfazNotificacion.enviarNotificacion(nombreBodega)
+        const interfazNotificacion = new InterfazNotificacionPush();
+        interfazNotificacion.enviarNotificacion(nombreBodega)
     }
 
 }

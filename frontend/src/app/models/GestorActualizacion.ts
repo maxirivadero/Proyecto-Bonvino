@@ -141,6 +141,9 @@ export class GestorActualizacion implements ISujeto {
     };
 
     conocerSuscripciones() {
+        
+        this.enofilosSubscriptos = []
+
         this.bodegasSeleccionada.forEach(bodega => {
             // Obtiene los enófilos suscritos a esta bodega
             for (const enofiloJson of this.jsonToClass.jsonToEnofilo(enofilos)) {
@@ -153,12 +156,14 @@ export class GestorActualizacion implements ISujeto {
     }
 
     suscribir(observador: IObservador): void {
-        this.enofilosSubscriptos.push(observador);
+        if (!this.enofilosSubscriptos.includes(observador)) {
+            this.enofilosSubscriptos.push(observador);
+        }
     }
 
     quitar(observador: IObservador): void {
         this.enofilosSubscriptos = this.enofilosSubscriptos.filter(obs => obs !== observador);
-    }    
+    }
 
     notificar(bodega: Bodega): void {
         if (this.enofilosSubscriptos.length > 0) {
