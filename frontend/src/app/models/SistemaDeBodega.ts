@@ -17,10 +17,10 @@ export class SistemaDeBodega {
                 vinosBodega = this.jsonToClass.jsonToVino(vinosLaViña);
                 break;
             case "Bodega Los Robles":
-                vinosBodega = this.jsonToClass.jsonToVino(vinosElCastillo);
+                vinosBodega = this.jsonToClass.jsonToVino(vinosLosRobles);
                 break;
             case "Bodega El Castillo":
-                vinosBodega = this.jsonToClass.jsonToVino(vinosLosRobles);
+                vinosBodega = this.jsonToClass.jsonToVino(vinosElCastillo);
                 break;
             default:
                 vinosBodega = [];
@@ -54,9 +54,4 @@ export class SistemaDeBodega {
         }
         return vinos;
     }
-
-    simularErrorServidor(): any {
-        // Devolver un objeto JSON de error
-        return { error: true, message: 'El sistema de bodegas falló000' };
-    };
 };

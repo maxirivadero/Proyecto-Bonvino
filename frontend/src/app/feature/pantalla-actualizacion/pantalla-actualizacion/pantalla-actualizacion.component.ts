@@ -16,6 +16,8 @@ export class PantallaActualizacionComponent {
   resumenActualizacion = false;
   noHayBodegasActualizar = false;
   jsontConverter = new JsonToClass;
+  
+  seleccionados: string[] = [];
 
   opcionImportarActualizacionDeVinos() {
     this.habilitarVentana();
@@ -40,7 +42,6 @@ export class PantallaActualizacionComponent {
     }
   }
 
-  seleccionados: string[] = [];
 
   seleccionarBodega(event: any, nombre: string) {
       if (event.target.checked) {
@@ -67,9 +68,9 @@ export class PantallaActualizacionComponent {
 
 
   mostrarResumenActualizacion() {
-    if(this.gestorActualizacion.arraySimDBAVinos && this.gestorActualizacion.arraySimDBAVinos.length > 0){
+    if(this.gestorActualizacion.arrayVinosMostrar && this.gestorActualizacion.arrayVinosMostrar.length > 0){
       this.resumenActualizacion = true;
-      this.gestorActualizacion.notificarSubscripciones();
+      //this.gestorActualizacion.notificarSubscripciones();
     }
   };
 }

@@ -61,39 +61,6 @@
         "bodega": "Bodega Los Robles",
         "fechaActualizacion": "2024-03-15T12:30:00.000Z"
     },
-    "vino3": {
-        "anada":10,
-        "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-3.png",
-        "nombre": "Vino 3",
-        "notaDeCataBodega": "Nota de cata de la Bodega 3 Nuevo",
-        "precioARS": 33030,
-        "varietal": [
-            {
-                "descripcion": "Descripcion 3 Nuevo",
-                "porcentajeComposicion": 76,
-                "tipoUva": {
-                    "nombre": "Jugosa",
-                    "descripcion": "Descripción del TU 4"
-                }
-            },
-            {
-                "descripcion": "Descripcion 7",
-                "porcentajeComposicion": 100,
-                "tipoUva": {
-                    "nombre": "Agria",
-                    "descripcion": "Descripción del TU 5"
-                }
-            }
-        ],
-        "maridaje": [
-            {
-                "nombre": "Maridaje 3",
-                "descripcion": "Descripción del Maridaje 3 Nuevo"
-            }
-        ],
-        "bodega": "Bodega Los Robles",
-        "fechaActualizacion": "2024-03-15T12:30:00.000Z"
-    },
     "vino4": {
         "anada":10,
         "imagenEtiqueta": "../../../../assets/imgs/Etiquetas/Vino-4.png",

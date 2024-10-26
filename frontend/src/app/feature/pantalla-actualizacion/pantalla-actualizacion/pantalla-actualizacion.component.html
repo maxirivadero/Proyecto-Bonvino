@@ -29,7 +29,7 @@
 <div *ngIf="resumenActualizacion" >
   <div *ngFor="let bodega of gestorActualizacion.bodegasSeleccionada; let i = index" class="vinos-wrapper">
     <h1>{{ bodega.nombre }}</h1>
-    <section *ngFor="let vino of gestorActualizacion.arraySimDBAVinos[i]" class="vino-section">
+    <section *ngFor="let vino of gestorActualizacion.arrayVinosMostrar[i]" class="vino-section">
       <div class="elementos-container-top">
         <div class="img-vino-container">
           <img loading="lazy" decoding="async" width="427" height="1024" src="{{ vino.imagenEtiqueta }}" alt="">

@@ -19,7 +19,7 @@ export class GestorActualizacion {
     jsonToClass = new JsonToClass;
 
     //Para simular la base de datos antes y despues
-    arraySimDBAVinos: Array<Vino[]> = [];
+    arrayVinosMostrar: Array<Vino[]> = [];
 
 
     constructor() {
@@ -57,6 +57,7 @@ export class GestorActualizacion {
             }
         }
         this.obtenerActualizacionVino();
+        this.notificarSubscripciones();
         
     }
     obtenerActualizacionVino() {
@@ -74,7 +75,7 @@ export class GestorActualizacion {
                 this.crearVino(vinosBodegaACrear, simBDAVinosNueva);
             }
 
-            this.arraySimDBAVinos.push(simBDAVinosNueva);
+            this.arrayVinosMostrar.push(simBDAVinosNueva);
 
             //seteamos la fecha de actualizacion de la bodega
             bodega.setFechaUltimaActualizacion = this.fechaActual;
@@ -161,11 +162,7 @@ export class GestorActualizacion {
                 // Notificacion usuario del CU
                 if ('Notification' in window) {
                     // Verificar si las notificaciones están permitidas
-                    if (Notification.permission === 'granted') {
-                        // Mostrar la notificación
-                        new Notification(notificationTitle, notificationOptions);
-                        console.log("Notificacion: ",new Notification(notificationTitle, notificationOptions));
-                    } else if (Notification.permission !== 'denied') {
+                    if (Notification.permission !== 'denied') {
                         // Solicitar permiso al usuario para mostrar notificaciones
                         Notification.requestPermission().then(permission => {
                             if (permission === 'granted') {
