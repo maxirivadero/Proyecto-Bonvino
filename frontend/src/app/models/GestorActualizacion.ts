@@ -8,14 +8,17 @@ import { SistemaDeBodega } from "./SistemaDeBodega";
 import { TipoUva } from "./TipoUva";
 
 import { Vino } from "./Vino";
+import { ISujeto } from "./ISujeto";
+import { IObservador } from "./IObservador";
 
-export class GestorActualizacion {
+export class GestorActualizacion implements ISujeto {
     fechaActual: Date;
     bodegasActualizables:Array<any>;
     bodegasSeleccionada:Array<Bodega> = [];
     maridajes:Array<Maridaje>;
     tipoUvas:Array<TipoUva>;
     sistemaDeBodega = new SistemaDeBodega();
+    enofilosSubscriptos: IObservador[] = [];
     jsonToClass = new JsonToClass;
 
     //Para simular la base de datos antes y despues
@@ -25,7 +28,6 @@ export class GestorActualizacion {
     constructor() {
         this.fechaActual = new Date();
         this.bodegasActualizables = [];
-        this.bodegasSeleccionada = [];
         this.maridajes = [];
         this.tipoUvas = [];
     }
@@ -57,7 +59,8 @@ export class GestorActualizacion {
             }
         }
         this.obtenerActualizacionVino();
-        this.notificarSubscripciones()
+        // this.notificarSubscripciones();
+        this.conocerSuscripciones();
     }
     obtenerActualizacionVino() {
         for (const bodega of this.bodegasSeleccionada) {
@@ -136,6 +139,38 @@ export class GestorActualizacion {
         });
         return listaTiposUvas;
     };
+
+    conocerSuscripciones() {
+        this.bodegasSeleccionada.forEach(bodega => {
+            // Obtiene los enófilos suscritos a esta bodega
+            for (const enofiloJson of this.jsonToClass.jsonToEnofilo(enofilos)) {
+                if (enofiloJson.estasSuscriptoABodega(bodega.getNombre)) {
+                    this.suscribir(enofiloJson);
+                }
+            }
+        this.notificar(bodega)
+        })
+    }
+
+    suscribir(observador: IObservador): void {
+        this.enofilosSubscriptos.push(observador);
+    }
+
+    quitar(observador: IObservador): void {
+        this.enofilosSubscriptos = this.enofilosSubscriptos.filter(obs => obs !== observador);
+    }    
+
+    notificar(bodega: Bodega): void {
+        if (this.enofilosSubscriptos.length > 0) {
+            // Notificacion subscriptor
+            this.enofilosSubscriptos.forEach(enofilo => {
+                enofilo.actualizar(bodega.getNombre)
+            })
+        }
+        this.finCU();
+    }
+    
+    /*
     notificarSubscripciones() {
         // Recorre cada bodega seleccionada
         this.bodegasSeleccionada.forEach(bodega => {
@@ -174,9 +209,10 @@ export class GestorActualizacion {
     
             }
         });
-        this.finCU(); 
+        this.finCU();
     }
-    
+    */
+
     finCU() {
         console.log("Fin caso de uso")
     };

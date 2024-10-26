@@ -4,6 +4,29 @@ import { JsonToClass } from "./JsonToClass";
 export class InterfazNotificacionPush {
     jsonToClass = new JsonToClass;
     
+    enviarNotificacion(nombreBodega: string) {
+        let notificationTitle = `Nueva novedad en la bodega ${nombreBodega}`;
+        let notificationOptions = {
+            body: `Se ha publicado una nueva novedad en la bodega ${nombreBodega}`,
+            icon: '../../assets/svg/hojas.svg'
+        };
+
+        // Notificacion usuario del CU
+        if ('Notification' in window) {
+            // Verificar si las notificaciones están permitidas
+            if (Notification.permission !== 'denied') {
+                // Solicitar permiso al usuario para mostrar notificaciones
+                Notification.requestPermission().then(permission => {
+                    if (permission === 'granted') {
+                        // Mostrar la notificación
+                        new Notification(notificationTitle, notificationOptions);
+                    }
+                });
+            }
+        }
+    }
+
+    /* 
     actualizarNovedadBodega(arregloEnofilos: Array<string>, nombreBodega: string) {
         for (const nombreEnofilo of arregloEnofilos) {
             
@@ -16,4 +39,5 @@ export class InterfazNotificacionPush {
             }
         }
     }
+    */
 }
