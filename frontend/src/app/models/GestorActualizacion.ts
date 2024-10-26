@@ -167,7 +167,7 @@ export class GestorActualizacion implements ISujeto {
                     Notification.requestPermission().then(permission => {
                         if (permission === 'granted') {
                             // Mostrar la notificación
-                            new Notification(notificationTitle, notificationOptions);
+                            new Notification(notificationTitle, notificationOptions); 
                         }
                     });
                 }
