@@ -174,7 +174,7 @@ export class GestorActualizacion {
     
             }
         });
-        this.finCU();
+        this.finCU(); 
     }
     
     finCU() {
