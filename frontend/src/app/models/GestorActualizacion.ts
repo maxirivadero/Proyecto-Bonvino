@@ -143,13 +143,38 @@ export class GestorActualizacion implements ISujeto {
     conocerSuscripciones() {
         this.bodegasSeleccionada.forEach(bodega => {
             // Obtiene los enófilos suscritos a esta bodega
+            this.enofilosSubscriptos = [];
             for (const enofiloJson of this.jsonToClass.jsonToEnofilo(enofilos)) {
                 if (enofiloJson.estasSuscriptoABodega(bodega.getNombre)) {
                     this.suscribir(enofiloJson);
                 }
             }
-        this.notificar(bodega)
+
+            this.notificar(bodega)
+
+            // Se le hace saber al Usuario Cu que se envio notificaciones por x
+            let notificationTitle = `Nueva novedad en la bodega ${bodega.nombre}`;
+            let notificationOptions = {
+                body: `Se ha publicado una nueva novedad en la bodega ${bodega.nombre}`,
+                icon: '../../assets/svg/hojas.svg'
+            };
+
+            // Notificacion usuario del CU
+            if ('Notification' in window) {
+                // Verificar si las notificaciones están permitidas
+                if (Notification.permission !== 'denied') {
+                    // Solicitar permiso al usuario para mostrar notificaciones
+                    Notification.requestPermission().then(permission => {
+                        if (permission === 'granted') {
+                            // Mostrar la notificación
+                            new Notification(notificationTitle, notificationOptions);
+                        }
+                    });
+                }
+            }
         })
+
+        this.finCU();
     }
 
     suscribir(observador: IObservador): void {
@@ -167,7 +192,6 @@ export class GestorActualizacion implements ISujeto {
                 enofilo.actualizar(bodega.getNombre)
             })
         }
-        this.finCU();
     }
     
     /*

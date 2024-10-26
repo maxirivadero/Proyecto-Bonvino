@@ -59,7 +59,7 @@ export class PantallaActualizacionComponent {
       alert("Por favor, seleccione al menos una opción.");
       return;
     }
-      this.gestorActualizacion.tomarSeleccionBodega(this.seleccionados);
+    this.gestorActualizacion.tomarSeleccionBodega(this.seleccionados);
     this.comboBodegasActualizables = !this.comboBodegasActualizables;
     this.mostrarOpcionesDeBodega = !this.mostrarOpcionesDeBodega;
     this.mostrarResumenActualizacion();

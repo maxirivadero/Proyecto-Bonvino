@@ -4,7 +4,16 @@ import { JsonToClass } from "./JsonToClass";
 export class InterfazNotificacionPush {
     jsonToClass = new JsonToClass;
     
-    enviarNotificacion(nombreBodega: string) {
+    enviarNotificacion(nombreUsuario: string,nombreBodega: string) {
+        const usuario = (this.jsonToClass.jsonToUsuario(usuarios)).find(usuario => usuario.nombre === nombreUsuario);
+            
+            if (usuario) {
+                console.log(`Se mandó una notificación a ${nombreUsuario} para la bodega ${nombreBodega}`);
+            } else {
+                console.log(`No se encontró un usuario con el nombre ${nombreUsuario}`);
+            }
+
+        /*
         let notificationTitle = `Nueva novedad en la bodega ${nombreBodega}`;
         let notificationOptions = {
             body: `Se ha publicado una nueva novedad en la bodega ${nombreBodega}`,
@@ -24,6 +33,7 @@ export class InterfazNotificacionPush {
                 });
             }
         }
+            */
     }
 
     /* 
