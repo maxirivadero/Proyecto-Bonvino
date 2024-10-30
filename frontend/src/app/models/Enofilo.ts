@@ -1,10 +1,8 @@
-import { InterfazNotificacionPush } from "./InterfazNotificacionPush";
-import { IObservador } from "./IObservador";
 import { Siguiendo } from "./Siguiendo";
 import { Usuario } from "./Usuario";
 
 
-export class Enofilo implements IObservador {
+export class Enofilo {
     apellido: string;
     imagenPerfil: string;
     nombre: string;
@@ -26,10 +24,4 @@ export class Enofilo implements IObservador {
     obtenerNombreUsuario(): string {
         return this.usuario.getNombre;
     }
-
-    actualizar(nombreBodega: string): void {
-        const interfazNotificacion = new InterfazNotificacionPush();
-        interfazNotificacion.enviarNotificacion(nombreBodega)
-    }
-
 }

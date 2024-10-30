@@ -1,9 +1,15 @@
 import usuarios from '../../assets/json/usuarios.json'; // Importar el array de usuarios
+import { IObservador } from './IObservador';
 import { JsonToClass } from "./JsonToClass";
 
-export class InterfazNotificacionPush {
+export class InterfazNotificacionPush implements IObservador {
     jsonToClass = new JsonToClass;
     
+    actualizar(nombreBodega: string): void {
+        const interfazNotificacion = new InterfazNotificacionPush();
+        interfazNotificacion.enviarNotificacion(nombreBodega)
+    }
+
     enviarNotificacion(nombreBodega: string) {
         let notificationTitle = `Nueva novedad en la bodega ${nombreBodega}`;
         let notificationOptions = {

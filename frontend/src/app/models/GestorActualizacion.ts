@@ -20,6 +20,7 @@ export class GestorActualizacion implements ISujeto {
     sistemaDeBodega = new SistemaDeBodega();
     enofilosSubscriptos: IObservador[] = [];
     jsonToClass = new JsonToClass;
+    interfazNotificacionPush = new InterfazNotificacionPush()
 
     //Para simular la base de datos antes y despues
     arrayVinosMostrar: Array<Vino[]> = [];
@@ -60,7 +61,7 @@ export class GestorActualizacion implements ISujeto {
         }
         this.obtenerActualizacionVino();
         // this.notificarSubscripciones();
-        this.conocerSuscripciones();
+        this.notificarSuscripciones();
     }
     obtenerActualizacionVino() {
         for (const bodega of this.bodegasSeleccionada) {
@@ -140,15 +141,14 @@ export class GestorActualizacion implements ISujeto {
         return listaTiposUvas;
     };
 
-    conocerSuscripciones() {
-        
+    notificarSuscripciones() {
         this.enofilosSubscriptos = []
-
         this.bodegasSeleccionada.forEach(bodega => {
             // Obtiene los enófilos suscritos a esta bodega
             for (const enofiloJson of this.jsonToClass.jsonToEnofilo(enofilos)) {
                 if (enofiloJson.estasSuscriptoABodega(bodega.getNombre)) {
-                    this.suscribir(enofiloJson);
+                    // los metodos obtenerNombreUsuario y getNombre del diagrama de secuencia no van????
+                    this.suscribir(this.interfazNotificacionPush);
                 }
             }
         this.notificar(bodega)
