@@ -1,7 +1,6 @@
 import { Siguiendo } from "./Siguiendo";
 import { Usuario } from "./Usuario";
 
-
 export class Enofilo {
     apellido: string;
     imagenPerfil: string;

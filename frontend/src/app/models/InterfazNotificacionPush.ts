@@ -1,21 +1,22 @@
-import usuarios from '../../assets/json/usuarios.json'; // Importar el array de usuarios
-import { IObservador } from './IObservador';
-import { JsonToClass } from "./JsonToClass";
+import { IObservador } from './IObservador'
 
 export class InterfazNotificacionPush implements IObservador {
-    jsonToClass = new JsonToClass;
     
-    actualizar(nombreBodega: string): void {
-        const interfazNotificacion = new InterfazNotificacionPush();
-        interfazNotificacion.enviarNotificacion(nombreBodega)
+    actualizar(nombreBodega: string, usuarios: string[]): void {
+        this.enviarNotificacion(nombreBodega, usuarios)
     }
 
-    enviarNotificacion(nombreBodega: string) {
+    enviarNotificacion(nombreBodega: string, usuarios: string[]): void {
+        
+        usuarios.forEach(usuario => {
+            console.log(`Se envio una notificacion push a ${usuario}`)
+        })
+        
         let notificationTitle = `Nueva novedad en la bodega ${nombreBodega}`;
         let notificationOptions = {
             body: `Se ha publicado una nueva novedad en la bodega ${nombreBodega}`,
             icon: '../../assets/svg/hojas.svg'
-        };
+        }
 
         // Notificacion usuario del CU
         if ('Notification' in window) {
@@ -25,25 +26,10 @@ export class InterfazNotificacionPush implements IObservador {
                 Notification.requestPermission().then(permission => {
                     if (permission === 'granted') {
                         // Mostrar la notificación
-                        new Notification(notificationTitle, notificationOptions);
+                        new Notification(notificationTitle, notificationOptions)
                     }
-                });
+                })
             }
         }
     }
-
-    /* 
-    actualizarNovedadBodega(arregloEnofilos: Array<string>, nombreBodega: string) {
-        for (const nombreEnofilo of arregloEnofilos) {
-            
-            const usuario = (this.jsonToClass.jsonToUsuario(usuarios)).find(usuario => usuario.nombre === nombreEnofilo);
-            
-            if (usuario) {
-                console.log(`Se mandó una notificación a ${nombreEnofilo} para la bodega ${nombreBodega}`);
-            } else {
-                console.log(`No se encontró un usuario con el nombre ${nombreEnofilo}`);
-            }
-        }
-    }
-    */
 }

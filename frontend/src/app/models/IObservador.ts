@@ -1,3 +1,3 @@
 export interface IObservador {
-    actualizar(info: string): void;
+    actualizar(info: string, usuarios: string[]): void;
 }

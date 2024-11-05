@@ -1,5 +1,3 @@
-
-
 export class Siguiendo {
     fechaInicio: Date;
     fechaFin: Date;

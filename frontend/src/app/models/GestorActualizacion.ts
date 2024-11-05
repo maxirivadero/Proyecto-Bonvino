@@ -19,8 +19,9 @@ export class GestorActualizacion implements ISujeto {
     tipoUvas:Array<TipoUva>;
     sistemaDeBodega = new SistemaDeBodega();
     enofilosSubscriptos: IObservador[] = [];
+    usuariosANotificar: string[] = [];
     jsonToClass = new JsonToClass;
-    interfazNotificacionPush = new InterfazNotificacionPush()
+    interfazNotificacionPush = new InterfazNotificacionPush();
 
     //Para simular la base de datos antes y despues
     arrayVinosMostrar: Array<Vino[]> = [];
@@ -142,16 +143,21 @@ export class GestorActualizacion implements ISujeto {
     };
 
     notificarSuscripciones() {
+        // Array con los IObservadores
         this.enofilosSubscriptos = []
+        // Array con los nombres de usuarios
+        this.usuariosANotificar = []
+        
         this.bodegasSeleccionada.forEach(bodega => {
-            // Obtiene los enófilos suscritos a esta bodega
+            let nombreBodega = bodega.getNombre
+            // Loop Para todos los enofilos
             for (const enofiloJson of this.jsonToClass.jsonToEnofilo(enofilos)) {
-                if (enofiloJson.estasSuscriptoABodega(bodega.getNombre)) {
-                    // los metodos obtenerNombreUsuario y getNombre del diagrama de secuencia no van????
+                if (enofiloJson.estasSuscriptoABodega(nombreBodega)) {
+                    this.usuariosANotificar.push(enofiloJson.obtenerNombreUsuario())
                     this.suscribir(this.interfazNotificacionPush);
                 }
             }
-        this.notificar(bodega)
+            this.notificar(nombreBodega)
         })
     }
 
@@ -165,58 +171,15 @@ export class GestorActualizacion implements ISujeto {
         this.enofilosSubscriptos = this.enofilosSubscriptos.filter(obs => obs !== observador);
     }
 
-    notificar(bodega: Bodega): void {
+    notificar(nombreBodega: string): void {
         if (this.enofilosSubscriptos.length > 0) {
-            // Notificacion subscriptor
+            // Loop Para todos los enofilos suscriptos
             this.enofilosSubscriptos.forEach(enofilo => {
-                enofilo.actualizar(bodega.getNombre)
+                this.interfazNotificacionPush.actualizar(nombreBodega, this.usuariosANotificar)
             })
         }
         this.finCU();
     }
-    
-    /*
-    notificarSubscripciones() {
-        // Recorre cada bodega seleccionada
-        this.bodegasSeleccionada.forEach(bodega => {
-            // Obtiene los enófilos suscritos a esta bodega
-            let enofilosSubscriptos = [];
-            for (const enofiloJson of this.jsonToClass.jsonToEnofilo(enofilos)) {
-                if (enofiloJson.estasSuscriptoABodega(bodega.getNombre)) {
-                    enofilosSubscriptos.push(enofiloJson.obtenerNombreUsuario());
-                }
-            }
-            // Si hay enófilos suscritos, envía la notificación
-            if (enofilosSubscriptos.length > 0) {
-                // Notificacion subscriptor
-                let interfazNotificacion = new InterfazNotificacionPush();
-                interfazNotificacion.actualizarNovedadBodega(enofilosSubscriptos, bodega.getNombre);
-
-                let notificationTitle = `Nueva novedad en la bodega ${bodega.getNombre}`;
-                let notificationOptions = {
-                    body: `Se ha publicado una nueva novedad en la bodega ${bodega.getNombre}`,
-                    icon: '../../assets/svg/hojas.svg'
-                };
-    
-                // Notificacion usuario del CU
-                if ('Notification' in window) {
-                    // Verificar si las notificaciones están permitidas
-                    if (Notification.permission !== 'denied') {
-                        // Solicitar permiso al usuario para mostrar notificaciones
-                        Notification.requestPermission().then(permission => {
-                            if (permission === 'granted') {
-                                // Mostrar la notificación
-                                new Notification(notificationTitle, notificationOptions);
-                            }
-                        });
-                    }
-                }
-    
-            }
-        });
-        this.finCU();
-    }
-    */
 
     finCU() {
         console.log("Fin caso de uso")
