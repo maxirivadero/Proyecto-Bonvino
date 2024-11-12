@@ -159,6 +159,8 @@ export class GestorActualizacion implements ISujeto {
             }
             this.notificar(nombreBodega)
         })
+        
+        this.finCU();
     }
 
     suscribir(observador: IObservador): void {
@@ -178,7 +180,6 @@ export class GestorActualizacion implements ISujeto {
                 this.interfazNotificacionPush.actualizar(nombreBodega, this.usuariosANotificar)
             })
         }
-        this.finCU();
     }
 
     finCU() {
